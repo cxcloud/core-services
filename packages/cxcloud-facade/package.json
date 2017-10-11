@@ -1,0 +1,26 @@
+{
+  "name": "cxcloud-facade",
+  "version": "1.0.0",
+  "description": "CX Cloud Facade Module",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smilehouse/cxcloud-facade.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smilehouse/cxcloud-facade/issues"
+  },
+  "homepage": "https://github.com/smilehouse/cxcloud-facade#readme",
+  "devDependencies": {
+    "ts-node": "^3.3.0",
+    "tslint": "^5.7.0",
+    "tslint-config-prettier": "^1.5.0",
+    "typescript": "^2.5.3"
+  }
+}
