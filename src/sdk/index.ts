@@ -7,7 +7,7 @@ const { createQueueMiddleware } = require('@commercetools/sdk-middleware-queue')
 const { createUserAgentMiddleware } = require('@commercetools/sdk-middleware-user-agent');
 const { createRequestBuilder } = require('@commercetools/api-request-builder');
 
-const packageInfo = require('../../../package.json');
+const packageInfo = require('../../package.json');
 const commerceToolsConfig = config.get<{
   projectKey: string;
   clientId: string;
@@ -48,7 +48,7 @@ export function execute(service: any, method: string) {
     .then((result: any) => result.body);
 }
 
-export enum types {
+export enum methods {
   GET = 'GET',
   POST = 'POST',
   PATCH = 'PATCH',
