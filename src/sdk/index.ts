@@ -1,5 +1,7 @@
 import * as config from 'config';
 
+import { ClientRequest } from './types/sdk';
+
 const { createClient } = require('@commercetools/sdk-client');
 const { createAuthMiddlewareForClientCredentialsFlow } = require('@commercetools/sdk-middleware-auth');
 const { createHttpMiddleware } = require('@commercetools/sdk-middleware-http');
@@ -39,13 +41,18 @@ export const services = createRequestBuilder({
   projectKey: 'upm-shopit-dev-1'
 });
 
-export function execute(serviceUri: any, method: string) {
-  return client
-    .execute({
-      uri: serviceUri.build(),
-      method
-    })
-    .then((result: any) => result.body);
+export function execute(serviceUri: any, method: string, body?: any) {
+  let request: ClientRequest = {
+    uri: serviceUri.build(),
+    method
+  };
+  if (body) {
+    request = {
+      ...request,
+      body: JSON.stringify(body)
+    };
+  }
+  return client.execute(request).then((result: any) => result.body);
 }
 
 export function process(serviceUri: any, method: string) {
