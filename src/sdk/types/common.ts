@@ -58,6 +58,7 @@ export interface TaxPortion {
 }
 
 export interface Address {
+  id?: string;
   firstName: string;
   streetName: string;
   postalCode: string;
