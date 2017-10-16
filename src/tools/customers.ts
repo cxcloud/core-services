@@ -1,9 +1,8 @@
 import * as config from 'config';
+import { getCurrency } from 'locale-currency';
 
 import { Address } from '../sdk/types/common';
 import { Customer } from '../sdk/types/customers';
-
-const { getCurrency } = require('locale-currency');
 
 export function getCustomerBillingAddress(
   customer: Customer
@@ -39,11 +38,10 @@ export function getCustomerCurrency(customer: Customer): string {
   const currencies = config.get<string[]>('store.supportedCurrencies');
   const defaultCurrency = config.get<string>('store.defaultCurrency');
   const address = getCustomerShippingAddress(customer);
-  console.log(address);
   if (address === undefined) {
     return defaultCurrency;
   }
-  const currency: string = getCurrency(address.country);
+  const currency = getCurrency(address.country);
   if (currencies.indexOf(currency) === -1) {
     return defaultCurrency;
   }
