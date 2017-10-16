@@ -30,7 +30,7 @@ function nestify(categories: Category[]): Category[] {
 
 export namespace Categories {
   export function fetchAll(flat = false): Promise<Category> {
-    const query = services.categories.perPage(2);
+    const query = services.categories.perPage(100);
     return process(query, methods.GET).then((res: Category[]) => {
       if (flat === true) {
         return res;
