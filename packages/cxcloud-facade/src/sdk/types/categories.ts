@@ -1,5 +1,5 @@
 import { LocalizedString, Reference } from './common';
-import { PaginatedResult } from './result';
+import { PaginatedResult } from './sdk';
 
 export interface Category {
   id: string;
