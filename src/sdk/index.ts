@@ -39,13 +39,23 @@ export const services = createRequestBuilder({
   projectKey: 'upm-shopit-dev-1'
 });
 
-export function execute(service: any, method: string) {
+export function execute(serviceUri: any, method: string) {
   return client
     .execute({
-      uri: service.build(),
+      uri: serviceUri.build(),
       method
     })
     .then((result: any) => result.body);
+}
+
+export function process(serviceUri: any, method: string) {
+  return client.process(
+    {
+      uri: serviceUri.build(),
+      method
+    },
+    async (payload: any) => payload.body.results
+  );
 }
 
 export enum methods {
