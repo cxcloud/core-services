@@ -1,5 +1,5 @@
-import { execute, methods, services } from '../sdk';
-import { Category, PaginatedCategoryResult } from '../sdk/types/categories';
+import { execute, methods, process, services } from '../sdk';
+import { Category } from '../sdk/types/categories';
 
 interface CategoryMap {
   [id: string]: Category;
@@ -30,13 +30,12 @@ function nestify(categories: Category[]): Category[] {
 
 export namespace Categories {
   export function fetchAll(flat = false): Promise<Category> {
-    // @TODO: need to check if there's more pages
-    const query = services.categories.perPage(500);
-    return execute(query, methods.GET).then((res: PaginatedCategoryResult) => {
+    const query = services.categories.perPage(2);
+    return process(query, methods.GET).then((res: Category[]) => {
       if (flat === true) {
-        return res.results;
+        return res;
       }
-      return nestify(res.results);
+      return nestify(res);
     });
   }
 
