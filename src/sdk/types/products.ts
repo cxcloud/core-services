@@ -1,5 +1,5 @@
 import { Attribute, Image, LocalizedString, Price, Reference } from './common';
-import { PaginatedResult } from './result';
+import { PaginatedResult } from './sdk';
 
 export interface CategoryOrderHints {}
 
