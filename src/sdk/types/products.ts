@@ -28,8 +28,8 @@ export interface Product {
   hasStagedChanges: boolean;
   published: boolean;
   taxCategory: Reference;
-  createdAt: Date;
-  lastModifiedAt: Date;
+  createdAt: string;
+  lastModifiedAt: string;
 }
 
 export interface PaginatedProductResult extends PaginatedResult {

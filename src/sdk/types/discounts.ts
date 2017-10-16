@@ -23,8 +23,8 @@ export interface DiscountCode {
   cartFieldTypes: any;
   lineItemFieldTypes: any;
   customLineItemFieldTypes: any;
-  createdAt: Date;
-  lastModifiedAt: Date;
+  createdAt: string;
+  lastModifiedAt: string;
 }
 
 export interface Discount {
@@ -43,6 +43,6 @@ export interface Discount {
   cartFieldTypes: any;
   lineItemFieldTypes: any;
   customLineItemFieldTypes: any;
-  createdAt: Date;
-  lastModifiedAt: Date;
+  createdAt: string;
+  lastModifiedAt: string;
 }

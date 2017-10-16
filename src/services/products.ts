@@ -2,12 +2,19 @@ import { execute, methods, services } from '../sdk';
 import { PaginatedProductResult, Product } from '../sdk/types/products';
 
 export namespace Products {
-  export function findByCategoryId(categoryId: string): Promise<PaginatedProductResult> {
-    const query = services.productProjectionsSearch.filter(`categories.id:subtree("${categoryId}")`).perPage(20);
+  export function findByCategoryId(
+    categoryId: string
+  ): Promise<PaginatedProductResult> {
+    const query = services.productProjectionsSearch
+      .filter(`categories.id:subtree("${categoryId}")`)
+      .perPage(20);
     return execute(query, methods.GET);
   }
 
-  export function findBySearchQuery(q: string, language = 'en'): Promise<PaginatedProductResult> {
+  export function findBySearchQuery(
+    q: string,
+    language = 'en'
+  ): Promise<PaginatedProductResult> {
     const query = services.productProjectionsSearch
       .text(q, language)
       .fuzzy(true)

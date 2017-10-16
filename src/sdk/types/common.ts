@@ -59,14 +59,14 @@ export interface TaxPortion {
 
 export interface Address {
   id?: string;
-  firstName: string;
-  streetName: string;
+  firstName?: string;
+  streetName?: string;
   postalCode: string;
   city: string;
-  region: string;
-  state: string;
+  region?: string;
+  state?: string;
   country: string;
-  company: string;
-  phone: string;
-  additionalAddressInfo: string;
+  company?: string;
+  phone?: string;
+  additionalAddressInfo?: string;
 }

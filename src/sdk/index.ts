@@ -3,10 +3,16 @@ import * as config from 'config';
 import { ClientRequest } from './types/sdk';
 
 const { createClient } = require('@commercetools/sdk-client');
-const { createAuthMiddlewareForClientCredentialsFlow } = require('@commercetools/sdk-middleware-auth');
+const {
+  createAuthMiddlewareForClientCredentialsFlow
+} = require('@commercetools/sdk-middleware-auth');
 const { createHttpMiddleware } = require('@commercetools/sdk-middleware-http');
-const { createQueueMiddleware } = require('@commercetools/sdk-middleware-queue');
-const { createUserAgentMiddleware } = require('@commercetools/sdk-middleware-user-agent');
+const {
+  createQueueMiddleware
+} = require('@commercetools/sdk-middleware-queue');
+const {
+  createUserAgentMiddleware
+} = require('@commercetools/sdk-middleware-user-agent');
 const { createRequestBuilder } = require('@commercetools/api-request-builder');
 
 const packageInfo = require('../../package.json');

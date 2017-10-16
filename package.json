@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "ts-node src/test.ts"
+    "start": "ts-node src/test.ts",
+    "format": "prettier --write 'src/**/*.ts'"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,8 @@
   "devDependencies": {
     "@types/config": "0.0.33",
     "@types/node": "^8.0.34",
+    "locale-currency": "0.0.1",
+    "prettier": "^1.7.4",
     "ts-node": "^3.3.0",
     "tslint": "^5.7.0",
     "tslint-config-prettier": "^1.5.0",

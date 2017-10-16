@@ -9,8 +9,8 @@ export interface Category {
   description: LocalizedString;
   ancestors: Reference[];
   orderHint: string;
-  createdAt: Date;
-  lastModifiedAt: Date;
+  createdAt: string;
+  lastModifiedAt: string;
   assets: any[];
   lastMessageSequenceNumber: number;
   parent: Reference;
