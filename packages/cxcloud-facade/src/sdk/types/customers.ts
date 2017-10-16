@@ -17,7 +17,7 @@ export interface Customer {
   companyName: string;
   vatId: string;
   custom: Custom;
-  createdAt: Date;
-  lastModifiedAt: Date;
+  createdAt: string;
+  lastModifiedAt: string;
   lastMessageSequenceNumber: number;
 }

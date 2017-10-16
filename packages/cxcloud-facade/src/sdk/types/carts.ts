@@ -77,8 +77,8 @@ export interface Cart {
   version: number;
   customerId: string;
   customerEmail: string;
-  createdAt: Date;
-  lastModifiedAt: Date;
+  createdAt: string;
+  lastModifiedAt: string;
   lineItems: LineItem[];
   cartState: string;
   totalPrice: Money;
