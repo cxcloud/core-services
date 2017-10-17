@@ -10,6 +10,7 @@ import { execute, methods, services } from '../sdk';
 import { Cart } from '../sdk/types/carts';
 import { Customer } from '../sdk/types/customers';
 import { getCustomerCurrency, getCustomerShippingAddress } from '../tools/customers';
+import { Orders } from './orders';
 
 export namespace Carts {
   export interface ICartAction {
@@ -44,7 +45,28 @@ export namespace Carts {
     return execute(services.carts, methods.POST, params);
   }
 
-  export function getById(cartId: string): Promise<Cart> {
+  export function createFromOrder(orderId: string): Promise<Cart> {
+    return Orders.findById(orderId).then(order => {
+      return execute(services.carts, methods.POST, {
+        currency: order.totalPrice.currencyCode,
+        customerId: order.customerId,
+        customerEmail: order.customerEmail,
+        shippingAddress: order.shippingAddress
+      }).then((cart: Cart) =>
+        addLineItems(
+          cart.id,
+          cart.version,
+          order.lineItems.map(li => ({
+            productId: li.productId,
+            variantId: li.variant.id,
+            quantity: li.quantity
+          }))
+        )
+      );
+    });
+  }
+
+  export function findById(cartId: string): Promise<Cart> {
     return execute(services.carts.byId(cartId), methods.GET);
   }
 
