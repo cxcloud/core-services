@@ -1,6 +1,7 @@
 import { CartBase } from './carts';
 import { Reference } from './common';
 import { Payment } from './payments';
+import { PaginatedResult } from './sdk';
 import { State } from './states';
 
 export interface StateReference extends Reference {
@@ -26,4 +27,8 @@ export interface Order extends CartBase {
   lastMessageSequenceNumber: number;
   cart: Reference;
   paymentInfo: PaymentInfo;
+}
+
+export interface PaginatedOrderResult extends PaginatedResult {
+  results: Order[];
 }
