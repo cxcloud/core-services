@@ -3,7 +3,7 @@
  * - Create Order
  */
 import { execute, methods, services } from '../sdk';
-import { PaginatedOrderResult } from '../sdk/types/orders';
+import { Order, PaginatedOrderResult } from '../sdk/types/orders';
 
 export namespace Orders {
   export function findByCustomerId(
@@ -13,5 +13,9 @@ export namespace Orders {
       services.orders.where(`customerId="${customerId}"`).perPage(20),
       methods.GET
     );
+  }
+
+  export function findById(orderId: string): Promise<Order> {
+    return execute(services.orders.byId(orderId), methods.GET);
   }
 }
