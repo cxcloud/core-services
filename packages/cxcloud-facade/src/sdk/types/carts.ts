@@ -71,7 +71,7 @@ export interface CartDiscountCode {
   state: string;
 }
 
-export interface Cart {
+export interface CartBase {
   type: string;
   id: string;
   version: number;
@@ -80,7 +80,6 @@ export interface Cart {
   createdAt: string;
   lastModifiedAt: string;
   lineItems: LineItem[];
-  cartState: string;
   totalPrice: Money;
   taxedPrice: TaxedPrice;
   shippingAddress: Address;
@@ -92,5 +91,9 @@ export interface Cart {
   inventoryMode: string;
   taxMode: string;
   taxRoundingMode: string;
+}
+
+export interface Cart extends CartBase {
+  cartState: string;
   refusedGifts: any[];
 }
