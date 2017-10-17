@@ -12,6 +12,11 @@ export namespace Carts {
     quantity: number;
   }
 
+  export interface IChangeLineItemQuantity {
+    lineItemId: string;
+    quantity: number;
+  }
+
   export function create(customer?: Customer): Promise<Cart> {
     let params: any = {
       currency: config.get<string>('store.defaultCurrency')
@@ -46,6 +51,38 @@ export namespace Carts {
         action: 'addLineItem',
         ...li
       }))
+    });
+  }
+
+  export function changeLineItemQuantity(
+    cartId: string,
+    cartVersion: number,
+    action: IChangeLineItemQuantity
+  ): Promise<Cart> {
+    return execute(services.carts.byId(cartId), methods.POST, {
+      version: cartVersion,
+      actions: [
+        {
+          action: 'changeLineItemQuantity',
+          ...action
+        }
+      ]
+    });
+  }
+
+  export function removeLineItem(
+    cartId: string,
+    cartVersion: number,
+    lineItemId: string
+  ): Promise<Cart> {
+    return execute(services.carts.byId(cartId), methods.POST, {
+      version: cartVersion,
+      actions: [
+        {
+          action: 'removeLineItem',
+          lineItemId
+        }
+      ]
     });
   }
 }
