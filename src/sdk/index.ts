@@ -15,6 +15,10 @@ const {
 } = require('@commercetools/sdk-middleware-user-agent');
 const { createRequestBuilder } = require('@commercetools/api-request-builder');
 
+if (!config.has('commerceTools')) {
+  throw new Error('Project has not been configured yet. Check docs first.');
+}
+
 const packageInfo = require('../../package.json');
 const commerceToolsConfig = config.get<{
   projectKey: string;
