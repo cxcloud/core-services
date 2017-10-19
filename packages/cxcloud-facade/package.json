@@ -7,7 +7,14 @@
   "scripts": {
     "build": "tsc",
     "start": "ts-node src/test.ts",
-    "format": "prettier --write 'src/**/*.ts'"
+    "format": "prettier --write 'src/**/*.ts'",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -23,7 +30,8 @@
   "devDependencies": {
     "@types/config": "0.0.33",
     "@types/node": "^8.0.34",
-    "locale-currency": "0.0.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.3.0",
     "prettier": "^1.7.4",
     "ts-node": "^3.3.0",
     "tslint": "^5.7.0",
@@ -37,6 +45,7 @@
     "@commercetools/sdk-middleware-http": "^2.2.0",
     "@commercetools/sdk-middleware-queue": "^1.1.0",
     "@commercetools/sdk-middleware-user-agent": "^1.2.0",
-    "config": "^1.26.2"
+    "config": "^1.26.2",
+    "locale-currency": "0.0.1"
   }
 }
