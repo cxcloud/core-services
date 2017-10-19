@@ -1,6 +1,6 @@
 {
-  "name": "cxcloud-facade",
-  "version": "1.0.0",
+  "name": "@cxcloud/facade",
+  "version": "1.0.1",
   "description": "CX Cloud Facade Module",
   "main": "index.js",
   "scripts": {
