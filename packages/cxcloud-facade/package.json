@@ -1,6 +1,6 @@
 {
   "name": "@cxcloud/facade",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "CX Cloud Facade Module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,7 +8,8 @@
     "build": "tsc",
     "start": "ts-node src/test.ts",
     "format": "prettier --write 'src/**/*.ts'",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "push": "npm run build && fury push $(npm pack)"
   },
   "lint-staged": {
     "src/**/*.ts": [
