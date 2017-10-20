@@ -1,4 +1,3 @@
-export * from './services/products';
-export * from './services/categories';
-export * from './services/carts';
-export * from './services/orders';
+import * as commerceServices from './commerce';
+
+export const Commerce = commerceServices;
