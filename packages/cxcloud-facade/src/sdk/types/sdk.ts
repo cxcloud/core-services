@@ -15,10 +15,15 @@ export type ClientRequest = {
   };
 };
 
-export type SdkConfig = {
-  projectKey: string;
+export type ClientCredentials = {
   clientId: string;
   clientSecret: string;
+};
+
+export type SdkConfig = {
+  projectKey: string;
+  god: ClientCredentials;
+  user: ClientCredentials;
   authHost: string;
   apiHost: string;
 };

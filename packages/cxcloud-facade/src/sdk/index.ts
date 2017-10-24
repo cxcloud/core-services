@@ -32,8 +32,8 @@ export const client = createClient({
       host: sdkConfig.authHost,
       projectKey: sdkConfig.projectKey,
       credentials: {
-        clientId: sdkConfig.clientId,
-        clientSecret: sdkConfig.clientSecret
+        clientId: sdkConfig.god.clientId,
+        clientSecret: sdkConfig.god.clientSecret
       }
     }),
     createQueueMiddleware({ concurrency: 10 }),
@@ -69,7 +69,7 @@ export enum methods {
 
 export function authenticatedFormRequest(requestOptions: any): Promise<any> {
   const basicAuth = new Buffer(
-    `${sdkConfig.clientId}:${sdkConfig.clientSecret}`
+    `${sdkConfig.user.clientId}:${sdkConfig.user.clientSecret}`
   ).toString('base64');
   const { uri, ...options } = requestOptions;
   const defaultOptions = {
