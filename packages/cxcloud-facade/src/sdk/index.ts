@@ -48,7 +48,7 @@ export const client = createClient({
 });
 
 export const services = createRequestBuilder({
-  projectKey: 'upm-shopit-dev-1'
+  projectKey: commerceToolsConfig.projectKey
 });
 
 export function execute(serviceUri: any, method: string, body?: any) {
