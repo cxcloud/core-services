@@ -1,4 +1,4 @@
-import { execute, methods, process, services } from '../sdk';
+import { clientExecute, clientProcess, methods, services } from '../sdk';
 import { Category } from '../sdk/types/categories';
 
 interface CategoryMap {
@@ -30,8 +30,10 @@ function nestify(categories: Category[]): Category[] {
 
 export namespace Categories {
   export function fetchAll(flat = false): Promise<Category[]> {
-    const query = services.categories.perPage(100);
-    return process(query, methods.GET).then((res: Category[]) => {
+    return clientProcess({
+      uri: services.categories.perPage(100).build(),
+      method: methods.GET
+    }).then((res: Category[]) => {
       if (flat === true) {
         return res;
       }
@@ -39,8 +41,12 @@ export namespace Categories {
     });
   }
 
-  export function getById(categoryId: string): Promise<Category> {
-    const query = services.categories.byId(categoryId);
-    return execute(query, methods.GET);
+  export function findById(categoryId: string): Promise<Category> {
+    // const query = services.categories.byId(categoryId);
+    // return execute(query, methods.GET);
+    return clientExecute({
+      uri: services.categories.byId(categoryId).build(),
+      method: methods.GET
+    });
   }
 }

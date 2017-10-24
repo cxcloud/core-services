@@ -6,10 +6,13 @@
  */
 import * as config from 'config';
 
-import { execute, methods, services } from '../sdk';
+import { clientExecute, methods, services } from '../sdk';
 import { Cart } from '../sdk/types/carts';
 import { Customer } from '../sdk/types/customers';
-import { getCustomerCurrency, getCustomerShippingAddress } from '../tools/customers';
+import {
+  getCustomerCurrency,
+  getCustomerShippingAddress
+} from '../tools/customers';
 import { Orders } from './orders';
 
 export namespace Carts {
@@ -42,16 +45,24 @@ export namespace Carts {
         shippingAddress: getCustomerShippingAddress(customer)
       };
     }
-    return execute(services.carts, methods.POST, params);
+    return clientExecute({
+      uri: services.carts.build(),
+      method: methods.POST,
+      body: params
+    });
   }
 
   export function createFromOrder(orderId: string): Promise<Cart> {
     return Orders.findById(orderId).then(order => {
-      return execute(services.carts, methods.POST, {
-        currency: order.totalPrice.currencyCode,
-        customerId: order.customerId,
-        customerEmail: order.customerEmail,
-        shippingAddress: order.shippingAddress
+      return clientExecute({
+        uri: services.carts.build(),
+        method: methods.POST,
+        body: {
+          currency: order.totalPrice.currencyCode,
+          customerId: order.customerId,
+          customerEmail: order.customerEmail,
+          shippingAddress: order.shippingAddress
+        }
       }).then((cart: Cart) =>
         addLineItems(
           cart.id,
@@ -67,7 +78,10 @@ export namespace Carts {
   }
 
   export function findById(cartId: string): Promise<Cart> {
-    return execute(services.carts.byId(cartId), methods.GET);
+    return clientExecute({
+      uri: services.carts.byId(cartId).build(),
+      method: methods.GET
+    });
   }
 
   export function updateByActions(
@@ -78,9 +92,13 @@ export namespace Carts {
     if (!Array.isArray(actions)) {
       actions = [actions];
     }
-    return execute(services.carts.byId(cartId), methods.POST, {
-      version: cartVersion,
-      actions
+    return clientExecute({
+      uri: services.carts.byId(cartId).build(),
+      method: methods.POST,
+      body: {
+        version: cartVersion,
+        actions
+      }
     });
   }
 
