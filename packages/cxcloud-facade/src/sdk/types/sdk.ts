@@ -14,3 +14,11 @@ export type ClientRequest = {
     [key: string]: string;
   };
 };
+
+export type SdkConfig = {
+  projectKey: string;
+  clientId: string;
+  clientSecret: string;
+  authHost: string;
+  apiHost: string;
+};
