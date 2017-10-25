@@ -19,6 +19,8 @@ const {
   createLoggerMiddleware
 } = require('@commercetools/sdk-middleware-logger');
 
+import { createAuthMiddlewareForIntrospectionFlow } from './introspection-middleware';
+
 if (!config.has('commerceTools')) {
   throw new Error('Project has not been configured yet. Check docs first.');
 }
@@ -28,6 +30,7 @@ export const sdkConfig = config.get<SdkConfig>('commerceTools');
 
 export const client = createClient({
   middlewares: [
+    createAuthMiddlewareForIntrospectionFlow(sdkConfig),
     createAuthMiddlewareForClientCredentialsFlow({
       host: sdkConfig.authHost,
       projectKey: sdkConfig.projectKey,
