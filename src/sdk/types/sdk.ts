@@ -10,6 +10,7 @@ export type ClientRequest = {
   uri: string;
   method: string;
   body?: string | Object;
+  token?: string;
   headers?: {
     [key: string]: string;
   };

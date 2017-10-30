@@ -9,9 +9,7 @@ const { createHttpMiddleware } = require('@commercetools/sdk-middleware-http');
 const { createQueueMiddleware } = require('@commercetools/sdk-middleware-queue');
 const { createUserAgentMiddleware } = require('@commercetools/sdk-middleware-user-agent');
 const { createRequestBuilder, features } = require('@commercetools/api-request-builder');
-// const {
-//   createLoggerMiddleware
-// } = require('@commercetools/sdk-middleware-logger');
+const { createLoggerMiddleware } = require('@commercetools/sdk-middleware-logger');
 
 import { createAuthMiddlewareForIntrospectionFlow } from './introspection-middleware';
 
@@ -40,8 +38,8 @@ export const client = createClient({
       libraryVersion: packageInfo.version,
       contactUrl: packageInfo.homepage,
       contactEmail: 'cxcloud@tieto.com'
-    })
-    // createLoggerMiddleware()
+    }),
+    createLoggerMiddleware()
   ]
 });
 
@@ -56,12 +54,25 @@ export const services = createRequestBuilder({
   }
 });
 
+function createClientRequest(request: ClientRequest): ClientRequest {
+  const { token, ...rest } = request;
+  if (token) {
+    return {
+      headers: {
+        'X-Custom-OAuth-Token': token
+      },
+      ...rest
+    };
+  }
+  return request;
+}
+
 export function clientExecute<T>(request: ClientRequest): Promise<T> {
-  return client.execute(request).then((result: any) => result.body);
+  return client.execute(createClientRequest(request)).then((result: any) => result.body);
 }
 
 export function clientProcess<T>(request: ClientRequest): Promise<T> {
-  return client.process(request, async (payload: any) => payload.body.results);
+  return client.process(createClientRequest(request), async (payload: any) => payload.body.results);
 }
 
 export enum methods {
