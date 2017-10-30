@@ -1,5 +1,20 @@
 import { SdkConfig } from './types/sdk';
+import * as Cache from 'node-cache';
 import 'isomorphic-fetch';
+
+type IntrospectionResponse = {
+  tokenScopes: string;
+  expiresIn: number;
+};
+
+type Task = {
+  isFetching: boolean;
+  tasks: any[];
+};
+
+type TaskQueue = {
+  [id: string]: Task;
+};
 
 const mergeAuthHeader = (token: string, req: any) => ({
   ...req,
@@ -9,11 +24,14 @@ const mergeAuthHeader = (token: string, req: any) => ({
   }
 });
 
+const calculateExpirationTime = (expiresIn: number) =>
+  Date.now() + expiresIn * 1000 - 1 * 60 * 60 * 1000; // Add a gap of 1 hour before expiration time.
+
 export const createAuthMiddlewareForIntrospectionFlow = (
   options: SdkConfig
 ) => {
-  let pendingTasks: any[] = [];
-  let isFetching = false;
+  let pendingTasks: TaskQueue = {};
+  const tokenCache = new Cache();
 
   return (next: any) => async (request: any, response: any) => {
     // If there's an Authorization header already, continue to next middleware
@@ -34,15 +52,31 @@ export const createAuthMiddlewareForIntrospectionFlow = (
       return next(request, response);
     }
 
-    // Queue all requests
-    pendingTasks.push({ request, response });
+    // Check if the the token is in cache
+    // if token exists and is valid, continue,
+    // otherwise invalidate the cache and fetch again.
+    const cached = tokenCache.get<IntrospectionResponse>(oauthTokenToValidate);
+    if (cached) {
+      if (Date.now() < cached.expiresIn) {
+        return next(mergeAuthHeader(oauthTokenToValidate, request), response);
+      }
+      // @TODO: handle refresh
+      return response.reject(new Error('Token has expired'));
+    }
+
+    // Queue all requests with the same OAuthToken
+    pendingTasks[oauthTokenToValidate] = pendingTasks[oauthTokenToValidate] || {
+      isFetching: false,
+      tasks: []
+    };
+    pendingTasks[oauthTokenToValidate].tasks.push({ request, response });
 
     // Wait until the fetch is over
-    if (isFetching) {
+    if (pendingTasks[oauthTokenToValidate].isFetching) {
       return;
     }
 
-    isFetching = true;
+    pendingTasks[oauthTokenToValidate].isFetching = true;
 
     try {
       const basicAuth = new Buffer(
@@ -74,15 +108,21 @@ export const createAuthMiddlewareForIntrospectionFlow = (
 
       if (!isTokenValid) {
         console.log(isTokenValid, tokenScopes, expiresIn);
-        return; // handle error here
+        // @TODO: handle error here
+        return response.reject(new Error('Token is not valid'));
       }
 
+      // Cache the response
+      tokenCache.set<IntrospectionResponse>(oauthTokenToValidate, {
+        tokenScopes,
+        expiresIn: calculateExpirationTime(expiresIn)
+      });
+
       // Execute the queued up requests
-      const executionQueue = [...pendingTasks];
+      const executionQueue = [...pendingTasks[oauthTokenToValidate].tasks];
 
       // Reset the queue
-      isFetching = false;
-      pendingTasks = [];
+      delete pendingTasks[oauthTokenToValidate];
 
       // Run tasks
       executionQueue.forEach(task =>

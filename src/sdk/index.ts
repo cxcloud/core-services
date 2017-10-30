@@ -4,20 +4,14 @@ import 'isomorphic-fetch';
 import { ClientRequest, SdkConfig } from './types/sdk';
 
 const { createClient } = require('@commercetools/sdk-client');
-const {
-  createAuthMiddlewareForClientCredentialsFlow
-} = require('@commercetools/sdk-middleware-auth');
+const { createAuthMiddlewareForClientCredentialsFlow } = require('@commercetools/sdk-middleware-auth');
 const { createHttpMiddleware } = require('@commercetools/sdk-middleware-http');
-const {
-  createQueueMiddleware
-} = require('@commercetools/sdk-middleware-queue');
-const {
-  createUserAgentMiddleware
-} = require('@commercetools/sdk-middleware-user-agent');
+const { createQueueMiddleware } = require('@commercetools/sdk-middleware-queue');
+const { createUserAgentMiddleware } = require('@commercetools/sdk-middleware-user-agent');
 const { createRequestBuilder } = require('@commercetools/api-request-builder');
-const {
-  createLoggerMiddleware
-} = require('@commercetools/sdk-middleware-logger');
+// const {
+//   createLoggerMiddleware
+// } = require('@commercetools/sdk-middleware-logger');
 
 import { createAuthMiddlewareForIntrospectionFlow } from './introspection-middleware';
 
@@ -46,8 +40,8 @@ export const client = createClient({
       libraryVersion: packageInfo.version,
       contactUrl: packageInfo.homepage,
       contactEmail: 'cxcloud@tieto.com'
-    }),
-    createLoggerMiddleware()
+    })
+    // createLoggerMiddleware()
   ]
 });
 
@@ -71,9 +65,7 @@ export enum methods {
 }
 
 export function authenticatedFormRequest(requestOptions: any): Promise<any> {
-  const basicAuth = new Buffer(
-    `${sdkConfig.user.clientId}:${sdkConfig.user.clientSecret}`
-  ).toString('base64');
+  const basicAuth = new Buffer(`${sdkConfig.user.clientId}:${sdkConfig.user.clientSecret}`).toString('base64');
   const { uri, ...options } = requestOptions;
   const defaultOptions = {
     headers: {
