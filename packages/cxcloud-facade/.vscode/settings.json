@@ -2,8 +2,7 @@
   "editor.formatOnSave": false,
   "editor.formatOnPaste": false,
   "[typescript]": {
-    "editor.formatOnSave": true,
-    "editor.formatOnPaste": true
+    "editor.formatOnSave": true
   },
   "editor.rulers": [80, 120]
 }

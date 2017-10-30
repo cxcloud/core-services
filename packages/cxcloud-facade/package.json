@@ -31,6 +31,7 @@
   "devDependencies": {
     "@types/config": "0.0.33",
     "@types/node": "^8.0.34",
+    "@types/node-cache": "^4.1.0",
     "husky": "^0.14.3",
     "isomorphic-fetch": "^2.2.1",
     "lint-staged": "^4.3.0",
@@ -49,6 +50,7 @@
     "@commercetools/sdk-middleware-queue": "^1.1.0",
     "@commercetools/sdk-middleware-user-agent": "^1.2.0",
     "config": "^1.26.2",
-    "locale-currency": "0.0.2"
+    "locale-currency": "0.0.2",
+    "node-cache": "^4.1.1"
   }
 }

@@ -1,5 +1,11 @@
 {
   "tabWidth": 2,
   "singleQuote": true,
-  "printWidth": 80
+  "printWidth": 80,
+  "overrides": [{
+    "files": ["src/sdk/index.ts"],
+    "options": {
+      "printWidth": 120
+    }
+  }]
 }
