@@ -8,7 +8,7 @@ const { createAuthMiddlewareForClientCredentialsFlow } = require('@commercetools
 const { createHttpMiddleware } = require('@commercetools/sdk-middleware-http');
 const { createQueueMiddleware } = require('@commercetools/sdk-middleware-queue');
 const { createUserAgentMiddleware } = require('@commercetools/sdk-middleware-user-agent');
-const { createRequestBuilder } = require('@commercetools/api-request-builder');
+const { createRequestBuilder, features } = require('@commercetools/api-request-builder');
 // const {
 //   createLoggerMiddleware
 // } = require('@commercetools/sdk-middleware-logger');
@@ -46,14 +46,21 @@ export const client = createClient({
 });
 
 export const services = createRequestBuilder({
-  projectKey: sdkConfig.projectKey
+  projectKey: sdkConfig.projectKey,
+  customServices: {
+    login: {
+      type: 'login',
+      endpoint: '/login',
+      features: [features.query]
+    }
+  }
 });
 
-export function clientExecute(request: ClientRequest) {
+export function clientExecute<T>(request: ClientRequest): Promise<T> {
   return client.execute(request).then((result: any) => result.body);
 }
 
-export function clientProcess(request: ClientRequest) {
+export function clientProcess<T>(request: ClientRequest): Promise<T> {
   return client.process(request, async (payload: any) => payload.body.results);
 }
 
@@ -64,7 +71,7 @@ export enum methods {
   DELETE = 'DELETE'
 }
 
-export function authenticatedFormRequest(requestOptions: any): Promise<any> {
+export function authenticatedFormRequest<T>(requestOptions: any): Promise<T> {
   const basicAuth = new Buffer(`${sdkConfig.user.clientId}:${sdkConfig.user.clientSecret}`).toString('base64');
   const { uri, ...options } = requestOptions;
   const defaultOptions = {

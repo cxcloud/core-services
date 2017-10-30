@@ -1,3 +1,4 @@
+import { Cart } from './carts';
 import { Address, Custom } from './common';
 
 export interface Customer {
@@ -7,7 +8,7 @@ export interface Customer {
   firstName: string;
   lastName: string;
   title: string;
-  password: string;
+  password?: string;
   addresses: Address[];
   defaultShippingAddressId: string;
   defaultBillingAddressId: string;
@@ -20,4 +21,23 @@ export interface Customer {
   createdAt: string;
   lastModifiedAt: string;
   lastMessageSequenceNumber: number;
+}
+
+export interface CustomerSignInResult {
+  customer: Customer;
+  cart?: Cart;
+}
+
+export interface CustomerTokenResponse {
+  access_token: string;
+  expires_in: number;
+  scope: string;
+  refresh_token: string;
+  tokenType: 'Bearer';
+}
+
+export interface SignInResult {
+  customer: Customer;
+  token: CustomerTokenResponse;
+  cart: Cart | null;
 }
