@@ -40,17 +40,23 @@ export function decrypt(text: string): string {
 }
 
 export function getTokenData(encryptedToken: string): EncryptedTokenData {
-  let [customerId, authToken] = decrypt(encryptedToken).split(':');
-  if (!authToken) {
+  try {
+    let [customerId, authToken] = decrypt(encryptedToken).split(':');
+    if (!authToken) {
+      return {
+        authToken: customerId,
+        customerId: null
+      };
+    }
     return {
-      authToken: customerId,
-      customerId: null
+      customerId,
+      authToken
     };
+  } catch (err) {
+    throw new Error(
+      'Invalid token provided. The encrypted content has been tampered with.'
+    );
   }
-  return {
-    customerId,
-    authToken
-  };
 }
 
 export function encryptTokenResponse(

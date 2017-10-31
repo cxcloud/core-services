@@ -24,7 +24,7 @@ export namespace Carts {
 
   export interface IAddLineItem {
     productId: string;
-    variantId: number;
+    variantId?: number;
     quantity: number;
   }
 
