@@ -58,14 +58,18 @@ export namespace Carts {
     });
   }
 
-  export function createFromOrder(orderId: string): Promise<Cart> {
-    return Orders.findById(orderId).then(order => {
+  export function createFromOrder(
+    orderId: string,
+    token: string
+  ): Promise<Cart> {
+    return Orders.findById(orderId, token).then(order => {
+      const { authToken } = getTokenData(token);
       return clientExecute({
-        uri: services.carts.build(),
+        uri: services.myCarts.build(),
         method: methods.POST,
+        token: authToken,
         body: {
           currency: order.totalPrice.currencyCode,
-          customerId: order.customerId,
           customerEmail: order.customerEmail,
           shippingAddress: order.shippingAddress
         }
@@ -77,30 +81,36 @@ export namespace Carts {
             productId: li.productId,
             variantId: li.variant.id,
             quantity: li.quantity
-          }))
+          })),
+          token
         )
       );
     });
   }
 
-  export function findById(cartId: string): Promise<Cart> {
+  export function findById(cartId: string, token: string): Promise<Cart> {
+    const { authToken } = getTokenData(token);
     return clientExecute({
-      uri: services.carts.byId(cartId).build(),
-      method: methods.GET
+      uri: services.myCarts.byId(cartId).build(),
+      method: methods.GET,
+      token: authToken
     });
   }
 
   export function updateByActions(
     cartId: string,
     cartVersion: number,
-    actions: ICartAction | ICartAction[]
+    actions: ICartAction | ICartAction[],
+    token: string
   ): Promise<Cart> {
     if (!Array.isArray(actions)) {
       actions = [actions];
     }
+    const { authToken } = getTokenData(token);
     return clientExecute({
-      uri: services.carts.byId(cartId).build(),
+      uri: services.myCarts.byId(cartId).build(),
       method: methods.POST,
+      token: authToken,
       body: {
         version: cartVersion,
         actions
@@ -111,7 +121,8 @@ export namespace Carts {
   export function addLineItems(
     cartId: string,
     cartVersion: number,
-    lineItems: IAddLineItem | IAddLineItem[]
+    lineItems: IAddLineItem | IAddLineItem[],
+    token: string
   ): Promise<Cart> {
     if (!Array.isArray(lineItems)) {
       lineItems = [lineItems];
@@ -122,33 +133,46 @@ export namespace Carts {
       lineItems.map(li => ({
         action: 'addLineItem',
         ...li
-      }))
+      })),
+      token
     );
   }
 
   export function changeLineItemQuantity(
     cartId: string,
     cartVersion: number,
-    action: IChangeLineItemQuantity
+    action: IChangeLineItemQuantity,
+    token: string
   ): Promise<Cart> {
-    return updateByActions(cartId, cartVersion, [
-      {
-        action: 'changeLineItemQuantity',
-        ...action
-      }
-    ]);
+    return updateByActions(
+      cartId,
+      cartVersion,
+      [
+        {
+          action: 'changeLineItemQuantity',
+          ...action
+        }
+      ],
+      token
+    );
   }
 
   export function removeLineItem(
     cartId: string,
     cartVersion: number,
-    lineItemId: string
+    lineItemId: string,
+    token: string
   ): Promise<Cart> {
-    return updateByActions(cartId, cartVersion, [
-      {
-        action: 'removeLineItem',
-        lineItemId
-      }
-    ]);
+    return updateByActions(
+      cartId,
+      cartVersion,
+      [
+        {
+          action: 'removeLineItem',
+          lineItemId
+        }
+      ],
+      token
+    );
   }
 }

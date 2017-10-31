@@ -2,26 +2,26 @@
  * @TODO:
  * - Create Order
  */
+import { getTokenData } from '../tools/crypto';
 import { clientExecute, methods, services } from '../sdk';
 import { Order, PaginatedOrderResult } from '../sdk/types/orders';
 
 export namespace Orders {
-  export function findByCustomerId(
-    customerId: string
-  ): Promise<PaginatedOrderResult> {
+  export function fetchAll(token: string): Promise<PaginatedOrderResult> {
+    const { authToken } = getTokenData(token);
     return clientExecute({
-      uri: services.orders
-        .where(`customerId="${customerId}"`)
-        .perPage(20)
-        .build(),
-      method: methods.GET
+      uri: services.myOrders.perPage(20).build(),
+      method: methods.GET,
+      token: authToken
     });
   }
 
-  export function findById(orderId: string): Promise<Order> {
+  export function findById(orderId: string, token: string): Promise<Order> {
+    const { authToken } = getTokenData(token);
     return clientExecute({
-      uri: services.orders.byId(orderId).build(),
-      method: methods.GET
+      uri: services.myOrders.byId(orderId).build(),
+      method: methods.GET,
+      token: authToken
     });
   }
 }
