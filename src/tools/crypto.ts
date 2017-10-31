@@ -1,4 +1,8 @@
-import { Customer, OAuthToken } from '../sdk/types/customers';
+import {
+  Customer,
+  OAuthToken,
+  EncryptedTokenData
+} from '../sdk/types/customers';
 import * as crypto from 'crypto';
 
 const ENCRYPTION_KEY = 'wY[Ax)FC0AlQjruD$9J_tO3U+YiMZyL1'; // @TODO: REMOVE
@@ -35,10 +39,18 @@ export function decrypt(text: string): string {
   return decrypted.toString();
 }
 
-export function getCustomerIdFromToken(token: string): string {
-  const decrypted = decrypt(token);
-  const [customerId] = decrypted.split(':');
-  return customerId;
+export function getTokenData(encryptedToken: string): EncryptedTokenData {
+  let [customerId, authToken] = decrypt(encryptedToken).split(':');
+  if (!authToken) {
+    return {
+      authToken: customerId,
+      customerId: null
+    };
+  }
+  return {
+    customerId,
+    authToken
+  };
 }
 
 export function encryptTokenResponse(

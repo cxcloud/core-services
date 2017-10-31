@@ -36,6 +36,11 @@ export interface OAuthToken {
   tokenType: 'Bearer';
 }
 
+export interface EncryptedTokenData {
+  authToken: string;
+  customerId: string | null;
+}
+
 export interface SignInResult {
   customer: Customer;
   token: OAuthToken;
