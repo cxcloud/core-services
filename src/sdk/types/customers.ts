@@ -28,7 +28,7 @@ export interface CustomerSignInResult {
   cart?: Cart;
 }
 
-export interface CustomerTokenResponse {
+export interface OAuthToken {
   access_token: string;
   expires_in: number;
   scope: string;
@@ -38,6 +38,6 @@ export interface CustomerTokenResponse {
 
 export interface SignInResult {
   customer: Customer;
-  token: CustomerTokenResponse;
+  token: OAuthToken;
   cart: Cart | null;
 }
