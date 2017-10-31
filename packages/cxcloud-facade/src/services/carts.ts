@@ -8,12 +8,13 @@ import * as config from 'config';
 
 import { clientExecute, methods, services } from '../sdk';
 import { Cart } from '../sdk/types/carts';
-import { Customer } from '../sdk/types/customers';
 import {
   getCustomerCurrency,
   getCustomerShippingAddress
 } from '../tools/customers';
+import { getTokenData } from '../tools/crypto';
 import { Orders } from './orders';
+import { Customers } from './customers';
 
 export namespace Carts {
   export interface ICartAction {
@@ -32,23 +33,28 @@ export namespace Carts {
     quantity: number;
   }
 
-  export function create(customer?: Customer): Promise<Cart> {
+  export async function create(token: string): Promise<Cart> {
+    const { customerId, authToken } = getTokenData(token);
+
     let params: any = {
       currency: config.get<string>('store.defaultCurrency')
     };
-    if (customer) {
+
+    if (customerId) {
+      const customer = await Customers.findById(customerId);
       params = {
         ...params,
-        customerId: customer.id,
         customerEmail: customer.email,
         currency: getCustomerCurrency(customer),
         shippingAddress: getCustomerShippingAddress(customer)
       };
     }
-    return clientExecute({
-      uri: services.carts.build(),
+
+    return clientExecute<Cart>({
+      uri: services.myCarts.build(),
       method: methods.POST,
-      body: params
+      body: params,
+      token: authToken
     });
   }
 

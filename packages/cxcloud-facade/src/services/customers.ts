@@ -11,7 +11,7 @@ import {
   SignInResult,
   Customer
 } from '../sdk/types/customers';
-import { getCustomerIdFromToken, encryptTokenResponse } from '../tools/crypto';
+import { encryptTokenResponse, getTokenData } from '../tools/crypto';
 import { stringify } from 'querystring';
 import * as Cache from 'node-cache';
 import omit = require('lodash/omit');
@@ -63,24 +63,24 @@ export namespace Customers {
   }
 
   export function findById(customerId: string): Promise<Customer> {
+    const cached = customerCache.get<Customer>(customerId);
+    if (cached) {
+      return Promise.resolve(cached);
+    }
     return clientExecute<Customer>({
       uri: services.customers.byId(customerId).build(),
       method: methods.GET
+    }).then(customer => {
+      customerCache.set(customer.id, customer);
+      return customer;
     });
   }
 
   export async function findByAuthToken(token: string): Promise<Customer> {
-    const cached = customerCache.get<Customer>(token);
-    if (cached) {
-      return cached;
-    }
-    const customerId = getCustomerIdFromToken(token);
+    const { customerId } = getTokenData(token);
     if (!customerId) {
-      throw new Error('Invalid token provided');
+      throw new Error('Invalid token provided, customer not found.');
     }
-    return findById(customerId).then(customer => {
-      customerCache.set(token, customer);
-      return customer;
-    });
+    return findById(customerId);
   }
 }
