@@ -23,7 +23,7 @@ export type ClientCredentials = {
 
 export type SdkConfig = {
   projectKey: string;
-  god: ClientCredentials;
+  admin: ClientCredentials;
   user: ClientCredentials;
   authHost: string;
   apiHost: string;

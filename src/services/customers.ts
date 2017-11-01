@@ -1,3 +1,7 @@
+import { stringify } from 'querystring';
+import * as Cache from 'node-cache';
+import * as uuid from 'uuid/v4';
+import omit = require('lodash/omit');
 import {
   methods,
   sdkConfig,
@@ -6,15 +10,13 @@ import {
   services
 } from '../sdk';
 import {
+  AnonymousSignInResult,
+  Customer,
   CustomerSignInResult,
   OAuthToken,
-  SignInResult,
-  Customer
+  SignInResult
 } from '../sdk/types/customers';
 import { encryptTokenResponse, getTokenData } from '../tools/crypto';
-import { stringify } from 'querystring';
-import * as Cache from 'node-cache';
-import omit = require('lodash/omit');
 
 const customerCache = new Cache({
   stdTTL: 60 * 15 // 15 mins
@@ -45,17 +47,20 @@ export namespace Customers {
       const scopes = userScopes
         .map(scope => `${scope}:${sdkConfig.projectKey}`)
         .join(' ');
-      return authenticatedFormRequest<OAuthToken>({
-        uri: `${sdkConfig.authHost}/oauth/${sdkConfig.projectKey}/customers/token`,
-        method: methods.POST,
-        body: stringify({
-          grant_type: 'password',
-          username,
-          password,
-          scope: scopes
-        })
-      }).then(token => ({
-        token: encryptTokenResponse(token, loginResult.customer),
+      return authenticatedFormRequest<OAuthToken>(
+        {
+          uri: `${sdkConfig.authHost}/oauth/${sdkConfig.projectKey}/customers/token`,
+          method: methods.POST,
+          body: stringify({
+            grant_type: 'password',
+            username,
+            password,
+            scope: scopes
+          })
+        },
+        true
+      ).then(token => ({
+        token: encryptTokenResponse(token, loginResult.customer.id),
         customer: omit(loginResult.customer, ['password']) as Customer,
         cart: loginResult.cart || null
       }));
@@ -82,5 +87,20 @@ export namespace Customers {
       throw new Error('Invalid token provided, customer not found.');
     }
     return findById(customerId);
+  }
+
+  export function loginAnonymously(): Promise<AnonymousSignInResult> {
+    const anonymousId = uuid();
+    return authenticatedFormRequest<OAuthToken>({
+      uri: `${sdkConfig.authHost}/oauth/${sdkConfig.projectKey}/anonymous/token`,
+      method: methods.POST,
+      body: stringify({
+        grant_type: 'client_credentials',
+        anonymous_id: anonymousId
+      })
+    }).then(token => ({
+      token: encryptTokenResponse(token, anonymousId, true),
+      anonymousId
+    }));
   }
 }

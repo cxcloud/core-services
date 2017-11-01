@@ -34,13 +34,13 @@ export namespace Carts {
   }
 
   export async function create(token: string): Promise<Cart> {
-    const { customerId, authToken } = getTokenData(token);
+    const { customerId, authToken, isAnonymous } = getTokenData(token);
 
     let params: any = {
       currency: config.get<string>('store.defaultCurrency')
     };
 
-    if (customerId) {
+    if (!isAnonymous) {
       const customer = await Customers.findById(customerId);
       params = {
         ...params,

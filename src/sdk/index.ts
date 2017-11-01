@@ -27,8 +27,8 @@ export const client = createClient({
       host: sdkConfig.authHost,
       projectKey: sdkConfig.projectKey,
       credentials: {
-        clientId: sdkConfig.god.clientId,
-        clientSecret: sdkConfig.god.clientSecret
+        clientId: sdkConfig.admin.clientId,
+        clientSecret: sdkConfig.admin.clientSecret
       }
     }),
     createQueueMiddleware({ concurrency: 10 }),
@@ -82,8 +82,11 @@ export enum methods {
   DELETE = 'DELETE'
 }
 
-export function authenticatedFormRequest<T>(requestOptions: any): Promise<T> {
-  const basicAuth = new Buffer(`${sdkConfig.user.clientId}:${sdkConfig.user.clientSecret}`).toString('base64');
+export function authenticatedFormRequest<T>(requestOptions: any, user = false): Promise<T> {
+  const basicAuthCredentials = user
+    ? `${sdkConfig.user.clientId}:${sdkConfig.user.clientSecret}`
+    : `${sdkConfig.admin.clientId}:${sdkConfig.admin.clientSecret}`;
+  const basicAuth = new Buffer(basicAuthCredentials).toString('base64');
   const { uri, ...options } = requestOptions;
   const defaultOptions = {
     headers: {
