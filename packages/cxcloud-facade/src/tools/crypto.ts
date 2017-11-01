@@ -1,8 +1,4 @@
-import {
-  Customer,
-  OAuthToken,
-  EncryptedTokenData
-} from '../sdk/types/customers';
+import { OAuthToken, EncryptedTokenData } from '../sdk/types/customers';
 import * as crypto from 'crypto';
 
 const ENCRYPTION_KEY = 'wY[Ax)FC0AlQjruD$9J_tO3U+YiMZyL1'; // @TODO: REMOVE
@@ -41,16 +37,16 @@ export function decrypt(text: string): string {
 
 export function getTokenData(encryptedToken: string): EncryptedTokenData {
   try {
-    let [customerId, authToken] = decrypt(encryptedToken).split(':');
-    if (!authToken) {
-      return {
-        authToken: customerId,
-        customerId: null
-      };
+    const tokenParts = decrypt(encryptedToken).split(':');
+
+    if (tokenParts.length !== 3) {
+      throw new Error('Invalid token data.');
     }
+    const [customerId, authToken, isAnonymous] = tokenParts;
     return {
       customerId,
-      authToken
+      authToken,
+      isAnonymous: Boolean(Number(isAnonymous))
     };
   } catch (err) {
     throw new Error(
@@ -61,10 +57,13 @@ export function getTokenData(encryptedToken: string): EncryptedTokenData {
 
 export function encryptTokenResponse(
   token: OAuthToken,
-  customer: Customer
+  customerId: string,
+  isAnonymous = false
 ): OAuthToken {
   return {
     ...token,
-    access_token: encrypt(`${customer.id}:${token.access_token}`)
+    access_token: encrypt(
+      `${customerId}:${token.access_token}:${isAnonymous ? 1 : 0}`
+    )
   };
 }

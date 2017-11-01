@@ -80,7 +80,7 @@ export const createAuthMiddlewareForIntrospectionFlow = (
 
     try {
       const basicAuth = new Buffer(
-        `${options.god.clientId}:${options.god.clientSecret}`
+        `${options.admin.clientId}:${options.admin.clientSecret}`
       ).toString('base64');
 
       // This refers to the Token Introspection endpoint

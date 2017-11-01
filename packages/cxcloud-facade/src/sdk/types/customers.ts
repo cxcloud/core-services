@@ -38,11 +38,17 @@ export interface OAuthToken {
 
 export interface EncryptedTokenData {
   authToken: string;
-  customerId: string | null;
+  customerId: string;
+  isAnonymous: boolean;
 }
 
 export interface SignInResult {
   customer: Customer;
   token: OAuthToken;
   cart: Cart | null;
+}
+
+export interface AnonymousSignInResult {
+  anonymousId: string;
+  token: OAuthToken;
 }
