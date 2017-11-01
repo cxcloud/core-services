@@ -86,6 +86,21 @@ export namespace Customers {
     });
   }
 
+  export function loginAnonymously(): Promise<AnonymousSignInResult> {
+    const anonymousId = uuid();
+    return authenticatedFormRequest<OAuthToken>({
+      uri: `${sdkConfig.authHost}/oauth/${sdkConfig.projectKey}/anonymous/token`,
+      method: methods.POST,
+      body: stringify({
+        grant_type: 'client_credentials',
+        anonymous_id: anonymousId
+      })
+    }).then(tokenResult => ({
+      token: encryptTokenResponse(tokenResult, anonymousId, true),
+      anonymousId
+    }));
+  }
+
   export function findById(customerId: string): Promise<Customer> {
     const cached = customerCache.get<Customer>(customerId);
     if (cached) {
@@ -106,20 +121,5 @@ export namespace Customers {
       throw new Error('Invalid token provided, customer not found.');
     }
     return findById(customerId);
-  }
-
-  export function loginAnonymously(): Promise<AnonymousSignInResult> {
-    const anonymousId = uuid();
-    return authenticatedFormRequest<OAuthToken>({
-      uri: `${sdkConfig.authHost}/oauth/${sdkConfig.projectKey}/anonymous/token`,
-      method: methods.POST,
-      body: stringify({
-        grant_type: 'client_credentials',
-        anonymous_id: anonymousId
-      })
-    }).then(tokenResult => ({
-      token: encryptTokenResponse(tokenResult, anonymousId, true),
-      anonymousId
-    }));
   }
 }
