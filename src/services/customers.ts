@@ -34,14 +34,33 @@ const userScopes = [
 export namespace Customers {
   export function login(
     username: string,
-    password: string
+    password: string,
+    token?: string
   ): Promise<SignInResult> {
+    let anonymousId: string | null = null;
+
+    // If the user has provided a token for authentication,
+    // it probably means that they have an anonymous session and
+    // they want to merge their data with their customer account.
+    if (token) {
+      try {
+        const { customerId, isAnonymous } = getTokenData(token);
+        if (isAnonymous) {
+          anonymousId = customerId;
+        }
+      } catch (err) {
+        // NOOP
+        // We can just log them in, no need to fail.
+      }
+    }
+
     return clientExecute<CustomerSignInResult>({
       uri: services.login.build(),
       method: methods.POST,
       body: {
         email: username,
-        password
+        password,
+        anonymousId
       }
     }).then(loginResult => {
       const scopes = userScopes
@@ -59,8 +78,8 @@ export namespace Customers {
           })
         },
         true
-      ).then(token => ({
-        token: encryptTokenResponse(token, loginResult.customer.id),
+      ).then(tokenResult => ({
+        token: encryptTokenResponse(tokenResult, loginResult.customer.id),
         customer: omit(loginResult.customer, ['password']) as Customer,
         cart: loginResult.cart || null
       }));
@@ -98,8 +117,8 @@ export namespace Customers {
         grant_type: 'client_credentials',
         anonymous_id: anonymousId
       })
-    }).then(token => ({
-      token: encryptTokenResponse(token, anonymousId, true),
+    }).then(tokenResult => ({
+      token: encryptTokenResponse(tokenResult, anonymousId, true),
       anonymousId
     }));
   }
