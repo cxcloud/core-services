@@ -24,4 +24,24 @@ export namespace Orders {
       token: authToken
     });
   }
+
+  export function create(
+    cartId: string,
+    cartVersion: string,
+    token: string
+  ): Promise<Order> {
+    const { authToken, isAnonymous } = getTokenData(token);
+
+    if (isAnonymous) {
+      return Promise.reject(
+        new Error('Refusing to create an order anonymously.')
+      );
+    }
+
+    return clientExecute({
+      uri: services.myOrders.build(),
+      method: methods.POST,
+      token: authToken
+    });
+  }
 }
