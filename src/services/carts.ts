@@ -8,6 +8,7 @@ import * as config from 'config';
 
 import { clientExecute, methods, services } from '../sdk';
 import { Cart } from '../sdk/types/carts';
+import { Address, Reference } from '../sdk/types/common';
 import {
   getCustomerCurrency,
   getCustomerShippingAddress
@@ -172,6 +173,61 @@ export namespace Carts {
           lineItemId
         }
       ],
+      token
+    );
+  }
+
+  export function setShippingAddress(
+    cartId: string,
+    cartVersion: number,
+    address: Address,
+    token: string
+  ): Promise<Cart> {
+    return updateByActions(
+      cartId,
+      cartVersion,
+      {
+        action: 'updateShippingAddress',
+        address
+      },
+      token
+    );
+  }
+
+  export function setBillingAddress(
+    cartId: string,
+    cartVersion: number,
+    address: Address,
+    token: string
+  ): Promise<Cart> {
+    return updateByActions(
+      cartId,
+      cartVersion,
+      {
+        action: 'updateBillingAddress',
+        address
+      },
+      token
+    );
+  }
+
+  export function setShippingMethod(
+    cartId: string,
+    cartVersion: number,
+    shippingMethodId: string,
+    token: string
+  ): Promise<Cart> {
+    const shippingMethod: Reference = {
+      typeId: 'shipping-method',
+      id: shippingMethodId
+    };
+    return updateByActions(
+      cartId,
+      cartVersion,
+      {
+        action: 'setShippingMethod',
+        shippingMethod
+      },
       token
     );
   }
