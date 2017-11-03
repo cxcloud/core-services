@@ -1,8 +1,6 @@
 /**
  * @TODO:
  * - Add/Remove discount codes
- * - Update cart addresses if needed
- * - Show cart recommendations
  */
 import * as config from 'config';
 

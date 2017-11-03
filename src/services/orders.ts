@@ -1,7 +1,3 @@
-/**
- * @TODO:
- * - Create Order
- */
 import { getTokenData } from '../tools/crypto';
 import { clientExecute, methods, services } from '../sdk';
 import { Order, PaginatedOrderResult } from '../sdk/types/orders';

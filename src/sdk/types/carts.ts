@@ -1,5 +1,15 @@
-import { Address, Custom, LocalizedString, Money, Price, Reference, TaxedPrice, TaxRate } from './common';
+import {
+  Address,
+  Custom,
+  LocalizedString,
+  Money,
+  Price,
+  Reference,
+  TaxedPrice,
+  TaxRate
+} from './common';
 import { Discount, DiscountCode } from './discounts';
+import { ShippingRate } from './shipping';
 import { Variant } from './products';
 
 export interface DiscountReference extends Reference {
@@ -43,11 +53,6 @@ export interface LineItem {
   totalPrice: Money;
   taxedPrice: TaxedPrice;
   lineItemMode: string;
-}
-
-export interface ShippingRate {
-  price: Money;
-  tiers?: any[];
 }
 
 export interface ShippingInfo {
