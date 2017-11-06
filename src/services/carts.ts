@@ -111,7 +111,8 @@ export namespace Carts {
       method: methods.POST,
       token: authToken,
       body: {
-        version: cartVersion,
+        version:
+          typeof cartVersion === 'string' ? Number(cartVersion) : cartVersion,
         actions
       }
     });
