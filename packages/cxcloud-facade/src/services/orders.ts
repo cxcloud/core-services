@@ -23,7 +23,7 @@ export namespace Orders {
 
   export function create(
     cartId: string,
-    cartVersion: string,
+    cartVersion: number,
     token: string
   ): Promise<Order> {
     const { authToken, isAnonymous } = getTokenData(token);
@@ -37,7 +37,11 @@ export namespace Orders {
     return clientExecute({
       uri: services.myOrders.build(),
       method: methods.POST,
-      token: authToken
+      token: authToken,
+      body: {
+        id: cartId,
+        version: cartVersion
+      }
     });
   }
 }
