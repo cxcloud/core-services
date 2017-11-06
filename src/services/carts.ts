@@ -185,7 +185,7 @@ export namespace Carts {
       cartId,
       cartVersion,
       {
-        action: 'updateShippingAddress',
+        action: 'setShippingAddress',
         address
       },
       token
@@ -202,7 +202,7 @@ export namespace Carts {
       cartId,
       cartVersion,
       {
-        action: 'updateBillingAddress',
+        action: 'setBillingAddress',
         address
       },
       token
