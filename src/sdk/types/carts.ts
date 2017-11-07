@@ -102,3 +102,23 @@ export interface Cart extends CartBase {
   cartState: string;
   refusedGifts: any[];
 }
+
+export interface ICartAction {
+  action: string;
+  [key: string]: any;
+}
+
+export interface IAddLineItem {
+  productId: string;
+  variantId?: number;
+  quantity: number;
+}
+
+export interface IRemoveLineItem {
+  lineItemId: string;
+}
+
+export interface IChangeLineItemQuantity {
+  lineItemId: string;
+  quantity: number;
+}
