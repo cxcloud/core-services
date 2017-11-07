@@ -5,7 +5,12 @@
 import * as config from 'config';
 
 import { clientExecute, methods, services } from '../sdk';
-import { Cart } from '../sdk/types/carts';
+import {
+  Cart,
+  IAddLineItem,
+  ICartAction,
+  IChangeLineItemQuantity
+} from '../sdk/types/carts';
 import { Address, Reference } from '../sdk/types/common';
 import {
   getCustomerCurrency,
@@ -16,22 +21,6 @@ import { Orders } from './orders';
 import { Customers } from './customers';
 
 export namespace Carts {
-  export interface ICartAction {
-    action: string;
-    [key: string]: any;
-  }
-
-  export interface IAddLineItem {
-    productId: string;
-    variantId?: number;
-    quantity: number;
-  }
-
-  export interface IChangeLineItemQuantity {
-    lineItemId: string;
-    quantity: number;
-  }
-
   export async function create(token: string): Promise<Cart> {
     const { customerId, authToken, isAnonymous } = getTokenData(token);
 

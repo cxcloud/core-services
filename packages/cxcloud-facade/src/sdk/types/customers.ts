@@ -33,7 +33,7 @@ export interface OAuthToken {
   expires_in: number;
   scope: string;
   refresh_token: string;
-  tokenType: 'Bearer';
+  tokenType: string;
 }
 
 export interface EncryptedTokenData {
