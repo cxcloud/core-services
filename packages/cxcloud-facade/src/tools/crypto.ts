@@ -67,3 +67,19 @@ export function encryptTokenResponse(
     )
   };
 }
+
+export function getAnonymousIdFromToken(token?: string): string | null {
+  let anonymousId: string | null = null;
+
+  if (token) {
+    try {
+      const { customerId, isAnonymous } = getTokenData(token);
+      if (isAnonymous) {
+        anonymousId = customerId;
+      }
+    } catch (err) {
+      // NOOP
+    }
+  }
+  return anonymousId;
+}

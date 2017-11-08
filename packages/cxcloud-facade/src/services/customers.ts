@@ -13,10 +13,15 @@ import {
   AnonymousSignInResult,
   Customer,
   CustomerSignInResult,
+  CustomerSignupDraft,
   OAuthToken,
-  SignInResult
+  TokenizedSignInResult
 } from '../sdk/types/customers';
-import { encryptTokenResponse, getTokenData } from '../tools/crypto';
+import {
+  encryptTokenResponse,
+  getAnonymousIdFromToken,
+  getTokenData
+} from '../tools/crypto';
 
 const customerCache = new Cache({
   stdTTL: 60 * 15 // 15 mins
@@ -32,57 +37,65 @@ const userScopes = [
 ];
 
 export namespace Customers {
+  function obtainTokenForLoggedInCustomer(
+    email: string,
+    password: string,
+    loginResult: CustomerSignInResult
+  ): Promise<TokenizedSignInResult> {
+    const scopes = userScopes
+      .map(scope => `${scope}:${sdkConfig.projectKey}`)
+      .join(' ');
+    return authenticatedFormRequest<OAuthToken>(
+      {
+        uri: `${sdkConfig.authHost}/oauth/${sdkConfig.projectKey}/customers/token`,
+        method: methods.POST,
+        body: stringify({
+          grant_type: 'password',
+          username: email,
+          password,
+          scope: scopes
+        })
+      },
+      true
+    ).then(tokenResult => ({
+      token: encryptTokenResponse(tokenResult, loginResult.customer.id),
+      customer: omit(loginResult.customer, ['password']) as Customer,
+      cart: loginResult.cart || null
+    }));
+  }
+
   export function login(
-    username: string,
+    email: string,
     password: string,
     token?: string
-  ): Promise<SignInResult> {
-    let anonymousId: string | null = null;
-
-    // If the user has provided a token for authentication,
-    // it probably means that they have an anonymous session and
-    // they want to merge their data with their customer account.
-    if (token) {
-      try {
-        const { customerId, isAnonymous } = getTokenData(token);
-        if (isAnonymous) {
-          anonymousId = customerId;
-        }
-      } catch (err) {
-        // NOOP
-        // We can just log them in, no need to fail.
-      }
-    }
-
+  ): Promise<TokenizedSignInResult> {
     return clientExecute<CustomerSignInResult>({
       uri: services.login.build(),
       method: methods.POST,
       body: {
-        email: username,
+        email,
         password,
-        anonymousId
+        anonymousId: getAnonymousIdFromToken(token)
+      }
+    }).then(loginResult =>
+      obtainTokenForLoggedInCustomer(email, password, loginResult)
+    );
+  }
+
+  export function register(
+    customerData: CustomerSignupDraft,
+    token?: string
+  ): Promise<TokenizedSignInResult> {
+    return clientExecute<CustomerSignInResult>({
+      uri: services.customers.build(),
+      method: methods.POST,
+      body: {
+        ...customerData,
+        anonymousId: getAnonymousIdFromToken(token)
       }
     }).then(loginResult => {
-      const scopes = userScopes
-        .map(scope => `${scope}:${sdkConfig.projectKey}`)
-        .join(' ');
-      return authenticatedFormRequest<OAuthToken>(
-        {
-          uri: `${sdkConfig.authHost}/oauth/${sdkConfig.projectKey}/customers/token`,
-          method: methods.POST,
-          body: stringify({
-            grant_type: 'password',
-            username,
-            password,
-            scope: scopes
-          })
-        },
-        true
-      ).then(tokenResult => ({
-        token: encryptTokenResponse(tokenResult, loginResult.customer.id),
-        customer: omit(loginResult.customer, ['password']) as Customer,
-        cart: loginResult.cart || null
-      }));
+      const { email, password } = customerData;
+      return obtainTokenForLoggedInCustomer(email, password, loginResult);
     });
   }
 
