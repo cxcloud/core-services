@@ -1,5 +1,5 @@
 import { Cart } from './carts';
-import { Address, Custom } from './common';
+import { Address, Custom, Reference } from './common';
 
 export interface Customer {
   id: string;
@@ -42,7 +42,7 @@ export interface EncryptedTokenData {
   isAnonymous: boolean;
 }
 
-export interface SignInResult {
+export interface TokenizedSignInResult {
   customer: Customer;
   token: OAuthToken;
   cart: Cart | null;
@@ -51,4 +51,31 @@ export interface SignInResult {
 export interface AnonymousSignInResult {
   anonymousId: string;
   token: OAuthToken;
+}
+
+export interface CustomerSignupDraft {
+  customerNumber?: string;
+  key?: string;
+  email: string;
+  password: string;
+  firstName?: string;
+  lastName?: string;
+  middleName?: string;
+  title?: string;
+  salutation?: string;
+  anonymousCartId?: string;
+  anonymousId?: string;
+  externalId?: string;
+  dateOfBirth?: string;
+  companyName?: string;
+  vatId?: string;
+  isEmailVerified?: boolean;
+  customerGroup?: Reference;
+  addresses?: Address[];
+  defaultBillingAddress?: number;
+  billingAddresses?: number[];
+  defaultShippingAddress?: number;
+  shippingAddresses?: number[];
+  custom?: Custom;
+  locale?: any; // @TODO: locale support
 }
