@@ -8,7 +8,7 @@
     "build": "tsc",
     "format": "prettier --write 'src/**/*.ts'",
     "precommit": "lint-staged",
-    "push": "npm run build && fury push $(npm pack)"
+    "push": "npm run build && fury push $(npm pack) && rm -f *.tgz"
   },
   "lint-staged": {
     "src/**/*.ts": [
