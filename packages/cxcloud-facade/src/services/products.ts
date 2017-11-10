@@ -1,5 +1,5 @@
 import { clientExecute, methods, services } from '../sdk';
-import { PaginatedProductResult, Product } from '../sdk/types/products';
+import { PaginatedProductResult, Product } from '@cxcloud/ct-types/products';
 
 export namespace Products {
   export function findByCategoryId(

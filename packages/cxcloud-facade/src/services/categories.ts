@@ -1,5 +1,5 @@
 import { clientExecute, clientProcess, methods, services } from '../sdk';
-import { Category } from '../sdk/types/categories';
+import { Category } from '@cxcloud/ct-types/categories';
 
 interface CategoryMap {
   [id: string]: Category;
