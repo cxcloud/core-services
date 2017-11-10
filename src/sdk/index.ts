@@ -1,7 +1,7 @@
 import * as config from 'config';
 import 'isomorphic-fetch';
 
-import { ClientRequest, SdkConfig } from './types/sdk';
+import { ClientRequest, SdkConfig } from '@cxcloud/ct-types/sdk';
 
 const { createClient } = require('@commercetools/sdk-client');
 const { createAuthMiddlewareForClientCredentialsFlow } = require('@commercetools/sdk-middleware-auth');

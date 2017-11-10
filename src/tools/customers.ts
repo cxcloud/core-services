@@ -1,8 +1,8 @@
 import * as config from 'config';
 import { getCurrency } from 'locale-currency';
 
-import { Address } from '../sdk/types/common';
-import { Customer } from '../sdk/types/customers';
+import { Address } from '@cxcloud/ct-types/common';
+import { Customer } from '@cxcloud/ct-types/customers';
 
 export function getCustomerBillingAddress(
   customer: Customer

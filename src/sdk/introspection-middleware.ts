@@ -1,4 +1,4 @@
-import { SdkConfig } from './types/sdk';
+import { SdkConfig } from '@cxcloud/ct-types/sdk';
 import * as Cache from 'node-cache';
 import 'isomorphic-fetch';
 

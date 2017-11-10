@@ -51,6 +51,7 @@
     "@commercetools/sdk-middleware-logger": "^1.0.0",
     "@commercetools/sdk-middleware-queue": "^1.1.0",
     "@commercetools/sdk-middleware-user-agent": "^1.2.0",
+    "@cxcloud/ct-types": "^0.1.1",
     "config": "^1.26.2",
     "locale-currency": "0.0.2",
     "lodash": "^4.17.4",

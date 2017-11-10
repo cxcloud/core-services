@@ -1,6 +1,6 @@
 import { getTokenData } from '../tools/crypto';
 import { clientExecute, methods, services } from '../sdk';
-import { Order, PaginatedOrderResult } from '../sdk/types/orders';
+import { Order, PaginatedOrderResult } from '@cxcloud/ct-types/orders';
 
 export namespace Orders {
   export function fetchAll(token: string): Promise<PaginatedOrderResult> {

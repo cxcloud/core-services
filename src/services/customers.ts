@@ -16,7 +16,7 @@ import {
   CustomerSignupDraft,
   OAuthToken,
   TokenizedSignInResult
-} from '../sdk/types/customers';
+} from '@cxcloud/ct-types/customers';
 import {
   encryptTokenResponse,
   getAnonymousIdFromToken,

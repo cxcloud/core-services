@@ -1,4 +1,4 @@
-import { OAuthToken, EncryptedTokenData } from '../sdk/types/customers';
+import { OAuthToken, EncryptedTokenData } from '@cxcloud/ct-types/customers';
 import * as crypto from 'crypto';
 
 const ENCRYPTION_KEY = 'wY[Ax)FC0AlQjruD$9J_tO3U+YiMZyL1'; // @TODO: REMOVE

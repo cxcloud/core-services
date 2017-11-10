@@ -10,8 +10,8 @@ import {
   IAddLineItem,
   ICartAction,
   IChangeLineItemQuantity
-} from '../sdk/types/carts';
-import { Address, Reference } from '../sdk/types/common';
+} from '@cxcloud/ct-types/carts';
+import { Address, Reference } from '@cxcloud/ct-types/common';
 import {
   getCustomerCurrency,
   getCustomerShippingAddress
