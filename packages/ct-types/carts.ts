@@ -92,8 +92,8 @@ export interface CartBase {
   shippingInfo?: ShippingInfo;
   customLineItems: any[];
   discountCodes: CartDiscountCode[];
-  custom: Custom;
-  inventoryMode: string;
+  custom?: Custom;
+  inventoryMode?: string;
   taxMode: string;
   taxRoundingMode: string;
 }
