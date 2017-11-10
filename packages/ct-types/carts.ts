@@ -45,8 +45,8 @@ export interface LineItem {
   variant: Variant;
   price: Price;
   quantity: number;
-  discountedPrice: DiscountedPrice;
-  discountedPricePerQuantity: DiscountedPricePerQuantity[];
+  discountedPrice?: DiscountedPrice;
+  discountedPricePerQuantity?: DiscountedPricePerQuantity[];
   taxRate: TaxRate;
   state: LineItemState[];
   priceMode: string;
@@ -86,10 +86,10 @@ export interface CartBase {
   lastModifiedAt: string;
   lineItems: LineItem[];
   totalPrice: Money;
-  taxedPrice: TaxedPrice;
-  shippingAddress: Address;
-  billingAddress: Address;
-  shippingInfo: ShippingInfo;
+  taxedPrice?: TaxedPrice;
+  shippingAddress?: Address;
+  billingAddress?: Address;
+  shippingInfo?: ShippingInfo;
   customLineItems: any[];
   discountCodes: CartDiscountCode[];
   custom: Custom;

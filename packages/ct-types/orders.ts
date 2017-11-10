@@ -1,5 +1,5 @@
-import { CartBase } from './carts';
-import { Reference } from './common';
+import { CartBase, ShippingInfo } from './carts';
+import { Reference, Address, TaxedPrice } from './common';
 import { Payment } from './payments';
 import { PaginatedResult } from './sdk';
 import { State } from './states';
@@ -27,6 +27,10 @@ export interface Order extends CartBase {
   lastMessageSequenceNumber: number;
   cart: Reference;
   paymentInfo: PaymentInfo;
+  taxedPrice: TaxedPrice;
+  shippingAddress: Address;
+  billingAddress: Address;
+  shippingInfo: ShippingInfo;
 }
 
 export interface PaginatedOrderResult extends PaginatedResult {
