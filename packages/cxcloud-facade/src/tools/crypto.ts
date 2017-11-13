@@ -62,6 +62,7 @@ export function encryptTokenResponse(
 ): OAuthToken {
   return {
     ...token,
+    anonymous: isAnonymous,
     access_token: encrypt(
       `${customerId}:${token.access_token}:${isAnonymous ? 1 : 0}`
     )
