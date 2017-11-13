@@ -29,11 +29,12 @@ export interface CustomerSignInResult {
 }
 
 export interface OAuthToken {
+  anonymous: boolean;
   access_token: string;
   expires_in: number;
   scope: string;
   refresh_token: string;
-  tokenType: string;
+  token_type: string;
 }
 
 export interface EncryptedTokenData {
