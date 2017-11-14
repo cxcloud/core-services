@@ -52,7 +52,7 @@ export namespace Carts {
   ): Promise<Cart> {
     return Orders.findById(orderId, token).then(order => {
       const { authToken } = getTokenData(token);
-      return clientExecute({
+      return clientExecute<Cart>({
         uri: services.myCarts.build(),
         method: methods.POST,
         token: authToken,
@@ -61,7 +61,7 @@ export namespace Carts {
           customerEmail: order.customerEmail,
           shippingAddress: order.shippingAddress
         }
-      }).then((cart: Cart) =>
+      }).then(cart =>
         addLineItems(
           cart.id,
           cart.version,
@@ -80,6 +80,15 @@ export namespace Carts {
     const { authToken } = getTokenData(token);
     return clientExecute({
       uri: services.myCarts.byId(cartId).build(),
+      method: methods.GET,
+      token: authToken
+    });
+  }
+
+  export function findActiveCart(token: string): Promise<Cart> {
+    const { authToken } = getTokenData(token);
+    return clientExecute({
+      uri: services.activeCart.build(),
       method: methods.GET,
       token: authToken
     });
