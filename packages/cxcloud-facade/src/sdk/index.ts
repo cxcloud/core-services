@@ -50,6 +50,11 @@ export const services = createRequestBuilder({
       type: 'login',
       endpoint: '/login',
       features: [features.query]
+    },
+    activeCart: {
+      type: 'active-cart',
+      endpoint: '/me/active-cart',
+      features: [features.query]
     }
   }
 });
