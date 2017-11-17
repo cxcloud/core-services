@@ -19,6 +19,7 @@ export interface Product {
   version: number;
   productType: Reference;
   name: LocalizedString;
+  description: LocalizedString;
   categories: Reference[];
   categoryOrderHints: CategoryOrderHints;
   slug: LocalizedString;
