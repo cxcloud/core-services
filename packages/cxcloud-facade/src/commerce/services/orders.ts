@@ -1,4 +1,4 @@
-import { getTokenData } from '../tools/crypto';
+import { getTokenData } from '../../tools/crypto';
 import { clientExecute, methods, services } from '../sdk';
 import { Order, PaginatedOrderResult } from '@cxcloud/ct-types/orders';
 

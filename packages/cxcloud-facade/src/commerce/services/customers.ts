@@ -21,7 +21,7 @@ import {
   encryptTokenResponse,
   getAnonymousIdFromToken,
   getTokenData
-} from '../tools/crypto';
+} from '../../tools/crypto';
 
 const customerCache = new Cache({
   stdTTL: 60 * 15 // 15 mins
