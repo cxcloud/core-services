@@ -4,23 +4,12 @@ import 'isomorphic-fetch';
 import { ClientRequest, SdkConfig } from '@cxcloud/ct-types/sdk';
 
 const { createClient } = require('@commercetools/sdk-client');
-const {
-  createAuthMiddlewareForClientCredentialsFlow
-} = require('@commercetools/sdk-middleware-auth');
+const { createAuthMiddlewareForClientCredentialsFlow } = require('@commercetools/sdk-middleware-auth');
 const { createHttpMiddleware } = require('@commercetools/sdk-middleware-http');
-const {
-  createQueueMiddleware
-} = require('@commercetools/sdk-middleware-queue');
-const {
-  createUserAgentMiddleware
-} = require('@commercetools/sdk-middleware-user-agent');
-const {
-  createRequestBuilder,
-  features
-} = require('@commercetools/api-request-builder');
-const {
-  createLoggerMiddleware
-} = require('@commercetools/sdk-middleware-logger');
+const { createQueueMiddleware } = require('@commercetools/sdk-middleware-queue');
+const { createUserAgentMiddleware } = require('@commercetools/sdk-middleware-user-agent');
+const { createRequestBuilder, features } = require('@commercetools/api-request-builder');
+const { createLoggerMiddleware } = require('@commercetools/sdk-middleware-logger');
 
 import { createAuthMiddlewareForIntrospectionFlow } from './introspection-middleware';
 
@@ -84,16 +73,11 @@ function createClientRequest(request: ClientRequest): ClientRequest {
 }
 
 export function clientExecute<T>(request: ClientRequest): Promise<T> {
-  return client
-    .execute(createClientRequest(request))
-    .then((result: any) => result.body);
+  return client.execute(createClientRequest(request)).then((result: any) => result.body);
 }
 
 export function clientProcess<T>(request: ClientRequest): Promise<T> {
-  return client.process(
-    createClientRequest(request),
-    async (payload: any) => payload.body.results
-  );
+  return client.process(createClientRequest(request), async (payload: any) => payload.body.results);
 }
 
 export enum methods {
@@ -103,10 +87,7 @@ export enum methods {
   DELETE = 'DELETE'
 }
 
-export function authenticatedFormRequest<T>(
-  requestOptions: any,
-  user = false
-): Promise<T> {
+export function authenticatedFormRequest<T>(requestOptions: any, user = false): Promise<T> {
   const basicAuthCredentials = user
     ? `${sdkConfig.user.clientId}:${sdkConfig.user.clientSecret}`
     : `${sdkConfig.admin.clientId}:${sdkConfig.admin.clientSecret}`;
