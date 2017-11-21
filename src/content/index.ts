@@ -1,4 +1,4 @@
-import { Entry } from 'contentful';
+import { Entry, EntryCollection, Space } from 'contentful';
 import { client } from './sdk';
 
 export namespace Content {
@@ -9,5 +9,13 @@ export namespace Content {
       }
       throw new Error(`Entry with ID: ${entryId} not found.`);
     });
+  }
+
+  export function getEntries(query: any): Promise<EntryCollection<any>> {
+    return client.getEntries(query);
+  }
+
+  export function getSpace(): Promise<Space> {
+    return client.getSpace();
   }
 }
