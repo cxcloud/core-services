@@ -3,7 +3,7 @@
   "singleQuote": true,
   "printWidth": 80,
   "overrides": [{
-    "files": ["src/sdk/index.ts"],
+    "files": ["src/commerce/sdk/index.ts"],
     "options": {
       "printWidth": 120
     }
