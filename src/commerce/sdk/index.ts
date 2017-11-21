@@ -17,7 +17,7 @@ if (!config.has('commerceTools')) {
   throw new Error('Project has not been configured yet. Check docs first.');
 }
 
-const packageInfo = require('../../package.json');
+const packageInfo = require('../../../package.json');
 export const sdkConfig = config.get<SdkConfig>('commerceTools');
 
 export const client = createClient({
