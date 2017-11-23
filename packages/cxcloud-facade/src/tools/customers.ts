@@ -1,5 +1,5 @@
 import * as config from 'config';
-import { getCurrency } from 'locale-currency';
+import { getCurrencyFromIso2 } from 'country-tools';
 
 import { Address } from '@cxcloud/ct-types/common';
 import { Customer } from '@cxcloud/ct-types/customers';
@@ -41,8 +41,8 @@ export function getCustomerCurrency(customer: Customer): string {
   if (address === undefined) {
     return defaultCurrency;
   }
-  const currency = getCurrency(address.country);
-  if (currencies.indexOf(currency) === -1) {
+  const currency = getCurrencyFromIso2(address.country);
+  if (currency === null || currencies.indexOf(currency) === -1) {
     return defaultCurrency;
   }
   return currency;
