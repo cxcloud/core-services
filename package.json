@@ -1,6 +1,6 @@
 {
   "name": "@cxcloud/facade",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "CX Cloud Facade Module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -54,7 +54,7 @@
     "@cxcloud/ct-types": "^0.1.4",
     "config": "^1.26.2",
     "contentful": "^5.0.5",
-    "locale-currency": "0.0.2",
+    "country-tools": "^0.1.2",
     "lodash": "^4.17.4",
     "node-cache": "^4.1.1",
     "uuid": "^3.1.0"
