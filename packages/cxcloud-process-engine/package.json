@@ -10,7 +10,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "lint-staged": {
-    "src/**/*.ts": ["prettier --write", "git add"]
+    "src/**/*.ts": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -29,5 +32,8 @@
     "lint-staged": "^5.0.0",
     "prettier": "^1.8.2",
     "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "sqs-queue-parallel": "^0.1.6"
   }
 }
