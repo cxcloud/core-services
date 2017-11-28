@@ -1,0 +1,33 @@
+{
+  "name": "cxcloud-process-engine",
+  "version": "1.0.0",
+  "description": "Process Engine Core for CX Cloud",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write 'src/**/*.ts'",
+    "precommit": "lint-staged",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "lint-staged": {
+    "src/**/*.ts": ["prettier --write", "git add"]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smilehouse/cxcloud-process-engine.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smilehouse/cxcloud-process-engine/issues"
+  },
+  "homepage": "https://github.com/smilehouse/cxcloud-process-engine#readme",
+  "devDependencies": {
+    "@types/node": "^8.0.53",
+    "husky": "^0.14.3",
+    "lint-staged": "^5.0.0",
+    "prettier": "^1.8.2",
+    "typescript": "^2.6.2"
+  }
+}
