@@ -1,4 +1,5 @@
 import * as SqsQueueParallel from 'sqs-queue-parallel';
+import { pathOr } from 'ramda';
 
 export interface QueueOptions {
   name: string;
@@ -44,6 +45,34 @@ export class QueueProcessor {
           ? process.env.NODE_ENV === 'development'
           : options.debug
     });
+    this.__queue.on('message', message => this.processMessage(message));
+    this.__queue.on('error', err => this.handleError(err));
+  }
+
+  processMessage(message: any) {
+    const processorFn = this.findActionProcessor(message.data);
+    if (processorFn) {
+      return processorFn(message.data, body => this.sendMessage(body));
+    }
+    this.handleError(new Error('Processor not found for message'));
+  }
+
+  handleError(err) {
+    // @TODO: hook up a logger
+    console.error(err);
+  }
+
+  findActionProcessor(message: any): ActionMapFunction | undefined {
+    const item = this.__map.find(mapItem => {
+      return mapItem.conditions.every(
+        condition =>
+          pathOr(null, condition.path.split('.'), message) === condition.value
+      );
+    });
+    if (item) {
+      return item.action;
+    }
+    return;
   }
 
   sendMessage(body: any): Promise<any> {
