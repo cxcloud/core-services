@@ -9,9 +9,30 @@ export interface QueueOptions {
   debug?: boolean;
 }
 
+export interface ActionMapCondition {
+  path: string;
+  value: string;
+}
+
+export interface SendMessageFunction {
+  (data: any): Promise<any>;
+}
+
+export interface ActionMapFunction {
+  (eventObj: any, sendMessage: SendMessageFunction): boolean;
+}
+
+export interface ActionMapItem {
+  conditions: ActionMapCondition[];
+  action: ActionMapFunction;
+}
+
 export class QueueProcessor {
   private __queue: SqsQueueParallel;
-  constructor(options: QueueOptions) {
+  private __map: ActionMapItem[];
+
+  constructor(options: QueueOptions, map: ActionMapItem[]) {
+    this.__map = map;
     this.__queue = new SqsQueueParallel({
       name: options.name,
       visibilityTimeout: options.visibilityTimeout || 0,
@@ -24,8 +45,27 @@ export class QueueProcessor {
           : options.debug
     });
   }
+
+  sendMessage(body: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.__queue.sendMessage(
+        {
+          body
+        },
+        (err, info) => {
+          if (err) {
+            return reject(err);
+          }
+          return resolve(info);
+        }
+      );
+    });
+  }
 }
 
-export function createQueueProcessor(queueOptions: QueueOptions) {
-  return new QueueProcessor(queueOptions);
+export function createQueueProcessor(
+  queueOptions: QueueOptions,
+  map: ActionMapItem[]
+) {
+  return new QueueProcessor(queueOptions, map);
 }
