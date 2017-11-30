@@ -24,6 +24,7 @@ export namespace Orders {
   export function create(
     cartId: string,
     cartVersion: number,
+    orderNumber: string | null,
     token: string
   ): Promise<Order> {
     const { authToken, isAnonymous } = getTokenData(token);
@@ -40,7 +41,8 @@ export namespace Orders {
       token: authToken,
       body: {
         id: cartId,
-        version: cartVersion
+        version: cartVersion,
+        orderNumber
       }
     });
   }
