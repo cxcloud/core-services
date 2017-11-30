@@ -31,19 +31,24 @@ export interface ActionMapItem {
 export class QueueProcessor {
   private __queue: SqsQueueParallel;
   private __map: ActionMapItem[];
+  private __options: QueueOptions;
 
   constructor(options: QueueOptions, map: ActionMapItem[]) {
+    this.__options = options;
     this.__map = map;
+  }
+
+  start() {
     this.__queue = new SqsQueueParallel({
-      name: options.name,
-      visibilityTimeout: options.visibilityTimeout || 0,
-      waitTimeSeconds: options.waitTimeSeconds || 20,
-      maxNumberOfMessages: options.maxNumberOfMessages || 1,
-      concurrency: options.concurrency || 1,
+      name: this.__options.name,
+      visibilityTimeout: this.__options.visibilityTimeout || 0,
+      waitTimeSeconds: this.__options.waitTimeSeconds || 20,
+      maxNumberOfMessages: this.__options.maxNumberOfMessages || 1,
+      concurrency: this.__options.concurrency || 1,
       debug:
-        typeof options.debug !== 'boolean'
+        typeof this.__options.debug !== 'boolean'
           ? process.env.NODE_ENV === 'development'
-          : options.debug
+          : this.__options.debug
     });
     this.__queue.on('message', message => this.processMessage(message));
     this.__queue.on('error', err => this.handleError(err));
