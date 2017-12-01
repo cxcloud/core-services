@@ -1,2 +1,2 @@
-# cxcloud-facade
-CX Cloud Facade Module
+# core-services
+CX Cloud Core Services
