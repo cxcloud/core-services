@@ -7,7 +7,7 @@ An example of implementation can be found in [CX API Accelerator](https://github
 ## Installation and Usage
 
 ```sh
-npm instal @cxcloud/core
+npm install @cxcloud/core
 ```
 
 ```js
@@ -23,3 +23,7 @@ import { Cart } from '@cxcloud/core/dist/commerce';
 ## Documentation
 
 An automatically generated documentation can be found [here](https://cxcloud.github.io/core-services/).
+
+## License
+
+This project is licensed under [The GPL v2](LICENSE)
