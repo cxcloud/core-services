@@ -1,7 +1,7 @@
 {
-  "name": "@cxcloud/facade",
+  "name": "@cxcloud/core",
   "version": "1.4.2",
-  "description": "CX Cloud Facade Module",
+  "description": "CX Cloud Core Services Module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -9,8 +9,7 @@
     "prebuild": "npm run clean",
     "build": "tsc",
     "format": "prettier --write 'src/**/*.ts'",
-    "precommit": "lint-staged",
-    "push": "npm run build && fury push $(npm pack) && rm -f *.tgz"
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "src/**/*.ts": [
@@ -23,7 +22,7 @@
     "url": "git+https://github.com/smilehouse/cxcloud-facade.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Tieto CEM",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/smilehouse/cxcloud-facade/issues"
