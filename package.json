@@ -9,7 +9,8 @@
     "prebuild": "npm run clean",
     "build": "tsc",
     "format": "prettier --write 'src/**/*.ts'",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "prepublish": "npm run build"
   },
   "lint-staged": {
     "src/**/*.ts": [
