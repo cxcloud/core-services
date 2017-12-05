@@ -17,8 +17,18 @@ import { Cart } from '@cxcloud/core/dist/commerce';
 
 ## Included Bundles
 
-+ Commerce (Powered by CommerceTools)
-+ Content (Powered by Contentful)
++ Commerce (Powered by [CommerceTools](https://commercetools.com))
+  - Products
+  - Categories
+  - Shipping
+  - Carts
+  - Orders
+  - Customers
+  - Authentication
++ Content (Powered by [Contentful](https://contentful.com))
+  - Entry
+  - Entries
+  - Space Info
 
 ## Documentation
 
@@ -26,4 +36,4 @@ An automatically generated documentation can be found [here](https://cxcloud.git
 
 ## License
 
-This project is licensed under [The GPL v2](LICENSE)
+This project is licensed under [The GPL v2](LICENSE) and is released merely for educational and internal purposes. The modules are not useful independently and require paid licenses from the vendors mentioned above.
