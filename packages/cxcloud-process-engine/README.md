@@ -3,11 +3,11 @@
 ## Installation and Usage
 
 ```sh
-npm install @cxcloud/process-engine
+npm install @cxcloud/process-engine-core
 ```
 
 ```ts
-import { createQueueProcessor, createQueuePool } from '@cxcloud/process-engine';
+import { createQueueProcessor, createQueuePool } from '@cxcloud/process-engine-core';
 
 const pool = createQueuePool([
   createQueueProcessor({
