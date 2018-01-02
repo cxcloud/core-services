@@ -1,5 +1,5 @@
-import * as SqsQueueParallel from 'sqs-queue-parallel';
 import { pathOr } from 'ramda';
+import { SqsParallel } from 'sqs-parallel';
 
 export interface QueueOptions {
   name: string;
@@ -29,7 +29,7 @@ export interface ActionMapItem {
 }
 
 export class QueueProcessor {
-  private __queue: SqsQueueParallel;
+  private __queue: SqsParallel;
   private __map: ActionMapItem[];
   private __options: QueueOptions;
 
@@ -39,7 +39,7 @@ export class QueueProcessor {
   }
 
   start() {
-    this.__queue = new SqsQueueParallel({
+    this.__queue = new SqsParallel({
       name: this.__options.name,
       visibilityTimeout: this.__options.visibilityTimeout || 0,
       waitTimeSeconds: this.__options.waitTimeSeconds || 20,
@@ -62,7 +62,7 @@ export class QueueProcessor {
     this.handleError(new Error('Processor not found for message'));
   }
 
-  handleError(err) {
+  handleError(err: any) {
     // @TODO: hook up a logger
     console.error(err);
   }
@@ -81,18 +81,8 @@ export class QueueProcessor {
   }
 
   sendMessage(body: any): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.__queue.sendMessage(
-        {
-          body
-        },
-        (err, info) => {
-          if (err) {
-            return reject(err);
-          }
-          return resolve(info);
-        }
-      );
+    return this.__queue.sendMessage({
+      body
     });
   }
 }
