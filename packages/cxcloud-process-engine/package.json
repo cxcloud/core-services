@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "format": "prettier --write 'src/**/*.ts'",
+    "prepare": "npm run build",
     "precommit": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -37,6 +38,7 @@
   },
   "dependencies": {
     "@cxcloud/ct-types": "^0.1.6",
+    "aws-sdk": "^2.176.0",
     "bunyan": "^1.8.12",
     "ramda": "^0.25.0",
     "sqs-parallel": "^1.2.1"
