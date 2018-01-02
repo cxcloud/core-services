@@ -1,6 +1,6 @@
 {
-  "name": "cxcloud-process-engine",
-  "version": "1.1.0",
+  "name": "@cxcloud/process-engine-core",
+  "version": "1.0.0",
   "description": "Process Engine Core for CX Cloud",
   "main": "index.js",
   "scripts": {
@@ -17,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/smilehouse/cxcloud-process-engine.git"
+    "url": "git+https://github.com/cxcloud/process-engine-core.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/smilehouse/cxcloud-process-engine/issues"
+    "url": "https://github.com/cxcloud/process-engine-core/issues"
   },
-  "homepage": "https://github.com/smilehouse/cxcloud-process-engine#readme",
+  "homepage": "https://github.com/cxcloud/process-engine-core#readme",
   "devDependencies": {
     "@types/node": "^8.0.53",
     "@types/ramda": "^0.25.6",
