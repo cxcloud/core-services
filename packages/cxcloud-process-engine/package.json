@@ -27,7 +27,8 @@
   },
   "homepage": "https://github.com/cxcloud/process-engine-core#readme",
   "devDependencies": {
-    "@types/node": "^8.0.53",
+    "@types/bunyan": "^1.8.4",
+    "@types/node": "^8.5.2",
     "@types/ramda": "^0.25.6",
     "husky": "^0.14.3",
     "lint-staged": "^5.0.0",
@@ -35,6 +36,8 @@
     "typescript": "^2.6.2"
   },
   "dependencies": {
+    "@cxcloud/ct-types": "^0.1.6",
+    "bunyan": "^1.8.12",
     "ramda": "^0.25.0",
     "sqs-queue-parallel": "^0.1.6"
   }
