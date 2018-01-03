@@ -68,7 +68,7 @@ The resulting `QueuePool` instance has the following methods:
 * `findByName(name: String) ⇒ QueueProcessor` — Find a queue processor instance
   by it's name
 
-## createQueueProcessor(options, actionMap, fallbackFn) ⇒ QueueProcessor
+### createQueueProcessor(options, actionMap, fallbackFn) ⇒ QueueProcessor
 
 * `options` (Object)
   * **name** (String) — **_Required_**: name of the remote queue to be watched
