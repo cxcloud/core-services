@@ -1,5 +1,8 @@
 # CXCloud Process Engine Core
 
+A simple helper for using multiple AWS SQS queues at the same time. This tool
+provides an easy way to map incoming events to actions.
+
 ## Installation and Usage
 
 ```sh
@@ -30,13 +33,19 @@ const pool = createQueuePool([
             value: 'gold'
           }
         ],
-        action: myProcessorFunction
+        action: (message, sendMessage) => {
+          console.log('Received Message:', message.data);
+          message.deleteMessage().then(() => {
+            // Next should be called after each message is processed
+            message.next();
+          });
+        }
       }
     ],
-    e => {
-      // CatchAll function
+    // CatchAll function (for events that don't match any of the processors)
+    message => {
       console.error('No processor found');
-      e.next();
+      message.next();
     }
   ),
   createQueueProcessor(/* ... */),
@@ -121,3 +130,6 @@ The resulting `QueuePool` instance has the following methods:
 
     * **sendMessage(params = {}) ⇒ Promise** (Function) — A shortcut to send a
       message to the same queue processor that the event came from
+
+* `fallbackFn` — A fallback action in case a message doesn't match any
+  conditions. Signature is same as the `action` mentioned above.
