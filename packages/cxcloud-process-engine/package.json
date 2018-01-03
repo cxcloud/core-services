@@ -2,7 +2,8 @@
   "name": "@cxcloud/process-engine-core",
   "version": "1.0.0",
   "description": "Process Engine Core for CX Cloud",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write 'src/**/*.ts'",
