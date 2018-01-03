@@ -31,11 +31,7 @@ export class QueueProcessor {
 
   start() {
     this.__queue = new SqsParallel({
-      name: this.__options.name,
-      visibilityTimeout: this.__options.visibilityTimeout || 0,
-      waitTimeSeconds: this.__options.waitTimeSeconds || 20,
-      maxNumberOfMessages: this.__options.maxNumberOfMessages || 1,
-      concurrency: this.__options.concurrency || 1,
+      ...this.__options,
       debug:
         typeof this.__options.debug !== 'boolean'
           ? process.env.NODE_ENV === 'development'
