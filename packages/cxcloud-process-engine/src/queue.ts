@@ -10,23 +10,29 @@ export interface SendMessageFunction {
   (data: any): Promise<any>;
 }
 
-export interface ActionMapFunction {
-  (eventObj: any, sendMessage: SendMessageFunction): boolean;
+export interface ProcessFunction {
+  (eventObj: any, sendMessage: SendMessageFunction): any;
 }
 
 export interface ActionMapItem {
   conditions: ActionMapCondition[];
-  action: ActionMapFunction;
+  action: ProcessFunction;
 }
 
 export class QueueProcessor {
   private __queue: SqsParallel;
   private __map: ActionMapItem[];
   private __options: Config;
+  private __catchAll: ProcessFunction;
 
-  constructor(options: Config, map: ActionMapItem[]) {
+  constructor(
+    options: Config,
+    map: ActionMapItem[],
+    catchAll?: ProcessFunction
+  ) {
     this.__options = options;
     this.__map = map;
+    this.__catchAll = typeof catchAll === 'function' ? catchAll : e => e.next();
   }
 
   start() {
@@ -43,10 +49,7 @@ export class QueueProcessor {
 
   processMessage(message: any) {
     const processorFn = this.findActionProcessor(message.data);
-    if (processorFn) {
-      return processorFn(message.data, body => this.sendMessage(body));
-    }
-    this.handleError(new Error('Processor not found for message'));
+    return processorFn(message, body => this.sendMessage(body));
   }
 
   handleError(err: any) {
@@ -54,7 +57,7 @@ export class QueueProcessor {
     console.error(err);
   }
 
-  findActionProcessor(message: any): ActionMapFunction | undefined {
+  findActionProcessor(message: any): ProcessFunction {
     const item = this.__map.find(mapItem => {
       return mapItem.conditions.every(
         condition =>
@@ -64,7 +67,8 @@ export class QueueProcessor {
     if (item) {
       return item.action;
     }
-    return;
+    // Fallback to catchAll processor
+    return this.__catchAll;
   }
 
   sendMessage(body: any): Promise<any> {
@@ -76,7 +80,8 @@ export class QueueProcessor {
 
 export function createQueueProcessor(
   queueOptions: Config,
-  map: ActionMapItem[]
+  map: ActionMapItem[],
+  catchAll?: ProcessFunction
 ) {
-  return new QueueProcessor(queueOptions, map);
+  return new QueueProcessor(queueOptions, map, catchAll);
 }
