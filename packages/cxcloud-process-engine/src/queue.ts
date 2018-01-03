@@ -35,6 +35,10 @@ export class QueueProcessor {
     this.__catchAll = typeof catchAll === 'function' ? catchAll : e => e.next();
   }
 
+  get options() {
+    return this.__options;
+  }
+
   start() {
     this.__queue = new SqsParallel({
       ...this.__options,
