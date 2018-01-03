@@ -1,14 +1,5 @@
 import { pathOr } from 'ramda';
-import { SqsParallel } from 'sqs-parallel';
-
-export interface QueueOptions {
-  name: string;
-  visibilityTimeout?: number;
-  waitTimeSeconds?: number;
-  maxNumberOfMessages?: number;
-  concurrency?: number;
-  debug?: boolean;
-}
+import { SqsParallel, Config } from 'sqs-parallel';
 
 export interface ActionMapCondition {
   path: string;
@@ -31,9 +22,9 @@ export interface ActionMapItem {
 export class QueueProcessor {
   private __queue: SqsParallel;
   private __map: ActionMapItem[];
-  private __options: QueueOptions;
+  private __options: Config;
 
-  constructor(options: QueueOptions, map: ActionMapItem[]) {
+  constructor(options: Config, map: ActionMapItem[]) {
     this.__options = options;
     this.__map = map;
   }
@@ -88,7 +79,7 @@ export class QueueProcessor {
 }
 
 export function createQueueProcessor(
-  queueOptions: QueueOptions,
+  queueOptions: Config,
   map: ActionMapItem[]
 ) {
   return new QueueProcessor(queueOptions, map);
