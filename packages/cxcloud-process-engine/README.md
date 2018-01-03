@@ -7,25 +7,33 @@ npm install @cxcloud/process-engine-core
 ```
 
 ```ts
-import { createQueueProcessor, createQueuePool } from '@cxcloud/process-engine-core';
+import {
+  createQueueProcessor,
+  createQueuePool
+} from '@cxcloud/process-engine-core';
 
 const pool = createQueuePool([
-  createQueueProcessor({
-    name: 'my-sqs-queue',
-    concurrency: 2
-  }, [
-    conditions: [
+  createQueueProcessor(
+    {
+      name: 'my-sqs-queue',
+      concurrency: 2
+    },
+    [
       {
-        path: 'myEvent.name',
-        value: 'someValue'
-      },
-      {
-        path: 'customer.type',
-        value: 'gold'
+        conditions: [
+          {
+            path: 'myEvent.name',
+            value: 'someValue'
+          },
+          {
+            path: 'customer.type',
+            value: 'gold'
+          }
+        ],
+        action: myProcessorFunction
       }
-    ],
-    action: myProcessorFunction
-  ]),
+    ]
+  ),
   createQueueProcessor(/* ... */),
   createQueueProcessor(/* ... */)
 ]);
