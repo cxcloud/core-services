@@ -32,7 +32,12 @@ const pool = createQueuePool([
         ],
         action: myProcessorFunction
       }
-    ]
+    ],
+    e => {
+      // CatchAll function
+      console.error('No processor found');
+      e.next();
+    }
   ),
   createQueueProcessor(/* ... */),
   createQueueProcessor(/* ... */)
