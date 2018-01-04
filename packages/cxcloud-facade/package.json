@@ -24,7 +24,7 @@
   },
   "keywords": [],
   "author": "Tieto CEM",
-  "license": "ISC",
+  "license": "GPL-2.0-only",
   "bugs": {
     "url": "https://github.com/smilehouse/cxcloud-facade/issues"
   },
