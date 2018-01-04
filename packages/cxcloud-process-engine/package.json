@@ -23,7 +23,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "GPL-2.0-only",
   "bugs": {
     "url": "https://github.com/cxcloud/process-engine-core/issues"
   },
