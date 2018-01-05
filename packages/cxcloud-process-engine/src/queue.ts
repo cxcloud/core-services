@@ -1,6 +1,7 @@
 import { pathOr } from 'ramda';
 import { SqsParallel, Config, Message, OutgoingMessage } from 'sqs-parallel';
 import { SQS } from 'aws-sdk';
+export { Message } from 'sqs-parallel';
 
 export interface ActionMapCondition {
   path: string;
@@ -8,7 +9,7 @@ export interface ActionMapCondition {
 }
 
 export interface SendMessageFunction {
-  (params: OutgoingMessage): Promise<any>;
+  (params: OutgoingMessage): Promise<SQS.SendMessageResult>;
 }
 
 export interface ProcessFunction {
