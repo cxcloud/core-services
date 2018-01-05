@@ -42,6 +42,6 @@
     "aws-sdk": "^2.176.0",
     "bunyan": "^1.8.12",
     "ramda": "^0.25.0",
-    "sqs-parallel": "^1.2.1"
+    "sqs-parallel": "^1.2.2"
   }
 }

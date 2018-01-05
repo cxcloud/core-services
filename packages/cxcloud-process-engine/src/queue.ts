@@ -1,5 +1,6 @@
 import { pathOr } from 'ramda';
-import { SqsParallel, Config } from 'sqs-parallel';
+import { SqsParallel, Config, Message, OutgoingMessage } from 'sqs-parallel';
+import { SQS } from 'aws-sdk';
 
 export interface ActionMapCondition {
   path: string;
@@ -7,11 +8,11 @@ export interface ActionMapCondition {
 }
 
 export interface SendMessageFunction {
-  (data: any): Promise<any>;
+  (params: OutgoingMessage): Promise<any>;
 }
 
 export interface ProcessFunction {
-  (eventObj: any, sendMessage: SendMessageFunction): any;
+  (message: Message, sendMessage: SendMessageFunction): any;
 }
 
 export interface ActionMapItem {
@@ -51,7 +52,7 @@ export class QueueProcessor {
     this.__queue.on('error', err => this.handleError(err));
   }
 
-  processMessage(message: any) {
+  processMessage(message: Message) {
     const processorFn = this.findActionProcessor(message.data);
     return processorFn(message, body => this.sendMessage(body));
   }
@@ -75,10 +76,8 @@ export class QueueProcessor {
     return this.__catchAll;
   }
 
-  sendMessage(body: any): Promise<any> {
-    return this.__queue.sendMessage({
-      body
-    });
+  sendMessage(params: OutgoingMessage): Promise<SQS.SendMessageResult> {
+    return this.__queue.sendMessage(params);
   }
 }
 
