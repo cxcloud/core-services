@@ -17,16 +17,18 @@ const packageInfo = require('../../../package.json');
 let __client: any;
 let __services: any;
 
-export const sdkConfig = config.get<SdkConfig>('commerceTools');
-
-export function getClient() {
-  if (!sdkConfig) {
+export function getConfig() {
+  if (config.has('commerceTools')) {
     throw new Error('Project has not been configured yet. Check docs first.');
   }
+  return config.get<SdkConfig>('commerceTools');
+}
 
+export function getClient() {
   if (__client) {
     return __client;
   }
+  const sdkConfig = getConfig();
   __client = createClient({
     middlewares: [
       createAuthMiddlewareForIntrospectionFlow(sdkConfig),
@@ -56,6 +58,7 @@ export function getServices() {
   if (__services) {
     return __services;
   }
+  const sdkConfig = getConfig();
   __services = createRequestBuilder({
     projectKey: sdkConfig.projectKey,
     customServices: {
@@ -105,6 +108,7 @@ export enum methods {
 }
 
 export function authenticatedFormRequest<T>(requestOptions: any, user = false): Promise<T> {
+  const sdkConfig = getConfig();
   const basicAuthCredentials = user
     ? `${sdkConfig.user.clientId}:${sdkConfig.user.clientSecret}`
     : `${sdkConfig.admin.clientId}:${sdkConfig.admin.clientSecret}`;
