@@ -1,4 +1,4 @@
-import { clientExecute, methods, services } from '../sdk';
+import { clientExecute, methods, getServices } from '../sdk';
 import { PaginatedProductResult, Product } from '@cxcloud/ct-types/products';
 
 export namespace Products {
@@ -6,8 +6,10 @@ export namespace Products {
     categoryId: string
   ): Promise<PaginatedProductResult> {
     return clientExecute({
-      uri: services.productProjectionsSearch
-        .filter(`categories.id:subtree("${categoryId}")`)
+      uri: getServices()
+        .productProjectionsSearch.filter(
+          `categories.id:subtree("${categoryId}")`
+        )
         .perPage(20)
         .build(),
       method: methods.GET
@@ -19,8 +21,8 @@ export namespace Products {
     language = 'en'
   ): Promise<PaginatedProductResult> {
     return clientExecute({
-      uri: services.productProjectionsSearch
-        .text(q, language)
+      uri: getServices()
+        .productProjectionsSearch.text(q, language)
         .fuzzy(true)
         .perPage(20)
         .build(),
@@ -30,7 +32,9 @@ export namespace Products {
 
   export function findById(productId: string): Promise<Product> {
     return clientExecute({
-      uri: services.productProjections.byId(productId).build(),
+      uri: getServices()
+        .productProjections.byId(productId)
+        .build(),
       method: methods.GET
     });
   }

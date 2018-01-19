@@ -13,51 +13,66 @@ const { createLoggerMiddleware } = require('@commercetools/sdk-middleware-logger
 
 import { createAuthMiddlewareForIntrospectionFlow } from './introspection-middleware';
 
-if (!config.has('commerceTools')) {
-  throw new Error('Project has not been configured yet. Check docs first.');
-}
-
 const packageInfo = require('../../../package.json');
+let __client: any;
+let __services: any;
+
 export const sdkConfig = config.get<SdkConfig>('commerceTools');
 
-export const client = createClient({
-  middlewares: [
-    createAuthMiddlewareForIntrospectionFlow(sdkConfig),
-    createAuthMiddlewareForClientCredentialsFlow({
-      host: sdkConfig.authHost,
-      projectKey: sdkConfig.projectKey,
-      credentials: {
-        clientId: sdkConfig.admin.clientId,
-        clientSecret: sdkConfig.admin.clientSecret
-      }
-    }),
-    createQueueMiddleware({ concurrency: 10 }),
-    createHttpMiddleware({ host: sdkConfig.apiHost }),
-    createUserAgentMiddleware({
-      libraryName: packageInfo.name,
-      libraryVersion: packageInfo.version,
-      contactUrl: packageInfo.homepage,
-      contactEmail: 'cxcloud@tieto.com'
-    }),
-    createLoggerMiddleware()
-  ]
-});
-
-export const services = createRequestBuilder({
-  projectKey: sdkConfig.projectKey,
-  customServices: {
-    login: {
-      type: 'login',
-      endpoint: '/login',
-      features: [features.query]
-    },
-    activeCart: {
-      type: 'active-cart',
-      endpoint: '/me/active-cart',
-      features: [features.query]
-    }
+export function getClient() {
+  if (!sdkConfig) {
+    throw new Error('Project has not been configured yet. Check docs first.');
   }
-});
+
+  if (__client) {
+    return __client;
+  }
+  __client = createClient({
+    middlewares: [
+      createAuthMiddlewareForIntrospectionFlow(sdkConfig),
+      createAuthMiddlewareForClientCredentialsFlow({
+        host: sdkConfig.authHost,
+        projectKey: sdkConfig.projectKey,
+        credentials: {
+          clientId: sdkConfig.admin.clientId,
+          clientSecret: sdkConfig.admin.clientSecret
+        }
+      }),
+      createQueueMiddleware({ concurrency: 10 }),
+      createHttpMiddleware({ host: sdkConfig.apiHost }),
+      createUserAgentMiddleware({
+        libraryName: packageInfo.name,
+        libraryVersion: packageInfo.version,
+        contactUrl: packageInfo.homepage,
+        contactEmail: 'cxcloud@tieto.com'
+      }),
+      createLoggerMiddleware()
+    ]
+  });
+  return __client;
+}
+
+export function getServices() {
+  if (__services) {
+    return __services;
+  }
+  __services = createRequestBuilder({
+    projectKey: sdkConfig.projectKey,
+    customServices: {
+      login: {
+        type: 'login',
+        endpoint: '/login',
+        features: [features.query]
+      },
+      activeCart: {
+        type: 'active-cart',
+        endpoint: '/me/active-cart',
+        features: [features.query]
+      }
+    }
+  });
+  return __services;
+}
 
 function createClientRequest(request: ClientRequest): ClientRequest {
   const { token, ...rest } = request;
@@ -73,11 +88,13 @@ function createClientRequest(request: ClientRequest): ClientRequest {
 }
 
 export function clientExecute<T>(request: ClientRequest): Promise<T> {
-  return client.execute(createClientRequest(request)).then((result: any) => result.body);
+  return getClient()
+    .execute(createClientRequest(request))
+    .then((result: any) => result.body);
 }
 
 export function clientProcess<T>(request: ClientRequest): Promise<T> {
-  return client.process(createClientRequest(request), async (payload: any) => payload.body.results);
+  return getClient().process(createClientRequest(request), async (payload: any) => payload.body.results);
 }
 
 export enum methods {

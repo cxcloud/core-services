@@ -7,7 +7,7 @@ import {
   sdkConfig,
   authenticatedFormRequest,
   clientExecute,
-  services
+  getServices
 } from '../sdk';
 import {
   AnonymousSignInResult,
@@ -70,7 +70,7 @@ export namespace Customers {
     token?: string
   ): Promise<TokenizedSignInResult> {
     return clientExecute<CustomerSignInResult>({
-      uri: services.login.build(),
+      uri: getServices().login.build(),
       method: methods.POST,
       body: {
         email,
@@ -87,7 +87,7 @@ export namespace Customers {
     token?: string
   ): Promise<TokenizedSignInResult> {
     return clientExecute<CustomerSignInResult>({
-      uri: services.customers.build(),
+      uri: getServices().customers.build(),
       method: methods.POST,
       body: {
         ...customerData,
@@ -120,7 +120,9 @@ export namespace Customers {
       return Promise.resolve(cached);
     }
     return clientExecute<Customer>({
-      uri: services.customers.byId(customerId).build(),
+      uri: getServices()
+        .customers.byId(customerId)
+        .build(),
       method: methods.GET
     }).then(customer => {
       customerCache.set(customer.id, customer);
