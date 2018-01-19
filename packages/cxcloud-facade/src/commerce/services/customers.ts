@@ -4,7 +4,7 @@ import * as uuid from 'uuid/v4';
 import omit = require('lodash/omit');
 import {
   methods,
-  sdkConfig,
+  getConfig,
   authenticatedFormRequest,
   clientExecute,
   getServices
@@ -42,12 +42,13 @@ export namespace Customers {
     password: string,
     loginResult: CustomerSignInResult
   ): Promise<TokenizedSignInResult> {
+    const config = getConfig();
     const scopes = userScopes
-      .map(scope => `${scope}:${sdkConfig.projectKey}`)
+      .map(scope => `${scope}:${config.projectKey}`)
       .join(' ');
     return authenticatedFormRequest<OAuthToken>(
       {
-        uri: `${sdkConfig.authHost}/oauth/${sdkConfig.projectKey}/customers/token`,
+        uri: `${config.authHost}/oauth/${config.projectKey}/customers/token`,
         method: methods.POST,
         body: stringify({
           grant_type: 'password',
@@ -101,8 +102,9 @@ export namespace Customers {
 
   export function loginAnonymously(): Promise<AnonymousSignInResult> {
     const anonymousId = uuid();
+    const config = getConfig();
     return authenticatedFormRequest<OAuthToken>({
-      uri: `${sdkConfig.authHost}/oauth/${sdkConfig.projectKey}/anonymous/token`,
+      uri: `${config.authHost}/oauth/${config.projectKey}/anonymous/token`,
       method: methods.POST,
       body: stringify({
         grant_type: 'client_credentials',

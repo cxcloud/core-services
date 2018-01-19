@@ -44,8 +44,6 @@ export namespace Categories {
   }
 
   export function findById(categoryId: string): Promise<Category> {
-    // const query = services.categories.byId(categoryId);
-    // return execute(query, methods.GET);
     return clientExecute({
       uri: getServices()
         .categories.byId(categoryId)
