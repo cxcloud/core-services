@@ -1,4 +1,4 @@
-import { clientExecute, clientProcess, methods, services } from '../sdk';
+import { clientExecute, clientProcess, methods, getServices } from '../sdk';
 import { Category } from '@cxcloud/ct-types/categories';
 
 interface CategoryMap {
@@ -30,10 +30,12 @@ function nestify(categories: Category[]): Category[] {
 
 export namespace Categories {
   export function fetchAll(flat = false): Promise<Category[]> {
-    return clientProcess({
-      uri: services.categories.perPage(100).build(),
+    return clientProcess<Category[]>({
+      uri: getServices()
+        .categories.perPage(100)
+        .build(),
       method: methods.GET
-    }).then((res: Category[]) => {
+    }).then(res => {
       if (flat === true) {
         return res;
       }
@@ -42,10 +44,10 @@ export namespace Categories {
   }
 
   export function findById(categoryId: string): Promise<Category> {
-    // const query = services.categories.byId(categoryId);
-    // return execute(query, methods.GET);
     return clientExecute({
-      uri: services.categories.byId(categoryId).build(),
+      uri: getServices()
+        .categories.byId(categoryId)
+        .build(),
       method: methods.GET
     });
   }

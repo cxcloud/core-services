@@ -1,12 +1,14 @@
 import { getTokenData } from '../../tools/crypto';
-import { clientExecute, methods, services } from '../sdk';
+import { clientExecute, methods, getServices } from '../sdk';
 import { Order, PaginatedOrderResult } from '@cxcloud/ct-types/orders';
 
 export namespace Orders {
   export function fetchAll(token: string): Promise<PaginatedOrderResult> {
     const { authToken } = getTokenData(token);
     return clientExecute({
-      uri: services.myOrders.perPage(20).build(),
+      uri: getServices()
+        .myOrders.perPage(20)
+        .build(),
       method: methods.GET,
       token: authToken
     });
@@ -15,7 +17,9 @@ export namespace Orders {
   export function findById(orderId: string, token: string): Promise<Order> {
     const { authToken } = getTokenData(token);
     return clientExecute({
-      uri: services.myOrders.byId(orderId).build(),
+      uri: getServices()
+        .myOrders.byId(orderId)
+        .build(),
       method: methods.GET,
       token: authToken
     });
@@ -36,7 +40,7 @@ export namespace Orders {
     }
 
     return clientExecute({
-      uri: services.myOrders.build(),
+      uri: getServices().myOrders.build(),
       method: methods.POST,
       token: authToken,
       body: {

@@ -4,10 +4,10 @@ import * as uuid from 'uuid/v4';
 import omit = require('lodash/omit');
 import {
   methods,
-  sdkConfig,
+  getConfig,
   authenticatedFormRequest,
   clientExecute,
-  services
+  getServices
 } from '../sdk';
 import {
   AnonymousSignInResult,
@@ -42,12 +42,13 @@ export namespace Customers {
     password: string,
     loginResult: CustomerSignInResult
   ): Promise<TokenizedSignInResult> {
+    const config = getConfig();
     const scopes = userScopes
-      .map(scope => `${scope}:${sdkConfig.projectKey}`)
+      .map(scope => `${scope}:${config.projectKey}`)
       .join(' ');
     return authenticatedFormRequest<OAuthToken>(
       {
-        uri: `${sdkConfig.authHost}/oauth/${sdkConfig.projectKey}/customers/token`,
+        uri: `${config.authHost}/oauth/${config.projectKey}/customers/token`,
         method: methods.POST,
         body: stringify({
           grant_type: 'password',
@@ -70,7 +71,7 @@ export namespace Customers {
     token?: string
   ): Promise<TokenizedSignInResult> {
     return clientExecute<CustomerSignInResult>({
-      uri: services.login.build(),
+      uri: getServices().login.build(),
       method: methods.POST,
       body: {
         email,
@@ -87,7 +88,7 @@ export namespace Customers {
     token?: string
   ): Promise<TokenizedSignInResult> {
     return clientExecute<CustomerSignInResult>({
-      uri: services.customers.build(),
+      uri: getServices().customers.build(),
       method: methods.POST,
       body: {
         ...customerData,
@@ -101,8 +102,9 @@ export namespace Customers {
 
   export function loginAnonymously(): Promise<AnonymousSignInResult> {
     const anonymousId = uuid();
+    const config = getConfig();
     return authenticatedFormRequest<OAuthToken>({
-      uri: `${sdkConfig.authHost}/oauth/${sdkConfig.projectKey}/anonymous/token`,
+      uri: `${config.authHost}/oauth/${config.projectKey}/anonymous/token`,
       method: methods.POST,
       body: stringify({
         grant_type: 'client_credentials',
@@ -120,7 +122,9 @@ export namespace Customers {
       return Promise.resolve(cached);
     }
     return clientExecute<Customer>({
-      uri: services.customers.byId(customerId).build(),
+      uri: getServices()
+        .customers.byId(customerId)
+        .build(),
       method: methods.GET
     }).then(customer => {
       customerCache.set(customer.id, customer);

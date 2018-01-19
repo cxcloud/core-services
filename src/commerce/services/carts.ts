@@ -4,7 +4,7 @@
  */
 import * as config from 'config';
 
-import { clientExecute, methods, services } from '../sdk';
+import { clientExecute, methods, getServices } from '../sdk';
 import {
   Cart,
   IAddLineItem,
@@ -39,7 +39,7 @@ export namespace Carts {
     }
 
     return clientExecute<Cart>({
-      uri: services.myCarts.build(),
+      uri: getServices().myCarts.build(),
       method: methods.POST,
       body: params,
       token: authToken
@@ -53,7 +53,7 @@ export namespace Carts {
     return Orders.findById(orderId, token).then(order => {
       const { authToken } = getTokenData(token);
       return clientExecute<Cart>({
-        uri: services.myCarts.build(),
+        uri: getServices().myCarts.build(),
         method: methods.POST,
         token: authToken,
         body: {
@@ -79,7 +79,9 @@ export namespace Carts {
   export function findById(cartId: string, token: string): Promise<Cart> {
     const { authToken } = getTokenData(token);
     return clientExecute({
-      uri: services.myCarts.byId(cartId).build(),
+      uri: getServices()
+        .myCarts.byId(cartId)
+        .build(),
       method: methods.GET,
       token: authToken
     });
@@ -88,7 +90,7 @@ export namespace Carts {
   export function findActiveCart(token: string): Promise<Cart> {
     const { authToken } = getTokenData(token);
     return clientExecute({
-      uri: services.activeCart.build(),
+      uri: getServices().activeCart.build(),
       method: methods.GET,
       token: authToken
     });
@@ -105,7 +107,9 @@ export namespace Carts {
     }
     const { authToken } = getTokenData(token);
     return clientExecute({
-      uri: services.myCarts.byId(cartId).build(),
+      uri: getServices()
+        .myCarts.byId(cartId)
+        .build(),
       method: methods.POST,
       token: authToken,
       body: {
