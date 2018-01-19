@@ -5,6 +5,14 @@ import {
 } from 'contentful';
 import * as config from 'config';
 
-export const client: ContentfulClientApi = createClient(
-  config.get<CreateClientParams>('contentful.sdkConfig')
-);
+let __client: ContentfulClientApi;
+
+export function getClient() {
+  if (__client) {
+    return __client;
+  }
+  __client = createClient(
+    config.get<CreateClientParams>('contentful.sdkConfig')
+  );
+  return __client;
+}
