@@ -114,22 +114,6 @@ export namespace Customers {
     }));
   }
 
-  export function loginAdmin(email: string, password: string): Promise<any> {
-    const scopes = ['manage_orders', 'manage_products', 'manage_customers'];
-    return authenticatedFormRequest<OAuthToken>({
-      uri: `${sdkConfig.authHost}/oauth/token`,
-      method: methods.POST,
-      body: stringify({
-        scope: scopes
-          .map(scope => `${scope}:${sdkConfig.projectKey}`)
-          .join(' '),
-        grant_type: 'password',
-        username: email,
-        password: password
-      })
-    }) /* .then(tokenResult => ({})) */;
-  }
-
   export function findById(customerId: string): Promise<Customer> {
     const cached = customerCache.get<Customer>(customerId);
     if (cached) {
