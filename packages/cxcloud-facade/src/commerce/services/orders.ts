@@ -1,6 +1,10 @@
 import { getTokenData } from '../../tools/crypto';
 import { clientExecute, methods, getServices } from '../sdk';
-import { Order, PaginatedOrderResult } from '@cxcloud/ct-types/orders';
+import {
+  Order,
+  PaginatedOrderResult,
+  OrderUpdateAction
+} from '@cxcloud/ct-types/orders';
 
 export namespace Orders {
   export function fetchAll(
@@ -51,6 +55,25 @@ export namespace Orders {
         id: cartId,
         version: cartVersion,
         orderNumber
+      }
+    });
+  }
+
+  export function update(
+    orderId: string,
+    orderVersion: number,
+    actions: OrderUpdateAction[],
+    token: string
+  ): Promise<Order> {
+    return clientExecute({
+      uri: getServices()
+        .orders.byId(orderId)
+        .build(),
+      method: methods.POST,
+      token,
+      body: {
+        version: orderVersion,
+        actions
       }
     });
   }
