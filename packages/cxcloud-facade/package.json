@@ -1,6 +1,6 @@
 {
   "name": "@cxcloud/core",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "CX Cloud Core Services Module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
