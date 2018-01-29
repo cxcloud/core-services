@@ -18,7 +18,7 @@ import {
 } from '../../tools/customers';
 import { getTokenData } from '../../tools/crypto';
 import { Orders } from './orders';
-import { Customers } from './customers';
+import { findCustomerById } from './customers';
 
 export namespace Carts {
   export async function create(token: string): Promise<Cart> {
@@ -29,7 +29,7 @@ export namespace Carts {
     };
 
     if (!isAnonymous) {
-      const customer = await Customers.findById(customerId);
+      const customer = await findCustomerById(customerId);
       params = {
         ...params,
         customerEmail: customer.email,
