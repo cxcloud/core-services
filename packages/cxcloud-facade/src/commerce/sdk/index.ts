@@ -18,7 +18,7 @@ let __client: any;
 let __services: any;
 
 export function getConfig() {
-  if (config.has('commerceTools')) {
+  if (!config.has('commerceTools')) {
     throw new Error('Project has not been configured yet. Check docs first.');
   }
   return config.get<SdkConfig>('commerceTools');

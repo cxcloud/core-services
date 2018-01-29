@@ -1,5 +1,5 @@
 import { stringify } from 'querystring';
-import { methods, sdkConfig, authenticatedFormRequest } from '../sdk';
+import { methods, getConfig, authenticatedFormRequest } from '../sdk';
 import { OAuthToken } from '@cxcloud/ct-types/customers';
 
 export namespace Users {
@@ -8,13 +8,12 @@ export namespace Users {
     password: string
   ): Promise<OAuthToken> {
     const scopes = ['manage_orders', 'manage_products', 'manage_customers'];
+    const config = getConfig();
     return authenticatedFormRequest<OAuthToken>({
-      uri: `${sdkConfig.authHost}/oauth/token`,
+      uri: `${config.authHost}/oauth/token`,
       method: methods.POST,
       body: stringify({
-        scope: scopes
-          .map(scope => `${scope}:${sdkConfig.projectKey}`)
-          .join(' '),
+        scope: scopes.map(scope => `${scope}:${config.projectKey}`).join(' '),
         grant_type: 'password',
         username: email,
         password: password
