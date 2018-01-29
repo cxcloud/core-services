@@ -1,10 +1,7 @@
 import { getTokenData } from '../../tools/crypto';
 import { clientExecute, methods, getServices } from '../sdk';
-import {
-  Order,
-  PaginatedOrderResult,
-  OrderUpdateAction
-} from '@cxcloud/ct-types/orders';
+import { Order, PaginatedOrderResult } from '@cxcloud/ct-types/orders';
+import { UpdateAction } from '@cxcloud/ct-types/common';
 
 export namespace Orders {
   export function fetchAll(
@@ -67,7 +64,7 @@ export namespace Orders {
   export function update(
     orderId: string,
     orderVersion: number,
-    actions: OrderUpdateAction[],
+    actions: UpdateAction[],
     token: string
   ): Promise<Order> {
     return clientExecute({
@@ -80,6 +77,21 @@ export namespace Orders {
         version: orderVersion,
         actions
       }
+    });
+  }
+
+  export function remove(
+    orderId: string,
+    orderVersion: number,
+    token: string
+  ): Promise<Order> {
+    return clientExecute({
+      uri: getServices()
+        .orders.byId(orderId)
+        .withVersion(orderVersion)
+        .build(),
+      method: methods.DELETE,
+      token
     });
   }
 }

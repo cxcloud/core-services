@@ -17,10 +17,10 @@ import {
   OAuthToken,
   TokenizedSignInResult
 } from '@cxcloud/ct-types/customers';
+import { UpdateAction } from '@cxcloud/ct-types/common';
 import {
   encryptTokenResponse,
-  getAnonymousIdFromToken,
-  getTokenData
+  getAnonymousIdFromToken
 } from '../../tools/crypto';
 
 const customerCache = new Cache({
@@ -35,6 +35,22 @@ const userScopes = [
   'manage_my_profile',
   'manage_my_payments'
 ];
+
+export function findCustomerById(customerId: string): Promise<Customer> {
+  const cached = customerCache.get<Customer>(customerId);
+  if (cached) {
+    return Promise.resolve(cached);
+  }
+  return clientExecute<Customer>({
+    uri: getServices()
+      .customers.byId(customerId)
+      .build(),
+    method: methods.GET
+  }).then(customer => {
+    customerCache.set(customer.id, customer);
+    return customer;
+  });
+}
 
 export namespace Customers {
   function obtainTokenForLoggedInCustomer(
@@ -116,27 +132,50 @@ export namespace Customers {
     }));
   }
 
-  export function findById(customerId: string): Promise<Customer> {
-    const cached = customerCache.get<Customer>(customerId);
-    if (cached) {
-      return Promise.resolve(cached);
-    }
+  export function findById(
+    customerId: string,
+    token: string
+  ): Promise<Customer> {
     return clientExecute<Customer>({
       uri: getServices()
         .customers.byId(customerId)
         .build(),
-      method: methods.GET
-    }).then(customer => {
-      customerCache.set(customer.id, customer);
-      return customer;
+      method: methods.GET,
+      token
     });
   }
 
-  export async function findByAuthToken(token: string): Promise<Customer> {
-    const { customerId } = getTokenData(token);
-    if (!customerId) {
-      throw new Error('Invalid token provided, customer not found.');
-    }
-    return findById(customerId);
+  export function update(
+    customerId: string,
+    customerVersion: number,
+    actions: UpdateAction[],
+    token: string
+  ): Promise<Customer> {
+    return clientExecute({
+      uri: getServices()
+        .customers.byId(customerId)
+        .build(),
+      method: methods.POST,
+      token,
+      body: {
+        version: customerVersion,
+        actions
+      }
+    });
+  }
+
+  export function remove(
+    customerId: string,
+    customerVersion: number,
+    token: string
+  ): Promise<Customer> {
+    return clientExecute({
+      uri: getServices()
+        .customers.byId(customerId)
+        .withVersion(customerVersion)
+        .build(),
+      method: methods.DELETE,
+      token
+    });
   }
 }

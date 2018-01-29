@@ -79,6 +79,10 @@ export function getServices() {
 
 function createClientRequest(request: ClientRequest): ClientRequest {
   const { token, ...rest } = request;
+  if ('token' in request && typeof token !== 'string') {
+    throw new Error('Invalid token provided');
+  }
+
   if (token) {
     return {
       headers: {
