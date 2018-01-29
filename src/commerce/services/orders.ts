@@ -3,14 +3,18 @@ import { clientExecute, methods, getServices } from '../sdk';
 import { Order, PaginatedOrderResult } from '@cxcloud/ct-types/orders';
 
 export namespace Orders {
-  export function fetchAll(token: string): Promise<PaginatedOrderResult> {
-    const { authToken } = getTokenData(token);
+  export function fetchAll(
+    token: string,
+    isAdmin = false
+  ): Promise<PaginatedOrderResult> {
+    const service = isAdmin ? getServices().orders : getServices().myOrders;
+    if (!isAdmin) {
+      token = getTokenData(token).authToken;
+    }
     return clientExecute({
-      uri: getServices()
-        .myOrders.perPage(20)
-        .build(),
+      uri: service.perPage(20).build(),
       method: methods.GET,
-      token: authToken
+      token
     });
   }
 
