@@ -22,14 +22,19 @@ export namespace Orders {
     });
   }
 
-  export function findById(orderId: string, token: string): Promise<Order> {
-    const { authToken } = getTokenData(token);
+  export function findById(
+    orderId: string,
+    token: string,
+    isAdmin = false
+  ): Promise<Order> {
+    const service = isAdmin ? getServices().orders : getServices().myOrders;
+    if (!isAdmin) {
+      token = getTokenData(token).authToken;
+    }
     return clientExecute({
-      uri: getServices()
-        .myOrders.byId(orderId)
-        .build(),
+      uri: service.byId(orderId).build(),
       method: methods.GET,
-      token: authToken
+      token
     });
   }
 
