@@ -1,27 +1,37 @@
 import { getTokenData } from '../../tools/crypto';
 import { clientExecute, methods, getServices } from '../sdk';
 import { Order, PaginatedOrderResult } from '@cxcloud/ct-types/orders';
+import { UpdateAction } from '@cxcloud/ct-types/common';
 
 export namespace Orders {
-  export function fetchAll(token: string): Promise<PaginatedOrderResult> {
-    const { authToken } = getTokenData(token);
+  export function fetchAll(
+    token: string,
+    isAdmin = false
+  ): Promise<PaginatedOrderResult> {
+    const service = isAdmin ? getServices().orders : getServices().myOrders;
+    if (!isAdmin) {
+      token = getTokenData(token).authToken;
+    }
     return clientExecute({
-      uri: getServices()
-        .myOrders.perPage(20)
-        .build(),
+      uri: service.perPage(20).build(),
       method: methods.GET,
-      token: authToken
+      token
     });
   }
 
-  export function findById(orderId: string, token: string): Promise<Order> {
-    const { authToken } = getTokenData(token);
+  export function findById(
+    orderId: string,
+    token: string,
+    isAdmin = false
+  ): Promise<Order> {
+    const service = isAdmin ? getServices().orders : getServices().myOrders;
+    if (!isAdmin) {
+      token = getTokenData(token).authToken;
+    }
     return clientExecute({
-      uri: getServices()
-        .myOrders.byId(orderId)
-        .build(),
+      uri: service.byId(orderId).build(),
       method: methods.GET,
-      token: authToken
+      token
     });
   }
 
@@ -48,6 +58,40 @@ export namespace Orders {
         version: cartVersion,
         orderNumber
       }
+    });
+  }
+
+  export function update(
+    orderId: string,
+    orderVersion: number,
+    actions: UpdateAction[],
+    token: string
+  ): Promise<Order> {
+    return clientExecute({
+      uri: getServices()
+        .orders.byId(orderId)
+        .build(),
+      method: methods.POST,
+      token,
+      body: {
+        version: orderVersion,
+        actions
+      }
+    });
+  }
+
+  export function remove(
+    orderId: string,
+    orderVersion: number,
+    token: string
+  ): Promise<Order> {
+    return clientExecute({
+      uri: getServices()
+        .orders.byId(orderId)
+        .withVersion(orderVersion)
+        .build(),
+      method: methods.DELETE,
+      token
     });
   }
 }

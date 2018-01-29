@@ -18,7 +18,7 @@ let __client: any;
 let __services: any;
 
 export function getConfig() {
-  if (config.has('commerceTools')) {
+  if (!config.has('commerceTools')) {
     throw new Error('Project has not been configured yet. Check docs first.');
   }
   return config.get<SdkConfig>('commerceTools');
@@ -79,6 +79,10 @@ export function getServices() {
 
 function createClientRequest(request: ClientRequest): ClientRequest {
   const { token, ...rest } = request;
+  if ('token' in request && typeof token !== 'string') {
+    throw new Error('Invalid token provided');
+  }
+
   if (token) {
     return {
       headers: {
