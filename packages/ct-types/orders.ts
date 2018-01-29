@@ -36,3 +36,8 @@ export interface Order extends CartBase {
 export interface PaginatedOrderResult extends PaginatedResult {
   results: Order[];
 }
+
+export interface OrderUpdateAction {
+  action: string;
+  [key: string]: any;
+}
