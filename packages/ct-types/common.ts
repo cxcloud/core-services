@@ -83,3 +83,8 @@ export interface Address {
   additionalAddressInfo?: string;
   externalId?: string;
 }
+
+export interface UpdateAction {
+  action: string;
+  [key: string]: any;
+}
