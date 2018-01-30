@@ -15,7 +15,8 @@ import {
   CustomerSignInResult,
   CustomerSignupDraft,
   OAuthToken,
-  TokenizedSignInResult
+  TokenizedSignInResult,
+  PaginatedCustomerResult
 } from '@cxcloud/ct-types/customers';
 import { UpdateAction } from '@cxcloud/ct-types/common';
 import {
@@ -130,6 +131,16 @@ export namespace Customers {
       token: encryptTokenResponse(tokenResult, anonymousId, true),
       anonymousId
     }));
+  }
+
+  export function fetchAll(token: string): Promise<PaginatedCustomerResult> {
+    return clientExecute({
+      uri: getServices()
+        .customers.perPage(20)
+        .build(),
+      method: methods.GET,
+      token
+    });
   }
 
   export function findById(
