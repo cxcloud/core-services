@@ -1,5 +1,6 @@
 import { Cart } from './carts';
 import { Address, Custom, Reference } from './common';
+import { PaginatedResult } from './sdk';
 
 export interface Customer {
   id: string;
@@ -79,4 +80,8 @@ export interface CustomerSignupDraft {
   shippingAddresses?: number[];
   custom?: Custom;
   locale?: any; // @TODO: locale support
+}
+
+export interface PaginatedCustomerResult extends PaginatedResult {
+  results: Customer[];
 }
