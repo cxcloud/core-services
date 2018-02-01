@@ -1,16 +1,22 @@
 import { clientExecute, methods, getServices } from '../sdk';
 import { PaginatedProductResult, Product } from '@cxcloud/ct-types/products';
+import { QueryOptions } from '@cxcloud/ct-types/common';
+import { getDefaults } from '../../tools/query';
 
 export namespace Products {
   export function findByCategoryId(
-    categoryId: string
+    categoryId: string,
+    options: QueryOptions = {}
   ): Promise<PaginatedProductResult> {
+    const { page, perPage, sortPath, ascending } = getDefaults(options);
     return clientExecute({
       uri: getServices()
         .productProjectionsSearch.filter(
           `categories.id:subtree("${categoryId}")`
         )
-        .perPage(20)
+        .page(page)
+        .perPage(perPage)
+        .sort(sortPath, ascending)
         .build(),
       method: methods.GET
     });
@@ -18,13 +24,17 @@ export namespace Products {
 
   export function findBySearchQuery(
     q: string,
-    language = 'en'
+    language = 'en',
+    options: QueryOptions = {}
   ): Promise<PaginatedProductResult> {
+    const { page, perPage, sortPath, ascending } = getDefaults(options);
     return clientExecute({
       uri: getServices()
         .productProjectionsSearch.text(q, language)
         .fuzzy(true)
-        .perPage(20)
+        .page(page)
+        .perPage(perPage)
+        .sort(sortPath, ascending)
         .build(),
       method: methods.GET
     });

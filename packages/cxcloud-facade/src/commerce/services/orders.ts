@@ -1,19 +1,26 @@
 import { getTokenData } from '../../tools/crypto';
+import { getDefaults } from '../../tools/query';
 import { clientExecute, methods, getServices } from '../sdk';
 import { Order, PaginatedOrderResult } from '@cxcloud/ct-types/orders';
-import { UpdateAction } from '@cxcloud/ct-types/common';
+import { UpdateAction, QueryOptions } from '@cxcloud/ct-types/common';
 
 export namespace Orders {
   export function fetchAll(
     token: string,
-    isAdmin = false
+    isAdmin = false,
+    options: QueryOptions = {}
   ): Promise<PaginatedOrderResult> {
+    const { page, perPage, sortPath, ascending } = getDefaults(options);
     const service = isAdmin ? getServices().orders : getServices().myOrders;
     if (!isAdmin) {
       token = getTokenData(token).authToken;
     }
     return clientExecute({
-      uri: service.perPage(20).build(),
+      uri: service
+        .page(page)
+        .perPage(perPage)
+        .sort(sortPath, ascending)
+        .build(),
       method: methods.GET,
       token
     });
