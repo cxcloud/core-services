@@ -18,11 +18,12 @@ import {
   TokenizedSignInResult,
   PaginatedCustomerResult
 } from '@cxcloud/ct-types/customers';
-import { UpdateAction } from '@cxcloud/ct-types/common';
+import { UpdateAction, QueryOptions } from '@cxcloud/ct-types/common';
 import {
   encryptTokenResponse,
   getAnonymousIdFromToken
 } from '../../tools/crypto';
+import { getDefaults } from '../../tools/query';
 
 const customerCache = new Cache({
   stdTTL: 60 * 15 // 15 mins
@@ -133,10 +134,16 @@ export namespace Customers {
     }));
   }
 
-  export function fetchAll(token: string): Promise<PaginatedCustomerResult> {
+  export function fetchAll(
+    token: string,
+    options: QueryOptions = {}
+  ): Promise<PaginatedCustomerResult> {
+    const { page, perPage, sortPath, ascending } = getDefaults(options);
     return clientExecute({
       uri: getServices()
-        .customers.perPage(20)
+        .customers.page(page)
+        .perPage(perPage)
+        .sort(sortPath, ascending)
         .build(),
       method: methods.GET,
       token
