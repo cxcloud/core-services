@@ -88,3 +88,10 @@ export interface UpdateAction {
   action: string;
   [key: string]: any;
 }
+
+export interface QueryOptions {
+  page?: number;
+  perPage?: number;
+  sortPath?: string;
+  ascending?: boolean;
+}
