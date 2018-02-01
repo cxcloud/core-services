@@ -54,7 +54,7 @@
     "@commercetools/sdk-middleware-logger": "^1.0.0",
     "@commercetools/sdk-middleware-queue": "^1.1.0",
     "@commercetools/sdk-middleware-user-agent": "^1.2.0",
-    "@cxcloud/ct-types": "^0.1.8",
+    "@cxcloud/ct-types": "^0.3.0",
     "config": "^1.26.2",
     "contentful": "^5.0.5",
     "country-tools": "^0.1.2",
