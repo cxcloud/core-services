@@ -48,7 +48,7 @@ export namespace Orders {
     orderNumber: string | null,
     token: string
   ): Promise<Order> {
-    const { authToken, isAnonymous } = getTokenData(token);
+    const { isAnonymous } = getTokenData(token);
 
     if (isAnonymous) {
       return Promise.reject(
@@ -56,10 +56,13 @@ export namespace Orders {
       );
     }
 
+    // This should be using `myOrders` service and not `orders`,
+    // but CommerceTools doesn't accept orderNumber on `myOrders`.
+    // so using the master now. It shouldn't matter much for now.
     return clientExecute({
-      uri: getServices().myOrders.build(),
+      uri: getServices().orders.build(),
       method: methods.POST,
-      token: authToken,
+      /*token: authToken,*/
       body: {
         id: cartId,
         version: cartVersion,
