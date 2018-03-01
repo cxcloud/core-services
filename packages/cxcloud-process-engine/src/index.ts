@@ -1,2 +1,7 @@
-export { createQueueProcessor, SendMessageFunction, Message } from './queue';
-export { createQueuePool } from './pool';
+export {
+  createQueueProcessor,
+  SendMessageFunction,
+  Message,
+  QueueProcessor
+} from './queue';
+export { createQueuePool, QueuePool } from './pool';
