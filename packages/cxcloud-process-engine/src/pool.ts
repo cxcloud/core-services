@@ -29,7 +29,7 @@ export class QueuePool {
       poolItem => poolItem.options.name === name
     );
     if (!processor) {
-      throw new Error('Processor has not been found');
+      throw new Error(`Processor ${name} has not been found`);
     }
     return processor;
   }
