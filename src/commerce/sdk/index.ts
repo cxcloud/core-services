@@ -29,27 +29,31 @@ export function getClient() {
     return __client;
   }
   const sdkConfig = getConfig();
+
+  const middlewares = [
+    createAuthMiddlewareForIntrospectionFlow(sdkConfig),
+    createAuthMiddlewareForClientCredentialsFlow({
+      host: sdkConfig.authHost,
+      projectKey: sdkConfig.projectKey,
+      credentials: {
+        clientId: sdkConfig.admin.clientId,
+        clientSecret: sdkConfig.admin.clientSecret
+      }
+    }),
+    createQueueMiddleware({ concurrency: 10 }),
+    createHttpMiddleware({ host: sdkConfig.apiHost }),
+    createUserAgentMiddleware({
+      libraryName: packageInfo.name,
+      libraryVersion: packageInfo.version,
+      contactUrl: packageInfo.homepage,
+      contactEmail: 'cxcloud@tieto.com'
+    })
+  ];
+  if (sdkConfig.verbose === true) {
+    middlewares.push(createLoggerMiddleware());
+  }
   __client = createClient({
-    middlewares: [
-      createAuthMiddlewareForIntrospectionFlow(sdkConfig),
-      createAuthMiddlewareForClientCredentialsFlow({
-        host: sdkConfig.authHost,
-        projectKey: sdkConfig.projectKey,
-        credentials: {
-          clientId: sdkConfig.admin.clientId,
-          clientSecret: sdkConfig.admin.clientSecret
-        }
-      }),
-      createQueueMiddleware({ concurrency: 10 }),
-      createHttpMiddleware({ host: sdkConfig.apiHost }),
-      createUserAgentMiddleware({
-        libraryName: packageInfo.name,
-        libraryVersion: packageInfo.version,
-        contactUrl: packageInfo.homepage,
-        contactEmail: 'cxcloud@tieto.com'
-      }),
-      createLoggerMiddleware()
-    ]
+    middlewares
   });
   return __client;
 }
