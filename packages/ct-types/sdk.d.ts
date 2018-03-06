@@ -27,4 +27,5 @@ export type SdkConfig = {
   user: ClientCredentials;
   authHost: string;
   apiHost: string;
+  verbose: boolean;
 };
