@@ -27,11 +27,11 @@ export namespace Content {
     return getClient().getSpace();
   }
 
-  export function getAsset(id: string, query: any): Promise<Asset> {
+  export function getAsset(id: string): Promise<Asset> {
     return getClient().getAsset(id);
   }
 
   export function getAssets(query: any): Promise<ContentfulCollection<Asset>> {
-    return getClient().getAssets();
+    return getClient().getAssets(query);
   }
 }
