@@ -1,4 +1,10 @@
-import { Entry, EntryCollection, Space } from 'contentful';
+import {
+  Entry,
+  EntryCollection,
+  Space,
+  Asset,
+  ContentfulCollection
+} from 'contentful';
 import { getClient } from './sdk';
 
 export namespace Content {
@@ -19,5 +25,13 @@ export namespace Content {
 
   export function getSpace(): Promise<Space> {
     return getClient().getSpace();
+  }
+
+  export function getAsset(id: string, query: any): Promise<Asset> {
+    return getClient().getAsset(id);
+  }
+
+  export function getAssets(query: any): Promise<ContentfulCollection<Asset>> {
+    return getClient().getAssets();
   }
 }
