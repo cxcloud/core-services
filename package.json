@@ -13,10 +13,7 @@
     "prepublish": "npm run build"
   },
   "lint-staged": {
-    "src/**/*.ts": [
-      "prettier --write",
-      "git add"
-    ]
+    "src/**/*.ts": ["prettier --write", "git add"]
   },
   "repository": {
     "type": "git",
@@ -30,7 +27,6 @@
   },
   "homepage": "https://github.com/smilehouse/cxcloud-facade#readme",
   "devDependencies": {
-    "@types/algoliasearch": "^3.24.9",
     "@types/config": "0.0.33",
     "@types/lodash": "^4.14.80",
     "@types/node": "^8.0.34",
@@ -55,6 +51,7 @@
     "@commercetools/sdk-middleware-logger": "^1.0.0",
     "@commercetools/sdk-middleware-queue": "^1.1.0",
     "@commercetools/sdk-middleware-user-agent": "^1.2.0",
+    "@types/algoliasearch": "^3.27.1",
     "@cxcloud/ct-types": "^0.3.1",
     "algoliasearch": "^3.24.11",
     "config": "^1.26.2",

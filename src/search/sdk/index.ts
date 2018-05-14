@@ -1,7 +1,7 @@
 import * as algolia from 'algoliasearch';
 import * as config from 'config';
 
-let __client: algolia.AlgoliaClient;
+let __client: algolia.Client;
 
 export function getClient() {
   if (__client) {

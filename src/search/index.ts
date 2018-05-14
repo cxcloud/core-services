@@ -1,4 +1,7 @@
-import { AlgoliaQueryParameters, AlgoliaResponse } from 'algoliasearch';
+import {
+  QueryParameters as AlgoliaQueryParameters,
+  Response
+} from 'algoliasearch';
 import { getClient } from './sdk';
 
 export namespace Search {
@@ -6,7 +9,7 @@ export namespace Search {
   export function searchIndex(
     indexName: string,
     params: AlgoliaQueryParameters
-  ): Promise<AlgoliaResponse> {
+  ): Promise<Response> {
     const index = getClient().initIndex(indexName);
     return index.search(params);
   }
