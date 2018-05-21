@@ -12,6 +12,19 @@ export interface RegisterCodeResentResult {
   };
 }
 
+export interface LoginSuccessResult {
+  refreshToken: string;
+  accessToken: string;
+  accessTokenExpiresAt: string;
+  idToken: string;
+  idTokenExpiresAt: string;
+}
+
+export interface LoginNextStepResult {
+  nextStep: 'MFA_AUTH' | 'NEW_PASSWORD_REQUIRED';
+  loginSession: string;
+}
+
 export namespace Auth {
   export function register(
     username: string,
@@ -40,7 +53,14 @@ export namespace Auth {
     });
   }
 
-  export function login(email: string, password: string) {
+  export function login(
+    username: string,
+    password: string
+  ): Promise<LoginSuccessResult | LoginNextStepResult> {
+    return getClient().login({
+      username,
+      password
+    });
   }
 
   export function forgotPassword(email: string) {
