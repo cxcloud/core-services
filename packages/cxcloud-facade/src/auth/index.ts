@@ -1,5 +1,7 @@
 import { getClient } from './sdk';
 
+export type Status = 'SUCCESS';
+
 export interface RegisterResult {
   username: string;
 }
@@ -39,7 +41,7 @@ export namespace Auth {
   export function registerConfirmation(
     username: string,
     confirmationCode: string
-  ): Promise<string> {
+  ): Promise<Status> {
     return getClient().signupConfirm({
       username,
       confirmationCode
@@ -90,7 +92,7 @@ export namespace Auth {
   export function logout(
     username: string,
     refreshToken: string
-  ): Promise<string> {
+  ): Promise<Status> {
     return getClient().logout({
       username,
       refreshToken
@@ -117,7 +119,7 @@ export namespace Auth {
     username: string,
     passwordResetCode: string,
     newPassword: string
-  ): Promise<string> {
+  ): Promise<Status> {
     return getClient().passwordReset({
       username,
       passwordResetCode,
