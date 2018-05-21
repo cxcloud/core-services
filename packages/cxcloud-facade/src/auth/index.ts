@@ -1,17 +1,42 @@
 import { getClient } from './sdk';
 
-export interface SignupResult {
+export interface RegisterResult {
   username: string;
+}
+
+export interface RegisterCodeResentResult {
+  CodeDeliveryDetails: {
+    Destination: string;
+    DeliveryMedium: string;
+    AttributeName: string;
+  };
 }
 
 export namespace Auth {
   export function register(
-    email: string,
+    username: string,
     password: string
-  ): Promise<SignupResult> {
+  ): Promise<RegisterResult> {
     return getClient().signup({
-      username: email,
+      username,
       password
+    });
+  }
+
+  export function registerConfirmation(
+    username: string,
+    confirmationCode: string
+  ): Promise<string> {
+    return getClient().signupConfirm({
+      username,
+      confirmationCode
+    });
+  }
+  export function registerResendCode(
+    username: string
+  ): Promise<RegisterCodeResentResult> {
+    return getClient().signupResend({
+      username
     });
   }
 
