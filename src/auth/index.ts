@@ -4,7 +4,7 @@ export interface RegisterResult {
   username: string;
 }
 
-export interface RegisterCodeResentResult {
+export interface CodeDeliveryResult {
   CodeDeliveryDetails: {
     Destination: string;
     DeliveryMedium: string;
@@ -47,7 +47,7 @@ export namespace Auth {
   }
   export function registerResendCode(
     username: string
-  ): Promise<RegisterCodeResentResult> {
+  ): Promise<CodeDeliveryResult> {
     return getClient().signupResend({
       username
     });
@@ -87,13 +87,41 @@ export namespace Auth {
     });
   }
 
-  export function forgotPassword(email: string) {
+  export function logout(
+    username: string,
+    refreshToken: string
+  ): Promise<string> {
+    return getClient().logout({
+      username,
+      refreshToken
+    });
   }
 
-  export function forgotPasswordSubmit(
-    email: string,
-    code: string,
+  export function refreshSession(
+    username: string,
+    refreshToken: string
+  ): Promise<LoginSuccessResult> {
+    return getClient().logout({
+      username,
+      refreshToken
+    });
+  }
+
+  export function passwordForgot(
+    username: string
+  ): Promise<CodeDeliveryResult> {
+    return getClient().passwordForgot({ username });
+  }
+
+  export function passwordReset(
+    username: string,
+    passwordResetCode: string,
     newPassword: string
-  ) {
+  ): Promise<string> {
+    return getClient().passwordReset({
+      username,
+      passwordResetCode,
+      newPassword
+    });
   }
 }
