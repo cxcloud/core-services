@@ -63,6 +63,30 @@ export namespace Auth {
     });
   }
 
+  export function loginMfa(
+    username: string,
+    mfaCode: string,
+    loginSession: string
+  ): Promise<LoginSuccessResult> {
+    return getClient().loginSession({
+      username,
+      mfaCode,
+      loginSession
+    });
+  }
+
+  export function loginNewPasswordRequired(
+    username: string,
+    newPassword: string,
+    loginSession: string
+  ): Promise<LoginSuccessResult> {
+    return getClient().loginSession({
+      username,
+      newPassword,
+      loginSession
+    });
+  }
+
   export function forgotPassword(email: string) {
   }
 
