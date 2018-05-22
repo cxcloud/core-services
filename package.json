@@ -8,7 +8,7 @@
     "clean": "rimraf ./dist",
     "prebuild": "npm run clean",
     "build": "tsc",
-    "build:docs": "typedoc --theme minimal --out docs --mode file",
+    "build:docs": "typedoc --theme minimal --out docs --mode file --excludePrivate --excludeProtected",
     "format": "prettier --write 'src/**/*.ts'",
     "precommit": "lint-staged",
     "prepublish": "npm run build"
