@@ -1,6 +1,6 @@
 {
   "name": "@cxcloud/core",
-  "version": "1.11.2",
+  "version": "1.12.0",
   "description": "CX Cloud Core Services Module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -13,7 +13,10 @@
     "prepublish": "npm run build"
   },
   "lint-staged": {
-    "src/**/*.ts": ["prettier --write", "git add"]
+    "src/**/*.ts": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
