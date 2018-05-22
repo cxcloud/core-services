@@ -29,6 +29,14 @@ import { Cart } from '@cxcloud/core/dist/commerce';
   - Entry
   - Entries
   - Space Info
++ Search (Powered by [Algolia](https://algolia.com))
++ Authentication (Powered by [AWS Cognito](https://aws.amazon.com/cognito/))
+  - Login (Normal, MFA)
+  - Registration
+  - Edit Profile and Phone Number
+  - Session Update
+  - Password Forgot, Reset, Change
+  - Get Profile
 
 ## Documentation
 
@@ -43,8 +51,8 @@ Using this module requires configuration. You can do so by installing [node-conf
   "commerceTools": {
     "projectKey": "PROJECT_KEY",
     "admin": {
-      "clientId": "ADMIn_CLIENT_ID",
-      "clientSecret": "ADMIn_CLIENT_ID"
+      "clientId": "ADMIN_CLIENT_ID",
+      "clientSecret": "ADMIN_CLIENT_ID"
     },
     "user": {
       "clientId": "USER_FACING_CLIENT_ID",
@@ -56,6 +64,14 @@ Using this module requires configuration. You can do so by installing [node-conf
       "space": "SPACE_ID",
       "accessToken": "ACCESS_TOKEN"
     }
+  },
+  "algolia": {
+    "applicationId": "APP_ID",
+    "apiKey": "API_KEY"
+  },
+  "cognito": {
+    "userPoolId": "USER_POOL_ID",
+    "clientId": "CLIENT_ID"
   }
 }
 ```
