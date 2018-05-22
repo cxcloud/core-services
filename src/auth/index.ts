@@ -1,37 +1,17 @@
 import { getClient } from './sdk';
 import {
   cognitoAttrsToHash,
-  hashToCognitoAttrs,
-  CognitoAttribute,
-  AttributesHash
+  hashToCognitoAttrs
 } from '../tools/auth-attributes';
-
-export type Status = 'SUCCESS';
-
-export interface RegisterResult {
-  username: string;
-}
-
-export interface CodeDeliveryResult {
-  CodeDeliveryDetails: {
-    Destination: string;
-    DeliveryMedium: string;
-    AttributeName: string;
-  };
-}
-
-export interface LoginSuccessResult {
-  refreshToken: string;
-  accessToken: string;
-  accessTokenExpiresAt: string;
-  idToken: string;
-  idTokenExpiresAt: string;
-}
-
-export interface LoginNextStepResult {
-  nextStep: 'MFA_AUTH' | 'NEW_PASSWORD_REQUIRED';
-  loginSession: string;
-}
+import {
+  RegisterResult,
+  Status,
+  CodeDeliveryResult,
+  LoginSuccessResult,
+  LoginNextStepResult,
+  AttributesHash,
+  CognitoAttribute
+} from './sdk/types';
 
 export namespace Auth {
   export function register(

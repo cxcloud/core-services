@@ -1,11 +1,4 @@
-export interface AttributesHash {
-  [key: string]: string;
-}
-
-export interface CognitoAttribute {
-  Name: string;
-  Value: string;
-}
+import { AttributesHash, CognitoAttribute } from '../auth/sdk/types';
 
 export function hashToCognitoAttrs(source: AttributesHash): CognitoAttribute[] {
   return Object.keys(source).map(key => ({
