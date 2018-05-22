@@ -135,6 +135,20 @@ export namespace Auth {
     });
   }
 
+  export function passwordChange(
+    username: string,
+    refreshToken: string,
+    oldPassword: string,
+    newPassword: string
+  ): Promise<Status> {
+    return getClient().passwordChange({
+      username,
+      refreshToken,
+      oldPassword,
+      newPassword
+    });
+  }
+
   export function profile(
     username: string,
     refreshToken: string
