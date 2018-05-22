@@ -1,10 +1,12 @@
 import { getClient } from './sdk';
+import {
+  cognitoAttrsToHash,
+  hashToCognitoAttrs,
+  CognitoAttribute,
+  AttributesHash
+} from '../tools/auth-attributes';
 
 export type Status = 'SUCCESS';
-
-export interface RegisterAttributes {
-  [key: string]: string;
-}
 
 export interface RegisterResult {
   username: string;
@@ -35,15 +37,12 @@ export namespace Auth {
   export function register(
     username: string,
     password: string,
-    attributes: RegisterAttributes = {}
+    attributes: AttributesHash = {}
   ): Promise<RegisterResult> {
     return getClient().signup({
       username,
       password,
-      attributes: Object.keys(attributes).map(key => ({
-        Name: key,
-        Value: attributes[key]
-      }))
+      attributes: hashToCognitoAttrs(attributes)
     });
   }
 
@@ -133,6 +132,42 @@ export namespace Auth {
       username,
       passwordResetCode,
       newPassword
+    });
+  }
+
+  export function profile(
+    username: string,
+    refreshToken: string
+  ): Promise<AttributesHash> {
+    return getClient()
+      .profile({
+        username,
+        refreshToken
+      })
+      .then((res: CognitoAttribute[]) => cognitoAttrsToHash(res));
+  }
+
+  export function profileEdit(
+    username: string,
+    refreshToken: string,
+    attributes: AttributesHash
+  ): Promise<Status> {
+    return getClient().profileEdit({
+      username,
+      refreshToken,
+      attributes: hashToCognitoAttrs(attributes)
+    });
+  }
+
+  export function profileEditPhoneNumber(
+    username: string,
+    refreshToken: string,
+    phoneNumber: string
+  ): Promise<Status> {
+    return getClient().profileEditPhoneNumber({
+      username,
+      refreshToken,
+      phone_number: phoneNumber
     });
   }
 }
