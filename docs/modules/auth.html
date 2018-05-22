@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ShippingMethod | @cxcloud/ct-types</title>
+	<title>Auth | @cxcloud/core</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -879,7 +879,7 @@ img { max-width: 100%; }
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="../index.html">@cxcloud/ct-types</a></strong>
+					<strong><a href="../index.html">@cxcloud/core</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -909,162 +909,461 @@ img { max-width: 100%; }
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
-		<li class="current tsd-kind-interface tsd-is-external">
-			<a href="shippingmethod.html" class="tsd-kind-icon">Shipping<wbr>Method</a>
-			<ul>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a href="shippingmethod.html#createdat" class="tsd-kind-icon">created<wbr>At</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a href="shippingmethod.html#description" class="tsd-kind-icon">description</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a href="shippingmethod.html#id" class="tsd-kind-icon">id</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a href="shippingmethod.html#isdefault" class="tsd-kind-icon">is<wbr>Default</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a href="shippingmethod.html#lastmodifiedat" class="tsd-kind-icon">last<wbr>Modified<wbr>At</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a href="shippingmethod.html#name" class="tsd-kind-icon">name</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a href="shippingmethod.html#taxcategory" class="tsd-kind-icon">tax<wbr>Category</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a href="shippingmethod.html#version" class="tsd-kind-icon">version</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a href="shippingmethod.html#zonerates" class="tsd-kind-icon">zone<wbr>Rates</a>
-				</li>
-			</ul>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="auth.html#login" class="tsd-kind-icon">login</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="auth.html#loginmfa" class="tsd-kind-icon">login<wbr>Mfa</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="auth.html#loginnewpasswordrequired" class="tsd-kind-icon">login<wbr>New<wbr>Password<wbr>Required</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="auth.html#logout" class="tsd-kind-icon">logout</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="auth.html#passwordchange" class="tsd-kind-icon">password<wbr>Change</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="auth.html#passwordforgot" class="tsd-kind-icon">password<wbr>Forgot</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="auth.html#passwordreset" class="tsd-kind-icon">password<wbr>Reset</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="auth.html#profile" class="tsd-kind-icon">profile</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="auth.html#profileedit" class="tsd-kind-icon">profile<wbr>Edit</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="auth.html#profileeditphonenumber" class="tsd-kind-icon">profile<wbr>Edit<wbr>Phone<wbr>Number</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="auth.html#refreshsession" class="tsd-kind-icon">refresh<wbr>Session</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="auth.html#register" class="tsd-kind-icon">register</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="auth.html#registerconfirmation" class="tsd-kind-icon">register<wbr>Confirmation</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="auth.html#registerresendcode" class="tsd-kind-icon">register<wbr>Resend<wbr>Code</a>
 		</li>
 	</ul>
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
-		<section class="tsd-panel tsd-hierarchy">
-			<h3>Hierarchy</h3>
-			<ul class="tsd-hierarchy">
-				<li>
-					<span class="target">ShippingMethod</span>
-				</li>
-			</ul>
-		</section>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
-					<section class="tsd-index-section tsd-is-external">
-						<h3>Properties</h3>
+					<section class="tsd-index-section ">
+						<h3>Functions</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="shippingmethod.html#createdat" class="tsd-kind-icon">created<wbr>At</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="shippingmethod.html#description" class="tsd-kind-icon">description</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="shippingmethod.html#id" class="tsd-kind-icon">id</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="shippingmethod.html#isdefault" class="tsd-kind-icon">is<wbr>Default</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="shippingmethod.html#lastmodifiedat" class="tsd-kind-icon">last<wbr>Modified<wbr>At</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="shippingmethod.html#name" class="tsd-kind-icon">name</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="shippingmethod.html#taxcategory" class="tsd-kind-icon">tax<wbr>Category</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="shippingmethod.html#version" class="tsd-kind-icon">version</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="shippingmethod.html#zonerates" class="tsd-kind-icon">zone<wbr>Rates</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="auth.html#login" class="tsd-kind-icon">login</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="auth.html#loginmfa" class="tsd-kind-icon">login<wbr>Mfa</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="auth.html#loginnewpasswordrequired" class="tsd-kind-icon">login<wbr>New<wbr>Password<wbr>Required</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="auth.html#logout" class="tsd-kind-icon">logout</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="auth.html#passwordchange" class="tsd-kind-icon">password<wbr>Change</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="auth.html#passwordforgot" class="tsd-kind-icon">password<wbr>Forgot</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="auth.html#passwordreset" class="tsd-kind-icon">password<wbr>Reset</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="auth.html#profile" class="tsd-kind-icon">profile</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="auth.html#profileedit" class="tsd-kind-icon">profile<wbr>Edit</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="auth.html#profileeditphonenumber" class="tsd-kind-icon">profile<wbr>Edit<wbr>Phone<wbr>Number</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="auth.html#refreshsession" class="tsd-kind-icon">refresh<wbr>Session</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="auth.html#register" class="tsd-kind-icon">register</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="auth.html#registerconfirmation" class="tsd-kind-icon">register<wbr>Confirmation</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="auth.html#registerresendcode" class="tsd-kind-icon">register<wbr>Resend<wbr>Code</a></li>
 						</ul>
 					</section>
 				</div>
 			</section>
 		</section>
-		<section class="tsd-panel-group tsd-member-group tsd-is-external">
-			<h2>Properties</h2>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-				<a name="createdat" class="tsd-anchor"></a>
-				<h3>created<wbr>At</h3>
-				<div class="tsd-signature tsd-kind-icon">created<wbr>At<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in node_modules/@cxcloud/ct-types/shipping.ts:22</li>
-					</ul>
-				</aside>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Functions</h2>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="login" class="tsd-anchor"></a>
+				<h3>login</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">login<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, password<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/loginsuccessresult.html" class="tsd-signature-type">LoginSuccessResult</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/loginnextstepresult.html" class="tsd-signature-type">LoginNextStepResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/auth/index.ts#L46">auth/index.ts:46</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>username: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>password: <span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/loginsuccessresult.html" class="tsd-signature-type">LoginSuccessResult</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/loginnextstepresult.html" class="tsd-signature-type">LoginNextStepResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-				<a name="description" class="tsd-anchor"></a>
-				<h3>description</h3>
-				<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in node_modules/@cxcloud/ct-types/shipping.ts:18</li>
-					</ul>
-				</aside>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="loginmfa" class="tsd-anchor"></a>
+				<h3>login<wbr>Mfa</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">login<wbr>Mfa<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, mfaCode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, loginSession<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/loginsuccessresult.html" class="tsd-signature-type">LoginSuccessResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/auth/index.ts#L56">auth/index.ts:56</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>username: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>mfaCode: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>loginSession: <span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/loginsuccessresult.html" class="tsd-signature-type">LoginSuccessResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-				<a name="id" class="tsd-anchor"></a>
-				<h3>id</h3>
-				<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in node_modules/@cxcloud/ct-types/shipping.ts:15</li>
-					</ul>
-				</aside>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="loginnewpasswordrequired" class="tsd-anchor"></a>
+				<h3>login<wbr>New<wbr>Password<wbr>Required</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">login<wbr>New<wbr>Password<wbr>Required<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, newPassword<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, loginSession<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/loginsuccessresult.html" class="tsd-signature-type">LoginSuccessResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/auth/index.ts#L68">auth/index.ts:68</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>username: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>newPassword: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>loginSession: <span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/loginsuccessresult.html" class="tsd-signature-type">LoginSuccessResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-				<a name="isdefault" class="tsd-anchor"></a>
-				<h3>is<wbr>Default</h3>
-				<div class="tsd-signature tsd-kind-icon">is<wbr>Default<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in node_modules/@cxcloud/ct-types/shipping.ts:21</li>
-					</ul>
-				</aside>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="logout" class="tsd-anchor"></a>
+				<h3>logout</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">logout<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, refreshToken<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#status" class="tsd-signature-type">Status</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/auth/index.ts#L80">auth/index.ts:80</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>username: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>refreshToken: <span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#status" class="tsd-signature-type">Status</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-				<a name="lastmodifiedat" class="tsd-anchor"></a>
-				<h3>last<wbr>Modified<wbr>At</h3>
-				<div class="tsd-signature tsd-kind-icon">last<wbr>Modified<wbr>At<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in node_modules/@cxcloud/ct-types/shipping.ts:23</li>
-					</ul>
-				</aside>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="passwordchange" class="tsd-anchor"></a>
+				<h3>password<wbr>Change</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">password<wbr>Change<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, refreshToken<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, oldPassword<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, newPassword<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#status" class="tsd-signature-type">Status</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/auth/index.ts#L118">auth/index.ts:118</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>username: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>refreshToken: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>oldPassword: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>newPassword: <span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#status" class="tsd-signature-type">Status</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-				<a name="name" class="tsd-anchor"></a>
-				<h3>name</h3>
-				<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in node_modules/@cxcloud/ct-types/shipping.ts:17</li>
-					</ul>
-				</aside>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="passwordforgot" class="tsd-anchor"></a>
+				<h3>password<wbr>Forgot</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">password<wbr>Forgot<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/codedeliveryresult.html" class="tsd-signature-type">CodeDeliveryResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/auth/index.ts#L100">auth/index.ts:100</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>username: <span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/codedeliveryresult.html" class="tsd-signature-type">CodeDeliveryResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-				<a name="taxcategory" class="tsd-anchor"></a>
-				<h3>tax<wbr>Category</h3>
-				<div class="tsd-signature tsd-kind-icon">tax<wbr>Category<span class="tsd-signature-symbol">:</span> <a href="reference.html" class="tsd-signature-type">Reference</a></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in node_modules/@cxcloud/ct-types/shipping.ts:19</li>
-					</ul>
-				</aside>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="passwordreset" class="tsd-anchor"></a>
+				<h3>password<wbr>Reset</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">password<wbr>Reset<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, passwordResetCode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, newPassword<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#status" class="tsd-signature-type">Status</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/auth/index.ts#L106">auth/index.ts:106</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>username: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>passwordResetCode: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>newPassword: <span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#status" class="tsd-signature-type">Status</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-				<a name="version" class="tsd-anchor"></a>
-				<h3>version</h3>
-				<div class="tsd-signature tsd-kind-icon">version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in node_modules/@cxcloud/ct-types/shipping.ts:16</li>
-					</ul>
-				</aside>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="profile" class="tsd-anchor"></a>
+				<h3>profile</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">profile<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, refreshToken<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/attributeshash.html" class="tsd-signature-type">AttributesHash</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/auth/index.ts#L132">auth/index.ts:132</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>username: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>refreshToken: <span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/attributeshash.html" class="tsd-signature-type">AttributesHash</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-				<a name="zonerates" class="tsd-anchor"></a>
-				<h3>zone<wbr>Rates</h3>
-				<div class="tsd-signature tsd-kind-icon">zone<wbr>Rates<span class="tsd-signature-symbol">:</span> <a href="zonerate.html" class="tsd-signature-type">ZoneRate</a><span class="tsd-signature-symbol">[]</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in node_modules/@cxcloud/ct-types/shipping.ts:20</li>
-					</ul>
-				</aside>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="profileedit" class="tsd-anchor"></a>
+				<h3>profile<wbr>Edit</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">profile<wbr>Edit<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, refreshToken<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, attributes<span class="tsd-signature-symbol">: </span><a href="../interfaces/attributeshash.html" class="tsd-signature-type">AttributesHash</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#status" class="tsd-signature-type">Status</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/auth/index.ts#L144">auth/index.ts:144</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>username: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>refreshToken: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>attributes: <a href="../interfaces/attributeshash.html" class="tsd-signature-type">AttributesHash</a></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#status" class="tsd-signature-type">Status</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="profileeditphonenumber" class="tsd-anchor"></a>
+				<h3>profile<wbr>Edit<wbr>Phone<wbr>Number</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">profile<wbr>Edit<wbr>Phone<wbr>Number<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, refreshToken<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, phoneNumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#status" class="tsd-signature-type">Status</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/auth/index.ts#L156">auth/index.ts:156</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>username: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>refreshToken: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>phoneNumber: <span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#status" class="tsd-signature-type">Status</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="refreshsession" class="tsd-anchor"></a>
+				<h3>refresh<wbr>Session</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">refresh<wbr>Session<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, refreshToken<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/loginsuccessresult.html" class="tsd-signature-type">LoginSuccessResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/auth/index.ts#L90">auth/index.ts:90</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>username: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>refreshToken: <span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/loginsuccessresult.html" class="tsd-signature-type">LoginSuccessResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="register" class="tsd-anchor"></a>
+				<h3>register</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">register<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, password<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, attributes<span class="tsd-signature-symbol">?: </span><a href="../interfaces/attributeshash.html" class="tsd-signature-type">AttributesHash</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/registerresult.html" class="tsd-signature-type">RegisterResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/auth/index.ts#L17">auth/index.ts:17</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>username: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>password: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> attributes: <a href="../interfaces/attributeshash.html" class="tsd-signature-type">AttributesHash</a><span class="tsd-signature-symbol"> =&nbsp;{}</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/registerresult.html" class="tsd-signature-type">RegisterResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="registerconfirmation" class="tsd-anchor"></a>
+				<h3>register<wbr>Confirmation</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">register<wbr>Confirmation<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, confirmationCode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#status" class="tsd-signature-type">Status</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/auth/index.ts#L29">auth/index.ts:29</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>username: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>confirmationCode: <span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#status" class="tsd-signature-type">Status</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="registerresendcode" class="tsd-anchor"></a>
+				<h3>register<wbr>Resend<wbr>Code</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">register<wbr>Resend<wbr>Code<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/codedeliveryresult.html" class="tsd-signature-type">CodeDeliveryResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/auth/index.ts#L38">auth/index.ts:38</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>username: <span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/codedeliveryresult.html" class="tsd-signature-type">CodeDeliveryResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
 			</section>
 		</section>
 		<footer class="with-border-bottom">

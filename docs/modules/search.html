@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>UpdateAction | @cxcloud/ct-types</title>
+	<title>Search | @cxcloud/core</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -879,7 +879,7 @@ img { max-width: 100%; }
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="../index.html">@cxcloud/ct-types</a></strong>
+					<strong><a href="../index.html">@cxcloud/core</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -909,54 +909,75 @@ img { max-width: 100%; }
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
-		<li class="current tsd-kind-interface tsd-is-external">
-			<a href="updateaction.html" class="tsd-kind-icon">Update<wbr>Action</a>
-			<ul>
-				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a href="updateaction.html#action" class="tsd-kind-icon">action</a>
-				</li>
-			</ul>
+		<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+			<a href="search.html#queryparams" class="tsd-kind-icon">Query<wbr>Params</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="search.html#searchindex" class="tsd-kind-icon">search<wbr>Index</a>
 		</li>
 	</ul>
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
-		<section class="tsd-panel tsd-hierarchy">
-			<h3>Hierarchy</h3>
-			<ul class="tsd-hierarchy">
-				<li>
-					<span class="target">UpdateAction</span>
-				</li>
-			</ul>
-		</section>
-		<section class="tsd-panel tsd-kind-interface tsd-is-external">
-			<h3 class="tsd-before-signature">Indexable</h3>
-			<div class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></div>
-		</section>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
-					<section class="tsd-index-section tsd-is-external">
-						<h3>Properties</h3>
+					<section class="tsd-index-section ">
+						<h3>Type aliases</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="updateaction.html#action" class="tsd-kind-icon">action</a></li>
+							<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="search.html#queryparams" class="tsd-kind-icon">Query<wbr>Params</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section ">
+						<h3>Functions</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="search.html#searchindex" class="tsd-kind-icon">search<wbr>Index</a></li>
 						</ul>
 					</section>
 				</div>
 			</section>
 		</section>
-		<section class="tsd-panel-group tsd-member-group tsd-is-external">
-			<h2>Properties</h2>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-				<a name="action" class="tsd-anchor"></a>
-				<h3>action</h3>
-				<div class="tsd-signature tsd-kind-icon">action<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Type aliases</h2>
+			<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+				<a name="queryparams" class="tsd-anchor"></a>
+				<h3>Query<wbr>Params</h3>
+				<div class="tsd-signature tsd-kind-icon">Query<wbr>Params<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">AlgoliaQueryParameters</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in node_modules/@cxcloud/ct-types/common.ts:75</li>
+						<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/search/index.ts#L8">search/index.ts:8</a></li>
 					</ul>
 				</aside>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Functions</h2>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="searchindex" class="tsd-anchor"></a>
+				<h3>search<wbr>Index</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">search<wbr>Index<span class="tsd-signature-symbol">(</span>indexName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AlgoliaQueryParameters</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/search/index.ts#L9">search/index.ts:9</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>indexName: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>params: <span class="tsd-signature-type">AlgoliaQueryParameters</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
 			</section>
 		</section>
 		<footer class="with-border-bottom">
