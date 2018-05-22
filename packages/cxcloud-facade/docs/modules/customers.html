@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Customers | @cxcloud/ct-types</title>
+	<title>Customers | @cxcloud/core</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -879,7 +879,7 @@ img { max-width: 100%; }
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="../index.html">@cxcloud/ct-types</a></strong>
+					<strong><a href="../index.html">@cxcloud/core</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -909,6 +909,9 @@ img { max-width: 100%; }
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="customers.html#fetchall" class="tsd-kind-icon">fetch<wbr>All</a>
+		</li>
 		<li class=" tsd-kind-function tsd-parent-kind-module">
 			<a href="customers.html#findbyid" class="tsd-kind-icon">find<wbr>ById</a>
 		</li>
@@ -941,6 +944,7 @@ img { max-width: 100%; }
 					<section class="tsd-index-section ">
 						<h3>Functions</h3>
 						<ul class="tsd-index-list">
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="customers.html#fetchall" class="tsd-kind-icon">fetch<wbr>All</a></li>
 							<li class="tsd-kind-function tsd-parent-kind-module"><a href="customers.html#findbyid" class="tsd-kind-icon">find<wbr>ById</a></li>
 							<li class="tsd-kind-function tsd-parent-kind-module"><a href="customers.html#login" class="tsd-kind-icon">login</a></li>
 							<li class="tsd-kind-function tsd-parent-kind-module"><a href="customers.html#loginanonymously" class="tsd-kind-icon">login<wbr>Anonymously</a></li>
@@ -956,16 +960,42 @@ img { max-width: 100%; }
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Functions</h2>
 			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-				<a name="findbyid" class="tsd-anchor"></a>
-				<h3>find<wbr>ById</h3>
+				<a name="fetchall" class="tsd-anchor"></a>
+				<h3>fetch<wbr>All</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-					<li class="tsd-signature tsd-kind-icon">find<wbr>ById<span class="tsd-signature-symbol">(</span>customerId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/customer.html" class="tsd-signature-type">Customer</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">fetch<wbr>All<span class="tsd-signature-symbol">(</span>token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">QueryOptions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">PaginatedCustomerResult</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/a56cc17/src/commerce/services/customers.ts#L135">src/commerce/services/customers.ts:135</a></li>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/commerce/services/customers.ts#L137">commerce/services/customers.ts:137</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>token: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> options: <span class="tsd-signature-type">QueryOptions</span><span class="tsd-signature-symbol"> =&nbsp;{}</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">PaginatedCustomerResult</span><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="findbyid" class="tsd-anchor"></a>
+				<h3>find<wbr>ById</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">find<wbr>ById<span class="tsd-signature-symbol">(</span>customerId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Customer</span><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/commerce/services/customers.ts#L153">commerce/services/customers.ts:153</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -977,7 +1007,7 @@ img { max-width: 100%; }
 								<h5>token: <span class="tsd-signature-type">string</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/customer.html" class="tsd-signature-type">Customer</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Customer</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -985,13 +1015,13 @@ img { max-width: 100%; }
 				<a name="login" class="tsd-anchor"></a>
 				<h3>login</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-					<li class="tsd-signature tsd-kind-icon">login<span class="tsd-signature-symbol">(</span>email<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, password<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, token<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/tokenizedsigninresult.html" class="tsd-signature-type">TokenizedSignInResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">login<span class="tsd-signature-symbol">(</span>email<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, password<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, token<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TokenizedSignInResult</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/a56cc17/src/commerce/services/customers.ts#L84">src/commerce/services/customers.ts:84</a></li>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/commerce/services/customers.ts#L86">commerce/services/customers.ts:86</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1006,7 +1036,7 @@ img { max-width: 100%; }
 								<h5><span class="tsd-flag ts-flagOptional">Optional</span> token: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/tokenizedsigninresult.html" class="tsd-signature-type">TokenizedSignInResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TokenizedSignInResult</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -1014,16 +1044,16 @@ img { max-width: 100%; }
 				<a name="loginanonymously" class="tsd-anchor"></a>
 				<h3>login<wbr>Anonymously</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-					<li class="tsd-signature tsd-kind-icon">login<wbr>Anonymously<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/anonymoussigninresult.html" class="tsd-signature-type">AnonymousSignInResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">login<wbr>Anonymously<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">AnonymousSignInResult</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/a56cc17/src/commerce/services/customers.ts#L119">src/commerce/services/customers.ts:119</a></li>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/commerce/services/customers.ts#L121">commerce/services/customers.ts:121</a></li>
 							</ul>
 						</aside>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/anonymoussigninresult.html" class="tsd-signature-type">AnonymousSignInResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">AnonymousSignInResult</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -1031,13 +1061,13 @@ img { max-width: 100%; }
 				<a name="obtaintokenforloggedincustomer" class="tsd-anchor"></a>
 				<h3>obtain<wbr>Token<wbr>For<wbr>Logged<wbr>InCustomer</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
-					<li class="tsd-signature tsd-kind-icon">obtain<wbr>Token<wbr>For<wbr>Logged<wbr>InCustomer<span class="tsd-signature-symbol">(</span>email<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, password<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, loginResult<span class="tsd-signature-symbol">: </span><a href="../interfaces/customersigninresult.html" class="tsd-signature-type">CustomerSignInResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/tokenizedsigninresult.html" class="tsd-signature-type">TokenizedSignInResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">obtain<wbr>Token<wbr>For<wbr>Logged<wbr>InCustomer<span class="tsd-signature-symbol">(</span>email<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, password<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, loginResult<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CustomerSignInResult</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TokenizedSignInResult</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/a56cc17/src/commerce/services/customers.ts#L56">src/commerce/services/customers.ts:56</a></li>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/commerce/services/customers.ts#L58">commerce/services/customers.ts:58</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1049,10 +1079,10 @@ img { max-width: 100%; }
 								<h5>password: <span class="tsd-signature-type">string</span></h5>
 							</li>
 							<li>
-								<h5>loginResult: <a href="../interfaces/customersigninresult.html" class="tsd-signature-type">CustomerSignInResult</a></h5>
+								<h5>loginResult: <span class="tsd-signature-type">CustomerSignInResult</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/tokenizedsigninresult.html" class="tsd-signature-type">TokenizedSignInResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TokenizedSignInResult</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -1060,25 +1090,25 @@ img { max-width: 100%; }
 				<a name="register" class="tsd-anchor"></a>
 				<h3>register</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-					<li class="tsd-signature tsd-kind-icon">register<span class="tsd-signature-symbol">(</span>customerData<span class="tsd-signature-symbol">: </span><a href="../interfaces/customersignupdraft.html" class="tsd-signature-type">CustomerSignupDraft</a>, token<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/tokenizedsigninresult.html" class="tsd-signature-type">TokenizedSignInResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">register<span class="tsd-signature-symbol">(</span>customerData<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CustomerSignupDraft</span>, token<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TokenizedSignInResult</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/a56cc17/src/commerce/services/customers.ts#L102">src/commerce/services/customers.ts:102</a></li>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/commerce/services/customers.ts#L104">commerce/services/customers.ts:104</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>customerData: <a href="../interfaces/customersignupdraft.html" class="tsd-signature-type">CustomerSignupDraft</a></h5>
+								<h5>customerData: <span class="tsd-signature-type">CustomerSignupDraft</span></h5>
 							</li>
 							<li>
 								<h5><span class="tsd-flag ts-flagOptional">Optional</span> token: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/tokenizedsigninresult.html" class="tsd-signature-type">TokenizedSignInResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TokenizedSignInResult</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -1086,13 +1116,13 @@ img { max-width: 100%; }
 				<a name="remove" class="tsd-anchor"></a>
 				<h3>remove</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-					<li class="tsd-signature tsd-kind-icon">remove<span class="tsd-signature-symbol">(</span>customerId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, customerVersion<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/customer.html" class="tsd-signature-type">Customer</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">remove<span class="tsd-signature-symbol">(</span>customerId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, customerVersion<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Customer</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/a56cc17/src/commerce/services/customers.ts#L167">src/commerce/services/customers.ts:167</a></li>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/commerce/services/customers.ts#L185">commerce/services/customers.ts:185</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1107,7 +1137,7 @@ img { max-width: 100%; }
 								<h5>token: <span class="tsd-signature-type">string</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/customer.html" class="tsd-signature-type">Customer</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Customer</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -1115,13 +1145,13 @@ img { max-width: 100%; }
 				<a name="update" class="tsd-anchor"></a>
 				<h3>update</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-					<li class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">(</span>customerId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, customerVersion<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, actions<span class="tsd-signature-symbol">: </span><a href="../interfaces/updateaction.html" class="tsd-signature-type">UpdateAction</a><span class="tsd-signature-symbol">[]</span>, token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/customer.html" class="tsd-signature-type">Customer</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">(</span>customerId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, customerVersion<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, actions<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">UpdateAction</span><span class="tsd-signature-symbol">[]</span>, token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Customer</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/a56cc17/src/commerce/services/customers.ts#L148">src/commerce/services/customers.ts:148</a></li>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/commerce/services/customers.ts#L166">commerce/services/customers.ts:166</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1133,13 +1163,13 @@ img { max-width: 100%; }
 								<h5>customerVersion: <span class="tsd-signature-type">number</span></h5>
 							</li>
 							<li>
-								<h5>actions: <a href="../interfaces/updateaction.html" class="tsd-signature-type">UpdateAction</a><span class="tsd-signature-symbol">[]</span></h5>
+								<h5>actions: <span class="tsd-signature-type">UpdateAction</span><span class="tsd-signature-symbol">[]</span></h5>
 							</li>
 							<li>
 								<h5>token: <span class="tsd-signature-type">string</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/customer.html" class="tsd-signature-type">Customer</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Customer</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Products | @cxcloud/ct-types</title>
+	<title>Products | @cxcloud/core</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -879,7 +879,7 @@ img { max-width: 100%; }
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="../index.html">@cxcloud/ct-types</a></strong>
+					<strong><a href="../index.html">@cxcloud/core</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -943,13 +943,13 @@ img { max-width: 100%; }
 				<a name="findbycategoryid" class="tsd-anchor"></a>
 				<h3>find<wbr>ByCategory<wbr>Id</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-					<li class="tsd-signature tsd-kind-icon">find<wbr>ByCategory<wbr>Id<span class="tsd-signature-symbol">(</span>categoryId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/paginatedproductresult.html" class="tsd-signature-type">PaginatedProductResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">find<wbr>ByCategory<wbr>Id<span class="tsd-signature-symbol">(</span>categoryId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">QueryOptions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">PaginatedProductResult</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/a56cc17/src/commerce/services/products.ts#L5">src/commerce/services/products.ts:5</a></li>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/commerce/services/products.ts#L7">commerce/services/products.ts:7</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -957,8 +957,11 @@ img { max-width: 100%; }
 							<li>
 								<h5>categoryId: <span class="tsd-signature-type">string</span></h5>
 							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> options: <span class="tsd-signature-type">QueryOptions</span><span class="tsd-signature-symbol"> =&nbsp;{}</span></h5>
+							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/paginatedproductresult.html" class="tsd-signature-type">PaginatedProductResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">PaginatedProductResult</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -966,13 +969,13 @@ img { max-width: 100%; }
 				<a name="findbyid" class="tsd-anchor"></a>
 				<h3>find<wbr>ById</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-					<li class="tsd-signature tsd-kind-icon">find<wbr>ById<span class="tsd-signature-symbol">(</span>productId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/product.html" class="tsd-signature-type">Product</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">find<wbr>ById<span class="tsd-signature-symbol">(</span>productId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Product</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/a56cc17/src/commerce/services/products.ts#L33">src/commerce/services/products.ts:33</a></li>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/commerce/services/products.ts#L43">commerce/services/products.ts:43</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -981,7 +984,7 @@ img { max-width: 100%; }
 								<h5>productId: <span class="tsd-signature-type">string</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/product.html" class="tsd-signature-type">Product</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Product</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -989,13 +992,13 @@ img { max-width: 100%; }
 				<a name="findbysearchquery" class="tsd-anchor"></a>
 				<h3>find<wbr>BySearch<wbr>Query</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-					<li class="tsd-signature tsd-kind-icon">find<wbr>BySearch<wbr>Query<span class="tsd-signature-symbol">(</span>q<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, language<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/paginatedproductresult.html" class="tsd-signature-type">PaginatedProductResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">find<wbr>BySearch<wbr>Query<span class="tsd-signature-symbol">(</span>q<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, language<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">QueryOptions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">PaginatedProductResult</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/a56cc17/src/commerce/services/products.ts#L19">src/commerce/services/products.ts:19</a></li>
+								<li>Defined in <a href="https://github.com/smilehouse/cxcloud-facade/blob/1dde8e5/src/commerce/services/products.ts#L25">commerce/services/products.ts:25</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1006,8 +1009,11 @@ img { max-width: 100%; }
 							<li>
 								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> language: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;en&quot;</span></h5>
 							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> options: <span class="tsd-signature-type">QueryOptions</span><span class="tsd-signature-symbol"> =&nbsp;{}</span></h5>
+							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/paginatedproductresult.html" class="tsd-signature-type">PaginatedProductResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">PaginatedProductResult</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
