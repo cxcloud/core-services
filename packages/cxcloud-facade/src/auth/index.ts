@@ -2,6 +2,10 @@ import { getClient } from './sdk';
 
 export type Status = 'SUCCESS';
 
+export interface RegisterAttributes {
+  [key: string]: string;
+}
+
 export interface RegisterResult {
   username: string;
 }
@@ -30,11 +34,16 @@ export interface LoginNextStepResult {
 export namespace Auth {
   export function register(
     username: string,
-    password: string
+    password: string,
+    attributes: RegisterAttributes = {}
   ): Promise<RegisterResult> {
     return getClient().signup({
       username,
-      password
+      password,
+      attributes: Object.keys(attributes).map(key => ({
+        Name: key,
+        Value: attributes[key]
+      }))
     });
   }
 
