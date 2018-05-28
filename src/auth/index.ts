@@ -77,22 +77,18 @@ export namespace Auth {
     });
   }
 
-  export function logout(
-    username: string,
-    refreshToken: string
-  ): Promise<Status> {
+  export function logout(refreshToken: string): Promise<Status> {
     return getClient().logout({
-      username,
+      username: '',
       refreshToken
     });
   }
 
   export function refreshSession(
-    username: string,
     refreshToken: string
   ): Promise<LoginSuccessResult> {
     return getClient().logout({
-      username,
+      username: '',
       refreshToken
     });
   }
@@ -116,50 +112,44 @@ export namespace Auth {
   }
 
   export function passwordChange(
-    username: string,
     refreshToken: string,
     oldPassword: string,
     newPassword: string
   ): Promise<Status> {
     return getClient().passwordChange({
-      username,
+      username: '',
       refreshToken,
       oldPassword,
       newPassword
     });
   }
 
-  export function profile(
-    username: string,
-    refreshToken: string
-  ): Promise<AttributesHash> {
+  export function profile(refreshToken: string): Promise<AttributesHash> {
     return getClient()
       .profile({
-        username,
+        username: '',
         refreshToken
       })
       .then((res: CognitoAttribute[]) => cognitoAttrsToHash(res));
   }
 
   export function profileEdit(
-    username: string,
     refreshToken: string,
     attributes: AttributesHash
   ): Promise<Status> {
     return getClient().profileEdit({
-      username,
+      username: '',
       refreshToken,
       attributes: hashToCognitoAttrs(attributes)
     });
   }
 
   export function profileEditPhoneNumber(
-    username: string,
     refreshToken: string,
     phoneNumber: string
   ): Promise<Status> {
     return getClient().profileEditPhoneNumber({
-      username,
+      username: '',
       refreshToken,
       phone_number: phoneNumber
     });
