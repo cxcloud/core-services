@@ -15,9 +15,9 @@ export interface CodeDeliveryResult {
 export interface LoginSuccessResult {
   refreshToken: string;
   accessToken: string;
-  accessTokenExpiresAt: string;
+  accessTokenExpiresAt: number;
   idToken: string;
-  idTokenExpiresAt: string;
+  idTokenExpiresAt: number;
 }
 
 export interface LoginNextStepResult {
