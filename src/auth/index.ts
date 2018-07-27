@@ -154,4 +154,17 @@ export namespace Auth {
       phone_number: phoneNumber
     });
   }
+
+  export function profileEditAttributeConfirmation(
+    refreshToken: string,
+    attribute: string,
+    confirmationCode: string
+  ): Promise<Status> {
+    return getClient().profileAttributeConfirm({
+      username: '',
+      refreshToken,
+      attribute,
+      confirmationCode
+    });
+  }
 }

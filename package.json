@@ -1,6 +1,6 @@
 {
   "name": "@cxcloud/core",
-  "version": "1.12.2",
+  "version": "1.13.0",
   "description": "CX Cloud Core Services Module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -59,7 +59,7 @@
     "@cxcloud/ct-types": "^0.3.1",
     "@types/algoliasearch": "^3.27.1",
     "algoliasearch": "^3.24.11",
-    "cognito-user-pool": "^0.1.13",
+    "cognito-user-pool": "^0.2.3",
     "config": "^1.26.2",
     "contentful": "^5.0.5",
     "country-tools": "^0.1.2",
