@@ -159,7 +159,7 @@ export namespace Auth {
     refreshToken: string,
     attribute: string,
     confirmationCode: string
-  ): Promise<any> {
+  ): Promise<Status> {
     return getClient().profileAttributeConfirm({
       username: '',
       refreshToken,
