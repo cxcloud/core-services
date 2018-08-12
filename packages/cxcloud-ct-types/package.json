@@ -6,14 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/smilehouse/ct-types.git"
-  },
-  "author": "CXCloud",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/smilehouse/ct-types/issues"
-  },
-  "homepage": "https://github.com/smilehouse/ct-types#readme"
+  "author": "CXCloud <info@cxcloud.com>",
+  "license": "MIT"
 }
