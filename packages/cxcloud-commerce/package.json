@@ -11,24 +11,14 @@
     "build:docs": "typedoc --theme minimal --out docs --mode file --excludePrivate --excludeProtected",
     "prepublish": "npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/smilehouse/cxcloud-facade.git"
-  },
-  "keywords": [],
-  "author": "Tieto CEM",
-  "license": "GPL-2.0-only",
-  "bugs": {
-    "url": "https://github.com/smilehouse/cxcloud-facade/issues"
-  },
-  "homepage": "https://github.com/smilehouse/cxcloud-facade#readme",
+  "keywords": [
+    "commerce",
+    "commercetools",
+    "cxcloud"
+  ],
+  "author": "CXCloud <info@cxcloud.com>",
+  "license": "MIT",
   "devDependencies": {
-    "@types/config": "0.0.33",
-    "@types/lodash": "^4.14.109",
-    "@types/node": "^8.0.34",
-    "@types/node-cache": "^4.1.0",
-    "@types/pify": "^3.0.2",
-    "@types/uuid": "^3.4.3",
     "isomorphic-fetch": "^2.2.1",
     "rimraf": "^2.6.2",
     "ts-node": "^3.3.0",
@@ -46,15 +36,10 @@
     "@commercetools/sdk-middleware-queue": "^1.1.0",
     "@commercetools/sdk-middleware-user-agent": "^1.2.0",
     "@cxcloud/ct-types": "^0.3.1",
-    "@types/algoliasearch": "^3.27.1",
-    "algoliasearch": "^3.24.11",
-    "cognito-user-pool": "^0.2.3",
     "config": "^1.26.2",
-    "contentful": "^5.0.5",
     "country-tools": "^0.1.2",
     "lodash": "^4.17.4",
     "node-cache": "^4.1.1",
-    "pify": "^3.0.0",
     "uuid": "^3.1.0"
   }
 }

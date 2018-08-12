@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Search tools for CXCloud projects",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build",
@@ -16,6 +17,7 @@
   "author": "CXCloud <info@cxcloud.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/algoliasearch": "^3.27.5",
     "algoliasearch": "^3.30.0",
     "config": "^2.0.1"
   }
