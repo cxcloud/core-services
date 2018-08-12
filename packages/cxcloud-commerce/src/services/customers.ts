@@ -19,11 +19,8 @@ import {
   PaginatedCustomerResult
 } from '@cxcloud/ct-types/customers';
 import { UpdateAction, QueryOptions } from '@cxcloud/ct-types/common';
-import {
-  encryptTokenResponse,
-  getAnonymousIdFromToken
-} from '../../tools/crypto';
-import { getDefaults } from '../../tools/query';
+import { encryptTokenResponse, getAnonymousIdFromToken } from '../tools/crypto';
+import { getDefaults } from '../tools/query';
 
 const customerCache = new Cache({
   stdTTL: 60 * 15 // 15 mins

@@ -9,15 +9,7 @@
     "prebuild": "npm run clean",
     "build": "tsc",
     "build:docs": "typedoc --theme minimal --out docs --mode file --excludePrivate --excludeProtected",
-    "format": "prettier --write 'src/**/*.ts'",
-    "precommit": "lint-staged",
     "prepublish": "npm run build"
-  },
-  "lint-staged": {
-    "src/**/*.ts": [
-      "prettier --write",
-      "git add"
-    ]
   },
   "repository": {
     "type": "git",
@@ -37,10 +29,7 @@
     "@types/node-cache": "^4.1.0",
     "@types/pify": "^3.0.2",
     "@types/uuid": "^3.4.3",
-    "husky": "^0.14.3",
     "isomorphic-fetch": "^2.2.1",
-    "lint-staged": "^4.3.0",
-    "prettier": "^1.7.4",
     "rimraf": "^2.6.2",
     "ts-node": "^3.3.0",
     "tslint": "^5.7.0",

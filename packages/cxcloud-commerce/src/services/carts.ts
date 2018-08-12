@@ -15,8 +15,8 @@ import { Address, Reference } from '@cxcloud/ct-types/common';
 import {
   getCustomerCurrency,
   getCustomerShippingAddress
-} from '../../tools/customers';
-import { getTokenData } from '../../tools/crypto';
+} from '../tools/customers';
+import { getTokenData } from '../tools/crypto';
 import { Orders } from './orders';
 import { findCustomerById } from './customers';
 

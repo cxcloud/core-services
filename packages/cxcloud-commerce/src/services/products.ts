@@ -1,7 +1,7 @@
 import { clientExecute, methods, getServices } from '../sdk';
 import { PaginatedProductResult, Product } from '@cxcloud/ct-types/products';
 import { QueryOptions } from '@cxcloud/ct-types/common';
-import { getDefaults } from '../../tools/query';
+import { getDefaults } from '../tools/query';
 
 export namespace Products {
   export function findByCategoryId(

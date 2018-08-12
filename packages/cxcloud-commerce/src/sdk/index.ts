@@ -4,12 +4,23 @@ import 'isomorphic-fetch';
 import { ClientRequest, SdkConfig } from '@cxcloud/ct-types/sdk';
 
 const { createClient } = require('@commercetools/sdk-client');
-const { createAuthMiddlewareForClientCredentialsFlow } = require('@commercetools/sdk-middleware-auth');
+const {
+  createAuthMiddlewareForClientCredentialsFlow
+} = require('@commercetools/sdk-middleware-auth');
 const { createHttpMiddleware } = require('@commercetools/sdk-middleware-http');
-const { createQueueMiddleware } = require('@commercetools/sdk-middleware-queue');
-const { createUserAgentMiddleware } = require('@commercetools/sdk-middleware-user-agent');
-const { createRequestBuilder, features } = require('@commercetools/api-request-builder');
-const { createLoggerMiddleware } = require('@commercetools/sdk-middleware-logger');
+const {
+  createQueueMiddleware
+} = require('@commercetools/sdk-middleware-queue');
+const {
+  createUserAgentMiddleware
+} = require('@commercetools/sdk-middleware-user-agent');
+const {
+  createRequestBuilder,
+  features
+} = require('@commercetools/api-request-builder');
+const {
+  createLoggerMiddleware
+} = require('@commercetools/sdk-middleware-logger');
 
 import { createAuthMiddlewareForIntrospectionFlow } from './introspection-middleware';
 
@@ -105,7 +116,10 @@ export function clientExecute<T>(request: ClientRequest): Promise<T> {
 }
 
 export function clientProcess<T>(request: ClientRequest): Promise<T> {
-  return getClient().process(createClientRequest(request), async (payload: any) => payload.body.results);
+  return getClient().process(
+    createClientRequest(request),
+    async (payload: any) => payload.body.results
+  );
 }
 
 export enum methods {
@@ -115,7 +129,10 @@ export enum methods {
   DELETE = 'DELETE'
 }
 
-export function authenticatedFormRequest<T>(requestOptions: any, user = false): Promise<T> {
+export function authenticatedFormRequest<T>(
+  requestOptions: any,
+  user = false
+): Promise<T> {
   const sdkConfig = getConfig();
   const basicAuthCredentials = user
     ? `${sdkConfig.user.clientId}:${sdkConfig.user.clientSecret}`

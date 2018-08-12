@@ -1,5 +1,5 @@
-import { getTokenData } from '../../tools/crypto';
-import { getDefaults } from '../../tools/query';
+import { getTokenData } from '../tools/crypto';
+import { getDefaults } from '../tools/query';
 import { clientExecute, methods, getServices } from '../sdk';
 import { Order, PaginatedOrderResult } from '@cxcloud/ct-types/orders';
 import { UpdateAction, QueryOptions } from '@cxcloud/ct-types/common';
