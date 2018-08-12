@@ -13,16 +13,18 @@
   },
   "devDependencies": {
     "@types/algoliasearch": "^3.27.5",
+    "@types/bunyan": "^1.8.4",
     "@types/config": "0.0.34",
     "@types/lodash": "^4.14.116",
     "@types/node": "^10.5.8",
     "@types/node-cache": "^4.1.1",
     "@types/pify": "^3.0.2",
+    "@types/ramda": "^0.25.6",
     "@types/uuid": "^3.4.3",
     "husky": "^0.14.3",
     "lerna": "^3.0.3",
     "lint-staged": "^7.2.0",
     "prettier": "^1.14.2",
-    "typescript": "^2.5.3"
+    "typescript": "^2.6.2"
   }
 }
