@@ -22,7 +22,7 @@
   "license": "MIT",
   "dependencies": {
     "@cxcloud/ct-types": "^0.1.6",
-    "aws-sdk": "^2.176.0",
+    "aws-sdk": "^2.291.0",
     "bunyan": "^1.8.12",
     "ramda": "^0.25.0",
     "sqs-parallel": "^1.2.2"
