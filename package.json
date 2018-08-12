@@ -3,7 +3,9 @@
   "private": true,
   "devDependencies": {
     "@types/config": "0.0.34",
+    "@types/node": "^10.5.8",
     "@types/pify": "^3.0.2",
-    "lerna": "^3.0.3"
+    "lerna": "^3.0.3",
+    "typescript": "^2.5.3"
   }
 }
