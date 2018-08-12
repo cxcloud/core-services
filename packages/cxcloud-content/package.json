@@ -1,0 +1,20 @@
+{
+  "name": "@cxcloud/content",
+  "version": "1.0.0",
+  "description": "Content tools for CXCloud projects",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cxcloud",
+    "contentful",
+    "content"
+  ],
+  "author": "CXCloud <info@cxcloud.com>",
+  "license": "MIT",
+  "dependencies": {
+    "config": "^2.0.1",
+    "contentful": "^7.0.0"
+  }
+}
