@@ -1,23 +1,23 @@
 # CX Cloud Core Services
 
-A collection of tools to work with 3rd Party and Partner services & networks. This module is meant to be used in creating commerce services.
+A collection of tools to work with 3rd Party and Partner services & networks. This is a monorepo and the packages living inside `packages` directory are published separately.
 
-An example of implementation can be found in [CX API Accelerator](https://github.com/cxcloud/api-accelerator).
+An example of implementation can be found in [CX API Demo](https://github.com/cxcloud/demo-api).
 
 ## Installation and Usage
 
 ```sh
-npm install @cxcloud/core
+npm install @cxcloud/commerce @cxcloud/auth
 ```
 
 ```js
-import { Commerce, Content } from '@cxcloud/core';
-import { Cart } from '@cxcloud/core/dist/commerce';
+import { Cart } from '@cxcloud/commerce';
+import { register } from '@cxcloud/auth';
 ```
 
 ## Included Bundles
 
-+ Commerce (Powered by [CommerceTools](https://commercetools.com))
+- Commerce (Powered by [CommerceTools](https://commercetools.com)) `@cxcloud/commerce`
   - Products
   - Categories
   - Shipping
@@ -25,12 +25,12 @@ import { Cart } from '@cxcloud/core/dist/commerce';
   - Orders
   - Customers
   - Authentication
-+ Content (Powered by [Contentful](https://contentful.com))
+- Content (Powered by [Contentful](https://contentful.com)) `@cxcloud/content`
   - Entry
   - Entries
   - Space Info
-+ Search (Powered by [Algolia](https://algolia.com))
-+ Authentication (Powered by [AWS Cognito](https://aws.amazon.com/cognito/))
+- Search (Powered by [Algolia](https://algolia.com)) `@cxcloud/search`
+- Authentication (Powered by [AWS Cognito](https://aws.amazon.com/cognito/)) `@cxcloud/auth`
   - Login (Normal, MFA)
   - Registration
   - Edit Profile and Phone Number
