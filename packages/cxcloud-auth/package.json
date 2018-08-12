@@ -1,6 +1,6 @@
 {
   "name": "@cxcloud/auth",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Authentication tools for CXCloud projects",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
