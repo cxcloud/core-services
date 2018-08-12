@@ -4,6 +4,9 @@
   "description": "CX Cloud Core Services Module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "clean": "rimraf ./dist",
     "prebuild": "npm run clean",
