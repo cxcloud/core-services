@@ -1,6 +1,6 @@
 {
   "name": "@cxcloud/content",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Content tools for CXCloud projects",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
