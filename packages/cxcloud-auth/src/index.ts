@@ -1,8 +1,5 @@
 import { getClient } from './sdk';
-import {
-  cognitoAttrsToHash,
-  hashToCognitoAttrs
-} from '../tools/auth-attributes';
+import { cognitoAttrsToHash, hashToCognitoAttrs } from './utils';
 import {
   RegisterResult,
   Status,

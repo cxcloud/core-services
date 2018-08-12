@@ -2,6 +2,8 @@
   "name": "root",
   "private": true,
   "devDependencies": {
+    "@types/config": "0.0.34",
+    "@types/pify": "^3.0.2",
     "lerna": "^3.0.3"
   }
 }

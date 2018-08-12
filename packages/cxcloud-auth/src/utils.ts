@@ -1,4 +1,4 @@
-import { AttributesHash, CognitoAttribute } from '../auth/sdk/types';
+import { AttributesHash, CognitoAttribute } from './sdk/types';
 
 export function hashToCognitoAttrs(source: AttributesHash): CognitoAttribute[] {
   return Object.keys(source).map(key => ({
