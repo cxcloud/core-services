@@ -24,7 +24,7 @@ const {
 
 import { createAuthMiddlewareForIntrospectionFlow } from './introspection-middleware';
 
-const packageInfo = require('../../../package.json');
+const packageInfo = require('../../package.json');
 let __client: any;
 let __services: any;
 
