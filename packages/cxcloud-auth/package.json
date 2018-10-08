@@ -22,7 +22,6 @@
   "license": "MIT",
   "dependencies": {
     "cognito-user-pool": "^0.2.3",
-    "config": "^2.0.1",
-    "pify": "^4.0.0"
+    "config": "^2.0.1"
   }
 }

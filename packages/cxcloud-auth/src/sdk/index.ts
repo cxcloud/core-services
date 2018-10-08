@@ -1,5 +1,5 @@
 import * as config from 'config';
-import * as pify from 'pify';
+import { promisify } from 'util';
 const CognitoUserPoolWrapper = require('cognito-user-pool');
 
 let __client: any;
@@ -20,7 +20,7 @@ export function getClient() {
 
   // Promisify all methods
   methods.forEach(method => {
-    __client[method] = pify(__client[method]);
+    __client[method] = promisify(__client[method]);
   });
 
   return __client;
