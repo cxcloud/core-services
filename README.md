@@ -1,21 +1,10 @@
 # CX Cloud Core Services
 
-A collection of tools to work with 3rd Party and Partner services & networks. This is a monorepo and the packages living inside `packages` directory are published separately.
+A collection of ready made core services to work with 3rd Party and Partner services & networks. This is a monorepo and the packages living inside `packages` directory are published separately.
 
 An example of implementation can be found in [CX API Demo](https://github.com/cxcloud/demo-api).
 
-## Installation and Usage
-
-```sh
-npm install @cxcloud/commerce @cxcloud/auth
-```
-
-```js
-import { Cart } from '@cxcloud/commerce';
-import { register } from '@cxcloud/auth';
-```
-
-## Included Bundles
+### Included Bundles
 
 - Commerce (Powered by [CommerceTools](https://commercetools.com)) `@cxcloud/commerce`
   - Products
@@ -38,43 +27,14 @@ import { register } from '@cxcloud/auth';
   - Password Forgot, Reset, Change
   - Get Profile
 
-## Documentation
+## Generate Core Services with CX cloud CLI
 
-An automatically generated documentation can be found [here](https://cxcloud.github.io/core-services/).
+CX Cloud CLI Tools allows you to generate core services to test the concept using angular or react demos or utilise capabilities of CX Cloud platform in new project. CLI also allow to set up a Kubernetes cluster, generate required service and deploy it there.Read more how to generate and deploy core services using CX Cloud CLI [here](https://docs.cxcloud.com/setting-up-a-cxcloud-project/generating-core-services).
 
-## Config Schema
+## Local test
 
-Using this module requires configuration. You can do so by installing [node-config](lorenwest/node-config) in your project and setting up the following keys one of your json files:
+After generation and configuration are done, the generated service can be tested locally. More information about it [here](https://docs.cxcloud.com/setting-up-a-cxcloud-project/generating-core-services#local-test) 
 
-```json
-{
-  "commerceTools": {
-    "projectKey": "PROJECT_KEY",
-    "admin": {
-      "clientId": "ADMIN_CLIENT_ID",
-      "clientSecret": "ADMIN_CLIENT_ID"
-    },
-    "user": {
-      "clientId": "USER_FACING_CLIENT_ID",
-      "clientSecret": "USER_FACING_CLIENT_SECRET"
-    }
-  },
-  "contentful": {
-    "sdkConfig": {
-      "space": "SPACE_ID",
-      "accessToken": "ACCESS_TOKEN"
-    }
-  },
-  "algolia": {
-    "applicationId": "APP_ID",
-    "apiKey": "API_KEY"
-  },
-  "cognito": {
-    "userPoolId": "USER_POOL_ID",
-    "clientId": "CLIENT_ID"
-  }
-}
-```
 
 ## License
 
