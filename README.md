@@ -2,8 +2,6 @@
 
 A collection of ready made core services to work with 3rd Party and Partner services & networks. This is a monorepo and the packages living inside `packages` directory are published separately.
 
-An example of implementation can be found in [CX API Demo](https://github.com/cxcloud/demo-api).
-
 ### Included Bundles
 
 - Commerce (Powered by [CommerceTools](https://commercetools.com)) `@cxcloud/commerce`
