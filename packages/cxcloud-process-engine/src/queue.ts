@@ -22,7 +22,7 @@ export interface ActionMapItem {
 }
 
 export class QueueProcessor {
-  private __queue: SqsParallel;
+  private __queue: SqsParallel | undefined;
   private __map: ActionMapItem[];
   private __options: Config;
   private __catchAll: ProcessFunction;
@@ -78,6 +78,9 @@ export class QueueProcessor {
   }
 
   sendMessage(params: OutgoingMessage): Promise<SQS.SendMessageResult> {
+    if (!this.__queue) {
+      throw new Error('Queue is not initialised.');
+    }
     return this.__queue.sendMessage(params);
   }
 }
