@@ -38,3 +38,22 @@ export interface Product {
 export interface PaginatedProductResult extends PaginatedResult {
   results: Product[];
 }
+
+export interface ProductDraft {
+  productType: Reference;
+  variants: VariantDraft[];
+  name: LocalizedString;
+  description: LocalizedString;
+  slug: LocalizedString;
+  key: string;
+  taxCategory: Reference;
+  masterVariant: VariantDraft;
+}
+
+export interface VariantDraft {
+  sku: string;
+  key: string;
+  attributes: Attribute[];
+  images: (Image)[];
+  prices: Price[];
+}

@@ -1,5 +1,6 @@
 export interface LocalizedString {
   en: string;
+  [key: string]: string;
 }
 
 export interface Reference {
@@ -10,11 +11,14 @@ export interface Reference {
 export interface Money {
   currencyCode: string;
   centAmount: number;
+  type?: string;
 }
 
 export interface Price {
   value: Money;
   id: string;
+  country: string;
+  channel?: Reference;
 }
 
 export interface Attribute {
