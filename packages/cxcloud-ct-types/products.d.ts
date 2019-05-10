@@ -1,4 +1,11 @@
-import { Attribute, Image, LocalizedString, Price, Reference } from './common';
+import {
+  Attribute,
+  Image,
+  LocalizedString,
+  Price,
+  Reference,
+  PriceDraft
+} from './common';
 import { PaginatedResult } from './sdk';
 
 export interface CategoryOrderHints {}
@@ -55,5 +62,10 @@ export interface VariantDraft {
   key: string;
   attributes: Attribute[];
   images: (Image)[];
-  prices: Price[];
+  prices: PriceDraft[];
+}
+
+export interface ProductUpdateAction {
+  action: string;
+  [key: string]: any;
 }

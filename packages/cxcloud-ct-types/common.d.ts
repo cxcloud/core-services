@@ -1,11 +1,12 @@
 export interface LocalizedString {
-  en: string;
+  en?: string;
   [key: string]: string;
 }
 
 export interface Reference {
   typeId: string;
-  id: string;
+  id?: string;
+  key?: string;
 }
 
 export interface Money {
@@ -17,6 +18,12 @@ export interface Money {
 export interface Price {
   value: Money;
   id: string;
+  country: string;
+  channel?: Reference;
+}
+
+export interface PriceDraft {
+  value: Money;
   country: string;
   channel?: Reference;
 }
