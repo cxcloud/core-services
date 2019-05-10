@@ -6,6 +6,7 @@ export interface CategoryOrderHints {}
 export interface Variant {
   id: number;
   sku: string;
+  key: string;
   prices: Price[];
   images: Image[];
   attributes: Attribute[];
@@ -17,6 +18,7 @@ export interface SearchKeywords {}
 export interface Product {
   id: string;
   version: number;
+  key: string;
   productType: Reference;
   name: LocalizedString;
   description: LocalizedString;
