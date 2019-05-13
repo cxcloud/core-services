@@ -55,6 +55,7 @@ export interface ProductDraft {
   key: string;
   taxCategory: Reference;
   masterVariant: VariantDraft;
+  categories?: Reference[];
 }
 
 export interface VariantDraft {
