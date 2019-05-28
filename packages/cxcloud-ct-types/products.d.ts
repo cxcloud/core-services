@@ -40,6 +40,7 @@ export interface Product {
   taxCategory: Reference;
   createdAt: string;
   lastModifiedAt: string;
+  state: Reference;
 }
 
 export interface PaginatedProductResult extends PaginatedResult {
@@ -56,6 +57,7 @@ export interface ProductDraft {
   taxCategory: Reference;
   masterVariant: VariantDraft;
   categories?: Reference[];
+  state?: Reference;
 }
 
 export interface VariantDraft {
