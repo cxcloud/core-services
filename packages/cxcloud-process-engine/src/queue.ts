@@ -5,7 +5,7 @@ export { Message } from 'sqs-parallel';
 
 export interface ActionMapCondition {
   path: string;
-  value: string;
+  value: string | string[];
 }
 
 export interface SendMessageFunction {
@@ -65,10 +65,18 @@ export class QueueProcessor {
 
   findActionProcessor(message: any): ProcessFunction {
     const item = this.__map.find(mapItem => {
-      return mapItem.conditions.every(
-        condition =>
-          pathOr(null, condition.path.split('.'), message) === condition.value
-      );
+      return mapItem.conditions.every(condition => {
+        if (typeof condition.value === 'string') {
+          return (
+            pathOr(null, condition.path.split('.'), message) === condition.value
+          );
+        } else if (Array.isArray(condition.value)) {
+          return condition.value.some(
+            val => pathOr(null, condition.path.split('.'), message) === val
+          );
+        }
+        return false;
+      });
     });
     if (item) {
       return item.action;
