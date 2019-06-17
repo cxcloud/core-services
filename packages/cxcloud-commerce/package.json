@@ -1,6 +1,6 @@
 {
   "name": "@cxcloud/commerce",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "CX Cloud Core Services Module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -38,7 +38,7 @@
     "@commercetools/sdk-middleware-logger": "^1.0.0",
     "@commercetools/sdk-middleware-queue": "^1.1.0",
     "@commercetools/sdk-middleware-user-agent": "^1.2.0",
-    "@cxcloud/ct-types": "^0.3.8",
+    "@cxcloud/ct-types": "^0.4.0",
     "config": "^1.26.2",
     "country-tools": "^0.1.2",
     "lodash": "^4.17.10",
