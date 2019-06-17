@@ -106,3 +106,10 @@ export interface QueryOptions {
   sortPath?: string;
   ascending?: boolean;
 }
+
+export interface CustomFields {
+  type: Reference;
+  fields: {
+    [key: string]: any;
+  };
+}
