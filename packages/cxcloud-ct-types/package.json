@@ -1,6 +1,6 @@
 {
   "name": "@cxcloud/ct-types",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "Typescript typings for CommerceTools API",
   "main": "index.ts",
   "publishConfig": {
