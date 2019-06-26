@@ -1,5 +1,4 @@
 export interface LocalizedString {
-  en?: string;
   [key: string]: string;
 }
 
