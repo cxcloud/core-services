@@ -4,7 +4,9 @@ import {
   LocalizedString,
   Price,
   Reference,
-  PriceDraft
+  PriceDraft,
+  Custom,
+  Dimensions
 } from './common';
 import { PaginatedResult } from './sdk';
 
@@ -17,7 +19,7 @@ export interface Variant {
   prices: Price[];
   images: Image[];
   attributes: Attribute[];
-  assets: any[];
+  assets: Asset[];
 }
 
 export interface SearchKeywords {}
@@ -64,11 +66,32 @@ export interface VariantDraft {
   sku: string;
   key: string;
   attributes: Attribute[];
-  images: (Image)[];
+  images: Image[];
   prices: PriceDraft[];
+  assets?: AssetDraft[];
 }
 
 export interface ProductUpdateAction {
   action: string;
   [key: string]: any;
+}
+
+export interface Asset extends AssetDraft {
+  id: string;
+}
+
+export interface AssetDraft {
+  key?: string;
+  sources: AssetSource[];
+  name: LocalizedString;
+  description?: LocalizedString;
+  tags?: string[];
+  custom?: Custom;
+}
+
+export interface AssetSource {
+  uri: string;
+  key?: string;
+  dimensions?: Dimensions;
+  contentType?: string;
 }
