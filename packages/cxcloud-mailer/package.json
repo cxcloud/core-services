@@ -1,0 +1,30 @@
+{
+  "name": "@cxcloud/mailer",
+  "version": "1.0.0",
+  "description": "Mailer tool for CXCloud projects",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cxcloud",
+    "mailer"
+  ],
+  "author": "CXCloud <info@cxcloud.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/ejs": "^2.6.3",
+    "@types/nodemailer": "^6.2.1",
+    "aws-sdk": "^2.503.0",
+    "config": "^2.0.1",
+    "ejs": "^2.6.2",
+    "nodemailer": "^6.3.0",
+    "typescript": "^3.5.3"
+  }
+}
