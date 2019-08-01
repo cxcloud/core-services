@@ -36,7 +36,7 @@ const getMailOptions = async ({
     };
 
     if (templateFile) {
-      ejs.renderFile(templateFile, templateParams).then((html: any) => {
+      return ejs.renderFile(templateFile, templateParams).then((html: any) => {
         resolve({
           ...params,
           html
@@ -45,7 +45,7 @@ const getMailOptions = async ({
     }
 
     if (text) {
-      resolve({
+      return resolve({
         ...params,
         text
       });
