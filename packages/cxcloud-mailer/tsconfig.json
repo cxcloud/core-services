@@ -9,7 +9,6 @@
     "removeComments": true,
     "strict": true,
     "noUnusedLocals": true,
-    "types": ["node"],
-    "allowJs": true
+    "types": ["node"]
   }
 }
