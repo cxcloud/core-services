@@ -1,6 +1,6 @@
 {
   "name": "@cxcloud/mailer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Mailer tool for CXCloud projects",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
