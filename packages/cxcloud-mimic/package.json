@@ -19,8 +19,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dipeshy/deu",
-    "directory": "packages/mimic"
+    "url": "https://github.com/cxcloud/core-services",
+    "directory": "packages/cxcloud-mimic"
   },
   "scripts": {
     "start": "DEBUG=mimic* node .",
