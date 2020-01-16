@@ -24,6 +24,7 @@ A collection of ready made core services to work with 3rd Party and Partner serv
   - Session Update
   - Password Forgot, Reset, Change
   - Get Profile
+- Mimic Zero config mocking application [Mimic - Mock apis](/packages/cxcloud-mimic/README.md)
 
 ## Generate Core Services with CX cloud CLI
 
