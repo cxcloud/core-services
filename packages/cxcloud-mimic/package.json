@@ -1,6 +1,6 @@
 {
   "name": "@cxcloud/mimic",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Zero configuration mocking application",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
