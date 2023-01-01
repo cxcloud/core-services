@@ -22,6 +22,6 @@
   "license": "MIT",
   "dependencies": {
     "cognito-user-pool": "^0.2.3",
-    "config": "^2.0.1"
+    "config": "^3.3.8"
   }
 }
