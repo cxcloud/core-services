@@ -22,7 +22,7 @@
     "@types/ejs": "^2.6.3",
     "@types/nodemailer": "^6.2.1",
     "aws-sdk": "^2.503.0",
-    "config": "^2.0.1",
+    "config": "^3.3.8",
     "ejs": "^2.6.2",
     "nodemailer": "^6.3.0",
     "typescript": "^3.5.3"
